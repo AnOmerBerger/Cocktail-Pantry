@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "35D1F01F-7C31-4027-9631-0558784D0196"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF2A12CA-4280-408C-82FD-8CA068CDD0BE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cocktail_Pantry/Model.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "12939DEA-C398-4562-A153-63DE13B0D982"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cocktail_Pantry/Global Structs+Enums.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "GlassType"
+            landmarkType = "13">
+            <Locations>
+               <Location
+                  uuid = "12939DEA-C398-4562-A153-63DE13B0D982 - 89841609171da3d8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cocktail_Pantry.GlassType.init(rawValue: Swift.String) -&gt; Swift.Optional&lt;Cocktail_Pantry.GlassType&gt;"
+                  moduleName = "Cocktail_Pantry"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/omerberger/Desktop/Developer/Cocktail_Pantry/Cocktail_Pantry/Global%20Structs+Enums.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  uuid = "12939DEA-C398-4562-A153-63DE13B0D982 - 33f16d28516991f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cocktail_Pantry.GlassType.rawValue.getter : Swift.String"
+                  moduleName = "Cocktail_Pantry"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/omerberger/Desktop/Developer/Cocktail_Pantry/Cocktail_Pantry/Global%20Structs+Enums.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "089AD639-62B5-4925-8ECE-697B36EA580A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cocktail_Pantry/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "init()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

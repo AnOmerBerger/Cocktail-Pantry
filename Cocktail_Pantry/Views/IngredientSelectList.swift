@@ -59,13 +59,24 @@ struct IngredientSelectList: View {
                             Text("missing \(numberAndCocktailGroup.numberOfMissingIngredients) ingredients").padding(.horizontal, 5).foregroundColor(numberAndCocktailGroup.numberOfMissingIngredients == 0 ? .green : .black)
 //                            LazyVGrid(columns: columns) {
                                 ForEach(numberAndCocktailGroup.cocktailList) { cocktail in
-                                    NavigationLink(destination: CocktailPage(cocktail: cocktail)) {
-                                        VStack(alignment: .leading, spacing: 2) {
-                                            Text(cocktail.name).font(.headline).foregroundColor(.black)
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        let missingIngredients = returnMissingIngredientsForCocktail(cocktail: cocktail, selectedIngredients: viewModel.selected)
+                                        ScrollView(.horizontal) {
+                                            HStack {
+                                                Text(cocktail.name).font(.headline)
+                                                Text("(missing")
+                                                ForEach(missingIngredients, id: \.self) { ing in
+                                                    Text(ing)
+                                                }
+                                                Text(")")
+                                            }
+                                            .foregroundColor(.black)
+                                        }
+                                        NavigationLink(destination: CocktailPage(cocktail: cocktail)) {
                                             CocktailCardWithImage(cocktail: cocktail)
                                         }
-                                        .padding(.vertical, 5)
                                     }
+                                    .padding(.vertical, 5)
                                 }
 //                            }
                             Divider()
@@ -75,6 +86,23 @@ struct IngredientSelectList: View {
             }
         }
     }
+}
+
+func returnMissingIngredientsForCocktail(cocktail: Cocktail, selectedIngredients: [Ingredient]) -> [String] {
+    var missingIngredients = [String]()
+    
+    for ing1 in cocktail.ingNames {
+        var iHaveThisIngredient = false
+        for ing2 in selectedIngredients {
+            if ing1 == ing2.name {
+                iHaveThisIngredient = true
+            }
+        }
+        if !iHaveThisIngredient {
+            missingIngredients.append(ing1)
+        }
+    }
+    return missingIngredients
 }
 
 struct ClickForIngredient: View {

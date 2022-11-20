@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Disk",
+        "repositoryURL": "https://github.com/saoudrizwan/Disk",
+        "state": {
+          "branch": null,
+          "revision": "b0cb4fdf23e51849cc2460bdc6de795c3bcca99d",
+          "version": "0.6.4"
+        }
+      },
+      {
+        "package": "YouTubePlayerKit",
+        "repositoryURL": "https://github.com/SvenTiigi/YouTubePlayerKit",
+        "state": {
+          "branch": null,
+          "revision": "96b831c0132ad194c568a924d6bf8a4a26f3a517",
+          "version": "1.1.11"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
