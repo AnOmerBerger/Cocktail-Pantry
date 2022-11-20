@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D06EB68290EE73300FAA456 /* VideoPlayerOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D06EB67290EE73300FAA456 /* VideoPlayerOverlay.swift */; };
 		5D0F9E6D28344FC400B99F98 /* Cocktail_PantryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F9E6C28344FC400B99F98 /* Cocktail_PantryApp.swift */; };
 		5D0F9E6F28344FC400B99F98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F9E6E28344FC400B99F98 /* ContentView.swift */; };
 		5D0F9E7128344FC400B99F98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D0F9E7028344FC400B99F98 /* Assets.xcassets */; };
@@ -14,6 +15,21 @@
 		5D0F9E7E28344FC400B99F98 /* Cocktail_PantryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F9E7D28344FC400B99F98 /* Cocktail_PantryTests.swift */; };
 		5D0F9E8828344FC400B99F98 /* Cocktail_PantryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F9E8728344FC400B99F98 /* Cocktail_PantryUITests.swift */; };
 		5D0F9E8A28344FC400B99F98 /* Cocktail_PantryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F9E8928344FC400B99F98 /* Cocktail_PantryUITestsLaunchTests.swift */; };
+		5D0F9E9728344FF500B99F98 /* Global Structs+Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F9E9628344FF500B99F98 /* Global Structs+Enums.swift */; };
+		5D0F9E99283486F400B99F98 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F9E98283486F400B99F98 /* Model.swift */; };
+		5D0F9E9B2836B5D800B99F98 /* Array Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F9E9A2836B5D800B99F98 /* Array Extention.swift */; };
+		5D0F9E9D2836BB5800B99F98 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F9E9C2836BB5800B99F98 /* ViewModel.swift */; };
+		5D0F9E9F2836BFB900B99F98 /* IngredientSelectList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F9E9E2836BFB900B99F98 /* IngredientSelectList.swift */; };
+		5D1E920629296ED300A04345 /* ImagePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1E920529296ED300A04345 /* ImagePlaceholder.swift */; };
+		5D9C4E99284BE7CD00241202 /* MultiLine Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9C4E98284BE7CD00241202 /* MultiLine Picker.swift */; };
+		5D9C4E9C284EB58C00241202 /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 5D9C4E9B284EB58C00241202 /* Disk */; };
+		5D9C4E9E284F113900241202 /* TipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9C4E9D284F113900241202 /* TipView.swift */; };
+		5DBEFB55283DAD4B0006C326 /* CocktailCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEFB54283DAD4B0006C326 /* CocktailCard.swift */; };
+		5DBEFB57283DAE170006C326 /* CocktailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEFB56283DAE170006C326 /* CocktailPage.swift */; };
+		5DBEFB5A283DAF0A0006C326 /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5DBEFB59283DAF0A0006C326 /* YouTubePlayerKit */; };
+		5DD504392845634B0095CEE1 /* SimpleSearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD504382845634B0095CEE1 /* SimpleSearchPage.swift */; };
+		5DD5043B284567610095CEE1 /* ChangeableFilteringList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5043A284567610095CEE1 /* ChangeableFilteringList.swift */; };
+		5DED7CEF2922B5C400112DA5 /* TipViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED7CEE2922B5C400112DA5 /* TipViewV2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D06EB67290EE73300FAA456 /* VideoPlayerOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerOverlay.swift; sourceTree = "<group>"; };
 		5D0F9E6928344FC400B99F98 /* Cocktail_Pantry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cocktail_Pantry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D0F9E6C28344FC400B99F98 /* Cocktail_PantryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cocktail_PantryApp.swift; sourceTree = "<group>"; };
 		5D0F9E6E28344FC400B99F98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +61,19 @@
 		5D0F9E8328344FC400B99F98 /* Cocktail_PantryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Cocktail_PantryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D0F9E8728344FC400B99F98 /* Cocktail_PantryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cocktail_PantryUITests.swift; sourceTree = "<group>"; };
 		5D0F9E8928344FC400B99F98 /* Cocktail_PantryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cocktail_PantryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5D0F9E9628344FF500B99F98 /* Global Structs+Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Global Structs+Enums.swift"; sourceTree = "<group>"; };
+		5D0F9E98283486F400B99F98 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		5D0F9E9A2836B5D800B99F98 /* Array Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array Extention.swift"; sourceTree = "<group>"; };
+		5D0F9E9C2836BB5800B99F98 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		5D0F9E9E2836BFB900B99F98 /* IngredientSelectList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientSelectList.swift; sourceTree = "<group>"; };
+		5D1E920529296ED300A04345 /* ImagePlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePlaceholder.swift; sourceTree = "<group>"; };
+		5D9C4E98284BE7CD00241202 /* MultiLine Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultiLine Picker.swift"; sourceTree = "<group>"; };
+		5D9C4E9D284F113900241202 /* TipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipView.swift; sourceTree = "<group>"; };
+		5DBEFB54283DAD4B0006C326 /* CocktailCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCard.swift; sourceTree = "<group>"; };
+		5DBEFB56283DAE170006C326 /* CocktailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailPage.swift; sourceTree = "<group>"; };
+		5DD504382845634B0095CEE1 /* SimpleSearchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleSearchPage.swift; sourceTree = "<group>"; };
+		5DD5043A284567610095CEE1 /* ChangeableFilteringList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeableFilteringList.swift; sourceTree = "<group>"; };
+		5DED7CEE2922B5C400112DA5 /* TipViewV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipViewV2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DBEFB5A283DAF0A0006C326 /* YouTubePlayerKit in Frameworks */,
+				5D9C4E9C284EB58C00241202 /* Disk in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +128,11 @@
 			children = (
 				5D0F9E6C28344FC400B99F98 /* Cocktail_PantryApp.swift */,
 				5D0F9E6E28344FC400B99F98 /* ContentView.swift */,
+				5DBEFB5B283DAF260006C326 /* Views */,
+				5D0F9E9628344FF500B99F98 /* Global Structs+Enums.swift */,
+				5D0F9E98283486F400B99F98 /* Model.swift */,
+				5D0F9E9C2836BB5800B99F98 /* ViewModel.swift */,
+				5D0F9E9A2836B5D800B99F98 /* Array Extention.swift */,
 				5D0F9E7028344FC400B99F98 /* Assets.xcassets */,
 				5D0F9E7228344FC400B99F98 /* Preview Content */,
 			);
@@ -127,6 +164,23 @@
 			path = Cocktail_PantryUITests;
 			sourceTree = "<group>";
 		};
+		5DBEFB5B283DAF260006C326 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5D0F9E9E2836BFB900B99F98 /* IngredientSelectList.swift */,
+				5DD5043A284567610095CEE1 /* ChangeableFilteringList.swift */,
+				5DD504382845634B0095CEE1 /* SimpleSearchPage.swift */,
+				5DBEFB54283DAD4B0006C326 /* CocktailCard.swift */,
+				5DBEFB56283DAE170006C326 /* CocktailPage.swift */,
+				5D1E920529296ED300A04345 /* ImagePlaceholder.swift */,
+				5D06EB67290EE73300FAA456 /* VideoPlayerOverlay.swift */,
+				5D9C4E98284BE7CD00241202 /* MultiLine Picker.swift */,
+				5D9C4E9D284F113900241202 /* TipView.swift */,
+				5DED7CEE2922B5C400112DA5 /* TipViewV2.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +197,10 @@
 			dependencies = (
 			);
 			name = Cocktail_Pantry;
+			packageProductDependencies = (
+				5DBEFB59283DAF0A0006C326 /* YouTubePlayerKit */,
+				5D9C4E9B284EB58C00241202 /* Disk */,
+			);
 			productName = Cocktail_Pantry;
 			productReference = 5D0F9E6928344FC400B99F98 /* Cocktail_Pantry.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +273,10 @@
 				Base,
 			);
 			mainGroup = 5D0F9E6028344FC400B99F98;
+			packageReferences = (
+				5DBEFB58283DAF0A0006C326 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */,
+				5D9C4E9A284EB58C00241202 /* XCRemoteSwiftPackageReference "Disk" */,
+			);
 			productRefGroup = 5D0F9E6A28344FC400B99F98 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,7 +320,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D0F9E6F28344FC400B99F98 /* ContentView.swift in Sources */,
+				5D9C4E9E284F113900241202 /* TipView.swift in Sources */,
+				5DBEFB55283DAD4B0006C326 /* CocktailCard.swift in Sources */,
+				5DD504392845634B0095CEE1 /* SimpleSearchPage.swift in Sources */,
 				5D0F9E6D28344FC400B99F98 /* Cocktail_PantryApp.swift in Sources */,
+				5D0F9E9728344FF500B99F98 /* Global Structs+Enums.swift in Sources */,
+				5DBEFB57283DAE170006C326 /* CocktailPage.swift in Sources */,
+				5D1E920629296ED300A04345 /* ImagePlaceholder.swift in Sources */,
+				5D9C4E99284BE7CD00241202 /* MultiLine Picker.swift in Sources */,
+				5D0F9E9F2836BFB900B99F98 /* IngredientSelectList.swift in Sources */,
+				5D06EB68290EE73300FAA456 /* VideoPlayerOverlay.swift in Sources */,
+				5D0F9E99283486F400B99F98 /* Model.swift in Sources */,
+				5D0F9E9D2836BB5800B99F98 /* ViewModel.swift in Sources */,
+				5DD5043B284567610095CEE1 /* ChangeableFilteringList.swift in Sources */,
+				5D0F9E9B2836B5D800B99F98 /* Array Extention.swift in Sources */,
+				5DED7CEF2922B5C400112DA5 /* TipViewV2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +661,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5D9C4E9A284EB58C00241202 /* XCRemoteSwiftPackageReference "Disk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/saoudrizwan/Disk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.4;
+			};
+		};
+		5DBEFB58283DAF0A0006C326 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SvenTiigi/YouTubePlayerKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5D9C4E9B284EB58C00241202 /* Disk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D9C4E9A284EB58C00241202 /* XCRemoteSwiftPackageReference "Disk" */;
+			productName = Disk;
+		};
+		5DBEFB59283DAF0A0006C326 /* YouTubePlayerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DBEFB58283DAF0A0006C326 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */;
+			productName = YouTubePlayerKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5D0F9E6128344FC400B99F98 /* Project object */;
 }

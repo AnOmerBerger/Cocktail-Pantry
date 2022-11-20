@@ -11,7 +11,7 @@ import SwiftUI
 struct Cocktail_PantryApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: ViewModel())
         }
     }
 }
