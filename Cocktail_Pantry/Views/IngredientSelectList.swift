@@ -60,15 +60,12 @@ struct IngredientSelectList: View {
 //                            LazyVGrid(columns: columns) {
                                 ForEach(numberAndCocktailGroup.cocktailList) { cocktail in
                                     VStack(alignment: .leading, spacing: 2) {
-                                        let missingIngredients = returnMissingIngredientsForCocktail(cocktail: cocktail, selectedIngredients: viewModel.selected)
+                                        let missingIngredientsString = returnMissingIngredientsForCocktail(cocktail: cocktail, selectedIngredients: viewModel.selected).joined(separator: ", ")
                                         ScrollView(.horizontal) {
                                             HStack {
                                                 Text(cocktail.name).font(.headline)
-                                                Text("(missing")
-                                                ForEach(missingIngredients, id: \.self) { ing in
-                                                    Text(ing)
-                                                }
-                                                Text(")")
+//                                                Text("(missing: ")
+                                                Text("(\(missingIngredientsString))").foregroundColor(.red)
                                             }
                                             .foregroundColor(.black)
                                         }
