@@ -13,6 +13,7 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
     var cocktail: Cocktail // loads from the previews page's click
     var youTubePlayer: YouTubePlayer
     @State var showHistory = false
+    @State var fetchImageTimeLimitReached = false
     
     init(cocktail: Cocktail) {
         self.cocktail = cocktail
@@ -29,7 +30,10 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                         .resizable()
                         .scaledToFit()
                 } placeholder: {
-                    ImagePlaceholder()
+                    if fetchImageTimeLimitReached {
+                    } else {
+                    ImageLoading()
+                    }
                 }
                 .frame(maxWidth: 300, maxHeight: 300)
                 
@@ -90,7 +94,9 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                 }
             }
             .padding()
-            
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) { fetchImageTimeLimitReached = true }
+            }
         }
 //        .navigationTitle(Text(cocktail.name))
         .navigationBarTitleDisplayMode(.inline)
