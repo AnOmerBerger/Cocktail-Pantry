@@ -36,6 +36,10 @@ class ViewModel: ObservableObject {
             print("---------")
             
         }
+        Task {
+            //During store initialization, request products from the App Store.
+            await fetchProducts()
+        }
     }
     
     //MARK: - Call to Server
@@ -57,14 +61,14 @@ class ViewModel: ObservableObject {
     // MARK: - inApp Purchase
     var tipOptions: [Product] = []
     
-    func fetchProducts() {
-        async {
-            do {
-                let products = try await Product.products(for: ["1DollarTip", "2DollarTip", "5DollarTip"])
-                self.tipOptions = products
-            } catch {
-                print(error)
-            }
+    @MainActor
+    func fetchProducts() async {
+        do {
+            print("running fetchProducts")
+            let products = try await Product.products(for: ["1.tip.id", "2.tip.id", "5.tip.id"])
+            self.tipOptions = products
+        } catch {
+            print(error)
         }
     }
     

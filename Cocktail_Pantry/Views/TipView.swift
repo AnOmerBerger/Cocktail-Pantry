@@ -152,13 +152,13 @@ struct SpinningViewWithBackAndFront<Content>: View where Content: View {
     }
 }
 
-struct TipView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            TipView(showTipView: Binding.constant(true))
-        }
-    }
-}
+//struct TipView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            TipView(showTipView: Binding.constant(true))
+//        }
+//    }
+//}
 
 
 struct FlipView<FrontView: View, BackView: View>: View {

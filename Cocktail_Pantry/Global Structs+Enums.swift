@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+struct CodedString: Codable {
+    var string: String
+}
+
 struct Ingredient: Identifiable, Hashable, Comparable, Codable {
     static func < (lhs: Ingredient, rhs: Ingredient) -> Bool {
         if lhs.name < rhs.name {

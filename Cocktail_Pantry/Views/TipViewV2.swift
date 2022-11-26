@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import StoreKit
 
 
 struct DoubleSidedCoin: View {
+    @EnvironmentObject var viewModel: ViewModel
+    @Binding var showTipView: Bool
     @State var frontDegree: Double = 0.0
     @State var backDegree: Double = -90
     @State var startFlip: Bool = false
@@ -18,14 +21,14 @@ struct DoubleSidedCoin: View {
     
     var body: some View {
         ZStack {
-            CoinFront(degrees: $frontDegree)
+            CoinFront(showTipView: $showTipView, degrees: $frontDegree).environmentObject(viewModel)
             CoinBack(degrees: $backDegree)
         }
-        .onTapGesture {
-            flipCoin()
-            frontDegree = 0
-            backDegree = -90
-        }
+//        .onTapGesture {
+//            flipCoin()
+//            frontDegree = 0
+//            backDegree = -90
+//        }
     }
     
     
@@ -66,7 +69,10 @@ struct DoubleSidedCoin: View {
 
 
 struct CoinFront: View {
+    @EnvironmentObject var viewModel: ViewModel
+    @Binding var showTipView: Bool
     @Binding var degrees: Double
+    @State var selectedAmount: Product? = nil
     
     var body: some View {
         ZStack {
@@ -82,21 +88,46 @@ struct CoinFront: View {
                 .frame(width: UIScreen.main.bounds.size.width - 30)
                 .shadow(color: Color.gray, radius: 20, x: 0, y: 0)
                 .overlay {
-                    VStack(spacing: 40) {
+                    VStack(spacing: 20) {
                         Text("tip your bartender?").bold()
-                        VStack {
+                        HStack {
+                            ForEach(viewModel.tipOptions, id: \.id) { product in
+                                RoundedRectangle(cornerRadius: 5)
+                                    .foregroundColor(selectedAmount == product ? .green.opacity(0.65) : .white.opacity(0.4))
+                                    .frame(width: UIScreen.main.bounds.size.width/4 - 15, height: 50)
+                                    .overlay {
+                                        Text(product.displayPrice)
+                                    }
+                                    .onTapGesture { selectedAmount = product }
+                            }
+                        }
+                        VStack(spacing: 10) {
                             RoundedRectangle(cornerRadius: 5)
-                                .foregroundColor(.green.opacity(0.65))
+                                .foregroundColor((selectedAmount != nil) ? .green.opacity(0.65) : .gray.opacity(0.7))
                                 .frame(width: UIScreen.main.bounds.size.width/3 - 10, height: 50)
                                 .overlay {
                                     Text("thanks!")
-                            }
+                                }
+//                                .onTapGesture {
+//                                    if selectedAmount != nil {
+//                                        Task {
+//                                            await tip(amount: selectedAmount!)
+//                                        }
+//                                    }
+//                                }
+                            
                             Text("Next time").font(.caption).italic()
+                                .onTapGesture { showTipView = false }
                         }
                     }
                 }
         }
         .rotation3DEffect(.degrees(degrees), axis: (x: 0, y: 1, z: 0))
+        }
+    
+    @MainActor
+    func tip(amount: Product) async {
+        await viewModel.tip(amount: amount)
     }
 }
 
@@ -135,7 +166,7 @@ struct CoinBack: View {
 struct Coin_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            DoubleSidedCoin()
+            DoubleSidedCoin(showTipView: Binding.constant(true)).environmentObject(ViewModel())
         }
     }
 }

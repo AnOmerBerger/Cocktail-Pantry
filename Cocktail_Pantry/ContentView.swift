@@ -40,8 +40,8 @@ struct ContentView: View {
                         default:
                             Text("ERROR IN LOADING PAGE")
                         }
-//                        TipView(showTipView: $showTipView).environmentObject(viewModel)
-//                            .opacity(showTipView ? 1 : 0)
+                        DoubleSidedCoin(showTipView: $showTipView).environmentObject(viewModel)
+                            .opacity(showTipView ? 1 : 0)
 //                        Text("Please God").coinify(isFaceUp: true, showTipView: $showTipView)
                     }
                     .alert("Update Available", isPresented: $showAlert,
@@ -68,8 +68,7 @@ struct ContentView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .onDisappear { viewModel.visitACocktailPage() }
                 .onAppear {
-//                    viewModel.fetchProducts()
-                    if viewModel.numberOfCocktailPagesVisited % 3 == 0 && viewModel.numberOfCocktailPagesVisited != 0 {
+                    if viewModel.numberOfCocktailPagesVisited % 3 == 0 && viewModel.numberOfCocktailPagesVisited != 0 && !viewModel.tipOptions.isEmpty {
                         showTipView = true
                     }
                 }
@@ -87,20 +86,25 @@ struct ContentView: View {
     
     
     func checkForNewVersion(currentVersion: Double) async {
-        if let response = URL(string: "http://127.0.0.1:8080/versionCheck") {
+        guard let response = URL(string: "http://127.0.0.1:8080/versionCheck") else {
+            print("invalid url")
+            return
+        }
             do {
-                let serverVersion = try String(contentsOf: response)
-    //            print(serverVersion)
-                if currentVersion <  Double(serverVersion) ?? 0 {
-                    self.newVersionAvailabe = Double(serverVersion)!
-                    showAlert = true
+                let (serverData, _) = try await URLSession.shared.data(from: response)
+                if let serverVersion = try? JSONDecoder().decode(CodedString.self, from: serverData) {
+//                    let serverVersion2 = String(contentsOf: response)
+                    print("****** \(serverVersion) *******")
+                    if currentVersion <  Double(serverVersion.string) ?? 0 {
+                        self.newVersionAvailabe = Double(serverVersion.string)!
+                        showAlert = true
+                    }
+                } else {
+                    print("*** Couldn't Decode ***")
                 }
             } catch {
                 // contents could not be loaded
             }
-        } else {
-            // the URL was bad!
-        }
         
     }
     
