@@ -17,9 +17,6 @@ struct ContentView: View {
     @State var showTipView: Bool = false
     @State var showAlert: Bool = false
     
-    @State var videoIDforVideoPlayer: String = "dQw4w9WgXcQ&t=1s"
-    @State var showVideoPlayerOverlay: Bool = false
-    
     @State var newVersionAvailabe: Double? = nil
     
     var mainViewSelections = ["ingredient", "custom"]
@@ -32,17 +29,14 @@ struct ContentView: View {
                     ZStack {
                         switch mainViewSelection {
                         case "ingredient":
-                            IngredientSelectList(searchText: $ingredientSearchText, videoIDforVideoPlayer: $videoIDforVideoPlayer, showVideoPlayerOverlay: $showVideoPlayerOverlay).environmentObject(viewModel)
+                            IngredientSelectList(searchText: $ingredientSearchText).environmentObject(viewModel)
         //                case "cocktail":
         //                    SimpleSearchPage(searchText: $cocktaileSearchText).environmentObject(viewModel)
                         case "custom":
-                            ChangeableFilteringList(selection: $customFilterSelection, cocktailSearchText: $cocktaileSearchText, videoIDforVideoPlayer: $videoIDforVideoPlayer, showVideoPlayerOverlay: $showVideoPlayerOverlay).environmentObject(viewModel)
+                            ChangeableFilteringList(selection: $customFilterSelection, cocktailSearchText: $cocktaileSearchText).environmentObject(viewModel)
                         default:
                             Text("ERROR IN LOADING PAGE")
                         }
-                        DoubleSidedCoin(showTipView: $showTipView).environmentObject(viewModel)
-                            .opacity(showTipView ? 1 : 0)
-//                        Text("Please God").coinify(isFaceUp: true, showTipView: $showTipView)
                     }
                     .alert("Update Available", isPresented: $showAlert,
                            actions: {
@@ -72,14 +66,9 @@ struct ContentView: View {
                         showTipView = true
                     }
                 }
-                
-                if showVideoPlayerOverlay {
-                    Color.black.opacity(0.7)
-                    VideoPlayerOverlay(id: $videoIDforVideoPlayer, showVideoPlayerOverlay: $showVideoPlayerOverlay)
-                }
+                DoubleSidedCoin(showTipView: $showTipView).environmentObject(viewModel)
             }
             .task { await checkForNewVersion(currentVersion: viewModel.version) }
-            .onDisappear { showVideoPlayerOverlay = false }
         }
     }
     

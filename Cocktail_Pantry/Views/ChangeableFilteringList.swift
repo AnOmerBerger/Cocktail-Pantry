@@ -11,8 +11,8 @@ struct ChangeableFilteringList: View {
     @EnvironmentObject var viewModel: ViewModel
     @Binding var selection: String
     @Binding var cocktailSearchText: String
-    @Binding var videoIDforVideoPlayer: String
-    @Binding var showVideoPlayerOverlay: Bool
+//    @Binding var videoIDforVideoPlayer: String
+//    @Binding var showVideoPlayerOverlay: Bool
     
     let selectionOptions = ["name", "method", "flavor", "booziness", "difficulty"]
     let columns: [GridItem] =

@@ -72,11 +72,35 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func tip(amount: Product) async {
+    func tip(amount: Product) async -> StoreKit.Transaction? {
         do {
-            _ = try await amount.purchase()
+            let result = try await amount.purchase()
+            
+            switch result {
+            case .success(let verification) :
+                let transaction = try checkVerified(verification)
+                await transaction.finish()
+                return transaction
+            case .userCancelled, .pending:
+                return nil
+            default:
+                return nil
+            }
         } catch {
             print(error)
+        }
+        return nil
+    }
+    
+    func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
+        //Check whether the JWS passes StoreKit verification.
+        switch result {
+        case .unverified:
+            //StoreKit parses the JWS, but it fails verification.
+            throw StoreError.failedVerification
+        case .verified(let safe):
+            //The result is verified. Return the unwrapped value.
+            return safe
         }
     }
     

@@ -10,8 +10,8 @@ import SwiftUI
 struct IngredientSelectList: View {
     @EnvironmentObject var viewModel: ViewModel
     @Binding var searchText: String
-    @Binding var videoIDforVideoPlayer: String
-    @Binding var showVideoPlayerOverlay: Bool
+//    @Binding var videoIDforVideoPlayer: String
+//    @Binding var showVideoPlayerOverlay: Bool
 
     var body: some View {
         // rows setting for horizontal ingredient display

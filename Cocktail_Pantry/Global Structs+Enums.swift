@@ -145,3 +145,6 @@ func minutesStringtoSecondsInt(numberToConvert: String) -> Int {
     return ((minutes * 60) + seconds)
 }
 
+public enum StoreError: Error {
+    case failedVerification
+}

@@ -21,14 +21,10 @@ struct DoubleSidedCoin: View {
     
     var body: some View {
         ZStack {
-            CoinFront(showTipView: $showTipView, degrees: $frontDegree).environmentObject(viewModel)
             CoinBack(degrees: $backDegree)
+            CoinFront(showTipView: $showTipView, degrees: $frontDegree).environmentObject(viewModel)
         }
-//        .onTapGesture {
-//            flipCoin()
-//            frontDegree = 0
-//            backDegree = -90
-//        }
+        .opacity(showTipView ? 1 : 0)
     }
     
     
@@ -106,28 +102,31 @@ struct CoinFront: View {
                                 .foregroundColor((selectedAmount != nil) ? .green.opacity(0.65) : .gray.opacity(0.7))
                                 .frame(width: UIScreen.main.bounds.size.width/3 - 10, height: 50)
                                 .overlay {
-                                    Text("thanks!")
+                                    Text("Send Tip")
                                 }
-//                                .onTapGesture {
-//                                    if selectedAmount != nil {
-//                                        Task {
-//                                            await tip(amount: selectedAmount!)
-//                                        }
-//                                    }
-//                                }
+                                .onTapGesture {
+                                    if selectedAmount != nil {
+                                        Task {
+                                            await tip(amount: selectedAmount!)
+                                        }
+                                    }
+                                }
                             
-                            Text("Next time").font(.caption).italic()
+                            Text("Next time").font(.caption).italic().underline()
                                 .onTapGesture { showTipView = false }
                         }
                     }
                 }
         }
+        .onDisappear { selectedAmount = nil }
         .rotation3DEffect(.degrees(degrees), axis: (x: 0, y: 1, z: 0))
-        }
+    }
     
     @MainActor
     func tip(amount: Product) async {
-        await viewModel.tip(amount: amount)
+        if ((await viewModel.tip(amount: amount)) != nil) {
+            showTipView = false
+        }
     }
 }
 
