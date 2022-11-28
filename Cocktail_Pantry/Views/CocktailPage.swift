@@ -24,14 +24,14 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
             VStack (spacing: 20) {
                 Text(cocktail.name.uppercased()).font(.largeTitle).bold() // Title
                 
-                AsyncImage(url: URL(string: cocktail.imageURL ?? "")) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                } placeholder: {
-                    if fetchImageTimeLimitReached {
+                AsyncImage(url: URL(string: cocktail.imageURL ?? "http://stupid")) { phase in
+                    if let image = phase.image {
+                        image
+                            .resizable()
+                            .scaledToFit()
+                    } else if phase.error != nil {
                     } else {
-                    ImageLoading()
+                        ImageLoading()
                     }
                 }
                 .frame(maxWidth: 300, maxHeight: 300)
