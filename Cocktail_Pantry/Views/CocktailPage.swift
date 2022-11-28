@@ -7,7 +7,6 @@
 
 import SwiftUI
 import YouTubePlayerKit
-import CoreData
 
 struct CocktailPage: View { // the cocktail page for when you select a cocktail
     var cocktail: Cocktail // loads from the previews page's click
@@ -40,7 +39,7 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                 VStack(spacing: 5) { // view for the ingredients
                     Text("*  *  *  *  *  *  *")
                     // for each ingredient creates a line with its corresponding quantity, quantity type, and name
-                    ForEach(0..<cocktail.ingQuantities.count) { index in
+                    ForEach(0..<cocktail.ingQuantities.count, id: \.self) { index in
                         Text("\(cocktail.ingQuantities[index].turnDoubleToStringUnlessZero()) \(cocktail.ingTypes[index].rawValue) \(cocktail.ingNames[index])")
                     }
                     Text("*  *  *  *  *  *  *")

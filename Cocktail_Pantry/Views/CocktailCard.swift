@@ -37,8 +37,9 @@ struct CocktailCardWithImage: View {
                         AsyncImage(url: URL(string: cocktail.imageURL ?? "")) { image in
                             image
                                 .resizable()
-//                                .scaledToFit()
-                                .aspectRatio((1), contentMode: .fill)
+                                .scaledToFill()
+                                .frame(maxWidth: (UIScreen.main.bounds.size.width - 20) / 3.5, maxHeight: 100)
+                                .clipped()
                         } placeholder: {
                             ImagePlaceholder()
                         }

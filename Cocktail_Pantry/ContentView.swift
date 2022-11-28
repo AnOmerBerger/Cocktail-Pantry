@@ -65,6 +65,7 @@ struct ContentView: View {
                     if viewModel.numberOfCocktailPagesVisited % 3 == 0 && viewModel.numberOfCocktailPagesVisited != 0 && !viewModel.tipOptions.isEmpty {
                         showTipView = true
                     }
+                    print(String((UIScreen.main.bounds.size.width - 20) / 3.5))
                 }
                 DoubleSidedCoin(showTipView: $showTipView).environmentObject(viewModel)
             }
