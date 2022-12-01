@@ -10,11 +10,11 @@ import SwiftUI
 struct ChangeableFilteringList: View {
     @EnvironmentObject var viewModel: ViewModel
     @Binding var selection: String
-    @Binding var cocktailSearchText: String
+//    @Binding var cocktailSearchText: String
 //    @Binding var videoIDforVideoPlayer: String
 //    @Binding var showVideoPlayerOverlay: Bool
     
-    let selectionOptions = ["name", "method", "flavor", "booziness", "difficulty"]
+    let selectionOptions = ["method", "flavor", "booziness", "difficulty"]
     let columns: [GridItem] =
             Array(repeating: .init(.flexible()), count: 2)
     
@@ -34,8 +34,8 @@ struct ChangeableFilteringList: View {
             }
             .pickerStyle(.segmented).padding(5)
             switch selection {
-            case "name":
-                SimpleSearchPage(searchText: $cocktailSearchText).environmentObject(viewModel)
+//            case "name":
+//                SimpleSearchPage(searchText: $cocktailSearchText).environmentObject(viewModel)
             case "method":
                 AbstractBasedCocktailList(selection: $methodSelection, selectionOptions: ["shaken", "stirred", "built"], arrayToBeFiltered: viewModel.cocktails, filteringThrow: { $0.methods.contains(where: { $0 == Method(rawValue: methodSelection) }) }, columns: columns)
             case "flavor":
@@ -43,7 +43,7 @@ struct ChangeableFilteringList: View {
             case "booziness":
                 AbstractBasedCocktailList(selection: $booziness, selectionOptions: ["low", "medium", "high"], arrayToBeFiltered: viewModel.cocktails, filteringThrow: { $0.boozeLevel == BoozeLevel(rawValue: booziness) }, columns: columns)
             case "difficulty":
-                AbstractBasedCocktailList(selection: $difficulty, selectionOptions: ["easy", "medium", "hard"], arrayToBeFiltered: viewModel.cocktails, filteringThrow: { $0.difficultyLevel == DifficultyLevel(rawValue: difficulty) }, columns: columns)
+                AbstractBasedCocktailList(selection: $difficulty, selectionOptions: ["easy", "medium", "difficult"], arrayToBeFiltered: viewModel.cocktails, filteringThrow: { $0.difficultyLevel == DifficultyLevel(rawValue: difficulty) }, columns: columns)
             default:
                 Text("TBD")
 //                case "glass":
@@ -54,6 +54,7 @@ struct ChangeableFilteringList: View {
 }
 
 struct AbstractBasedCocktailList<T: Identifiable>: View {
+    @EnvironmentObject var viewModel: ViewModel
     @Binding var selection: String
     let selectionOptions: [String]
     var arrayToBeFiltered: [T]
@@ -69,9 +70,14 @@ struct AbstractBasedCocktailList<T: Identifiable>: View {
             }
             .pickerStyle(.segmented).padding()
             ScrollView(.vertical) {
-                LazyVGrid(columns: columns) {
+                LazyVStack {
                     ForEach(try! arrayToBeFiltered.filter(filteringThrow)) { item in
-                        CocktailCard(cocktail: item as! Cocktail)
+                        NavigationLink(destination: CocktailPage(cocktail: item as! Cocktail).environmentObject(viewModel)) {
+                            VStack(alignment: .leading, spacing: 3) {
+                                //                                Text(cocktail.name).font(.headline).foregroundColor(.black).padding(.horizontal, 3)
+                                CocktailCardWithImage(cocktail: item as! Cocktail)
+                            }
+                        }
                     }
                 }
             }

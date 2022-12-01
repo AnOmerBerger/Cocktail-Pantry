@@ -17,9 +17,14 @@ struct SimpleSearchPage: View {
         VStack(spacing: 30) {
             bigTextField(title: "search cocktails", text: $searchText).padding(.horizontal)
             ScrollView(.vertical) {
-                LazyVGrid(columns: columns) {
+                LazyVStack(spacing: 16) {
                     ForEach((viewModel.cocktails).filter({ "\($0.name)".lowercased().contains(searchText.lowercased()) || "\($0.ingNames)".contains(searchText.lowercased()) || searchText.isEmpty }).sorted(by: <)) { cocktail in
-                        CocktailCard(cocktail: cocktail)
+                        NavigationLink(destination: CocktailPage(cocktail: cocktail).environmentObject(viewModel)) {
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text(cocktail.name).font(.headline).foregroundColor(.black).padding(.horizontal, 3)
+                                CocktailCardWithImage(cocktail: cocktail)
+                            }
+                        }
                     }
                 }
             }

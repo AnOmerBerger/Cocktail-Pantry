@@ -28,7 +28,7 @@ struct CocktailCardWithImage: View {
     
     var body: some View {
         RoundedRectangle(cornerRadius: 22)
-            .frame(width: UIScreen.main.bounds.size.width - 15, height: 150, alignment: .center)
+            .frame(width: UIScreen.main.bounds.size.width - 15, height: UIDevice.current.userInterfaceIdiom == .pad ? 250 : 150, alignment: .center)
             .foregroundColor(cardColor).opacity(0.8)
             .overlay {
                 HStack {
@@ -46,7 +46,7 @@ struct CocktailCardWithImage: View {
                             }
                         }
                     }
-                    .frame(maxWidth: (UIScreen.main.bounds.size.width - 20) / 3.5, maxHeight: 100)
+                    .frame(maxWidth: (UIScreen.main.bounds.size.width - 20) / 3.5, maxHeight: UIDevice.current.userInterfaceIdiom == .pad ? 170 : 100)
                     .clipped()
                     
                     Divider()
@@ -68,6 +68,7 @@ struct CocktailCardWithImage: View {
                     }
                     .frame(maxWidth: (UIScreen.main.bounds.size.width - 20) / 3.5)
                 }
+                .foregroundColor(.black)
                 .padding()
             }
     }

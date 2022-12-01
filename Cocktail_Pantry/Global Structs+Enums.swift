@@ -94,7 +94,7 @@ enum FlavorProfile: String, Codable {
 }
 
 enum DifficultyLevel: String, Codable {
-    case easy = "easy", medium = "medium", hard = "hard"
+    case easy = "easy", medium = "medium", diffficult = "difficult"
 }
 
 struct ShakeOrStirTime: Codable {

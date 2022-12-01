@@ -9,6 +9,7 @@ import SwiftUI
 import YouTubePlayerKit
 
 struct CocktailPage: View { // the cocktail page for when you select a cocktail
+    @EnvironmentObject var viewModel: ViewModel
     var cocktail: Cocktail // loads from the previews page's click
     var youTubePlayer: YouTubePlayer
     @State var showHistory = false
@@ -22,7 +23,14 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
     var body: some View {
         ScrollView {
             VStack (spacing: 20) {
-                Text(cocktail.name.uppercased()).font(.largeTitle).bold() // Title
+                ZStack {
+                    HStack {
+                        Spacer()
+                        Image(systemName: isCocktailSaved() ? "star.fill" : "star")
+                            .onTapGesture { viewModel.saveOrRemoveCocktail(cocktail: self.cocktail) }
+                    }
+                    Text(cocktail.name.uppercased()).font(.largeTitle).bold() // Title
+                }
                 
                 AsyncImage(url: URL(string: cocktail.imageURL ?? "http://stupid")) { phase in
                     if let image = phase.image {
@@ -34,7 +42,8 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                         ImageLoading()
                     }
                 }
-                .frame(maxWidth: 300, maxHeight: 300)
+                .frame(maxWidth: UIDevice.current.userInterfaceIdiom == .pad ? 400 : 300,
+                       maxHeight: UIDevice.current.userInterfaceIdiom == .pad ? 400 : 300)
                 
                 VStack(spacing: 5) { // view for the ingredients
                     Text("*  *  *  *  *  *  *")
@@ -65,7 +74,7 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                                 Text(verbatim: "YouTube player couldn't be loaded")
                             }
                         }
-                .frame(height: UIScreen.main.bounds.height * 0.3)
+                .frame(height: UIDevice.current.userInterfaceIdiom == .pad ? UIScreen.main.bounds.height * 0.4 : UIScreen.main.bounds.height * 0.3)
                 .cornerRadius(5)
                 ZStack {
                     RoundedRectangle(cornerRadius: 25).stroke()
@@ -94,17 +103,27 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
             }
             .padding()
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) { fetchImageTimeLimitReached = true }
+                viewModel.visitACocktailPage()
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 3) { fetchImageTimeLimitReached = true }
             }
         }
 //        .navigationTitle(Text(cocktail.name))
         .navigationBarTitleDisplayMode(.inline)
     }
-}
-
-
-struct CocktailPage_Previews: PreviewProvider {
-    static var previews: some View {
-        CocktailPage(cocktail: oldFashioned)
+    
+    func isCocktailSaved() -> Bool {
+        for cock1 in viewModel.savedCocktails {
+            if cock1.name == self.cocktail.name {
+                return true
+            }
+        }
+        return false
     }
 }
+
+
+//struct CocktailPage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CocktailPage(cocktail: oldFashioned)
+//    }
+//}

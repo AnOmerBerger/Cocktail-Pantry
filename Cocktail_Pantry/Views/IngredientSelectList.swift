@@ -22,7 +22,7 @@ struct IngredientSelectList: View {
 //                Array(repeating: .init(.flexible()), count: 2)
 
         VStack {
-            bigTextField(title: "search ingredients", text: $searchText).padding(.horizontal)
+            bigTextField(title: "search ingredients", text: $searchText).padding(.horizontal).padding(.vertical, 3)
             ScrollView(.horizontal) {
                 LazyHGrid(rows: rows, spacing: 5) {
                     ForEach((viewModel.ingredients).filter({ "\($0.name)".contains(searchText.lowercased()) || searchText.isEmpty }).sorted(by: <)) { ingredient in
@@ -38,9 +38,11 @@ struct IngredientSelectList: View {
             ScrollView(.horizontal) {
                 HStack {
                     Image(systemName: "checkmark.square.fill")
+                    if viewModel.selected.isEmpty {
+                        Text("press ingredients to select them").font(.caption).opacity(0.3)
+                    }
                     ForEach(viewModel.selected) { ingredient in
                         ClickForIngredient(ingredient: ingredient)
-                            .layoutPriority(1)
                             .onTapGesture { viewModel.select(ingredient: ingredient) }
                     }
                 }
@@ -67,9 +69,10 @@ struct IngredientSelectList: View {
 //                                                Text("(missing: ")
                                                 Text("(\(missingIngredientsString))").foregroundColor(.red)
                                             }
+                                            .padding(.horizontal, 3)
                                             .foregroundColor(.black)
                                         }
-                                        NavigationLink(destination: CocktailPage(cocktail: cocktail)) {
+                                        NavigationLink(destination: CocktailPage(cocktail: cocktail).environmentObject(viewModel)) {
                                             CocktailCardWithImage(cocktail: cocktail)
                                         }
                                     }
@@ -106,7 +109,7 @@ struct ClickForIngredient: View {
     var ingredient: Ingredient
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 20)
                 .foregroundColor(ingredient.isSelected ? Color.green : Color.blue).opacity(0.3)
             HStack {
                 Text(ingredient.name)

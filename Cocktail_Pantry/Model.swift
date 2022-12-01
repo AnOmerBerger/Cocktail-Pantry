@@ -35,20 +35,28 @@ struct Model: Codable {
     
     var numberOfCocktailPagesVisited: Int
     
+    var savedCocktails: [Cocktail]
+    
+    var randomCocktail: Cocktail
+    
     init(cocktails: [Cocktail]) { // starting initializer, when all you have is a list of cocktails
         self.allCocktails = cocktails
         self.allIngredients = [Ingredient]()
         self.allSelectedIngredients = [Ingredient]()
         self.cocktailsFilteredThroughSelectedIngredients = [NumOfMissingIngredientsAndAssociatedCocktailList]()
         self.numberOfCocktailPagesVisited = 0
+        self.savedCocktails = [Cocktail]()
+        self.randomCocktail = allCocktails[Int.random(in: 0..<allCocktails.count)]
         buildAllIngredients()
     }
-    init(version: Double, cocktails: [Cocktail], ingredients: [Ingredient], selectedIngredients: [Ingredient], numberOfCocktailPagesVisited: Int) { // initializer for after the program has run at least once, or if can't locate save
+    init(version: Double, cocktails: [Cocktail], ingredients: [Ingredient], selectedIngredients: [Ingredient], numberOfCocktailPagesVisited: Int, savedCocktails: [Cocktail]) { // initializer for after the program has run at least once, or if can't locate save
         self.version = version
         self.allCocktails = cocktails
         self.allIngredients = ingredients
         self.allSelectedIngredients = selectedIngredients
         self.numberOfCocktailPagesVisited = numberOfCocktailPagesVisited
+        self.savedCocktails = savedCocktails
+        self.randomCocktail = allCocktails[Int.random(in: 0..<allCocktails.count)]
         self.cocktailsFilteredThroughSelectedIngredients = [NumOfMissingIngredientsAndAssociatedCocktailList]()
         cocktailsFilteredThroughSelectedIngredients = filterCocktailsWithListOfIngredients(withList: allSelectedIngredients)
     }
@@ -59,6 +67,8 @@ struct Model: Codable {
         self.allSelectedIngredients = [Ingredient]()
         self.cocktailsFilteredThroughSelectedIngredients = [NumOfMissingIngredientsAndAssociatedCocktailList]()
         self.numberOfCocktailPagesVisited = numberOfCocktailPagesVisited
+        self.savedCocktails = [Cocktail]()
+        self.randomCocktail = allCocktails[Int.random(in: 0..<allCocktails.count)]
         buildAllIngredients()
     }
     
@@ -123,6 +133,13 @@ struct Model: Codable {
     mutating func addOneToNumberOfCocktailPagesVisited() {
         numberOfCocktailPagesVisited += 1
     }
+    mutating func saveOrRemoveCocktail(cocktail: Cocktail) {
+        if let index1 = savedCocktails.firstIndex(matching: cocktail) {
+            savedCocktails.remove(at: index1)
+        } else {
+            savedCocktails.append(cocktail)
+        }
+    }
     
 // MARK: - additionaly structs
     
@@ -152,7 +169,7 @@ let daiquiriHemingway = Cocktail(name: "Hemingway Daiquiri", methods: [.shaken],
                                  , ingQuantities: [1.5, 0.75, 1, 0.5], ingTypes: [.oz, .oz, .oz, .oz], ingNames: ["rum", "maraschino liqueur", "grapefruit juice", "lime juice"], garnish: ["lime wheel"], instructions: ["pour all ingredients into shaker","add ice and shake","double strain into chilled glass"], countryOfOrigin: "Cuba", inventedAt: "la floridita", inventedBy: "Constantino Ribalaigua Vert", glassType: [.coupe, .martini], iceType: .neat, shakeOrStirTime: ShakeOrStirTime(minTime: 8, maxTime: 12), boozeLevel: .medium, flavorProfile: [.dry, .citrusy], dryShake: false, difficultyLevel: .medium, backgroundColor: CodableColor(red: 51, green: 255, blue: 153))
 
 let ginFizz = Cocktail(name: "Gin Fizz", methods: [.shaken], videoID: "obGhGNUKx30", tutorialStartTime: minutesStringtoSecondsInt(numberToConvert: "00:44"), imageURL: "https://i0.wp.com/theeducatedbarfly.com/wp-content/uploads/2021/01/Ramos-Gin-Fizz.jpg?w=1920&ssl=1", history: nil,
-                       ingQuantities: [1.5, 0.75, 0.75, 1, 0], ingTypes: [.oz, .oz, .oz, .none, .top], ingNames: ["gin", "lemon juice", "simple syrup", "egg white", "seltzer"], instructions: ["add egg white into big tin of shaker", "pour gin, lemon juice and simple syrup into small tin", "combine and close tins together.", "let sit for 10 seconds then shake for 10", "add big rock of ice and shake hard", "double strain into chilled glass", "top with soda"], countryOfOrigin: "United States", glassType: [.highball], iceType: .neat, shakeOrStirTime: ShakeOrStirTime(minTime: 10, maxTime: 20), boozeLevel: .low, flavorProfile: [.refreshing, .sparkling], dryShake: true, difficultyLevel: .hard, backgroundColor: CodableColor(red: 204, green: 255, blue: 255))
+                       ingQuantities: [1.5, 0.75, 0.75, 1, 0], ingTypes: [.oz, .oz, .oz, .none, .top], ingNames: ["gin", "lemon juice", "simple syrup", "egg white", "seltzer"], instructions: ["add egg white into big tin of shaker", "pour gin, lemon juice and simple syrup into small tin", "combine and close tins together.", "let sit for 10 seconds then shake for 10", "add big rock of ice and shake hard", "double strain into chilled glass", "top with soda"], countryOfOrigin: "United States", glassType: [.highball], iceType: .neat, shakeOrStirTime: ShakeOrStirTime(minTime: 10, maxTime: 20), boozeLevel: .low, flavorProfile: [.refreshing, .sparkling], dryShake: true, difficultyLevel: .diffficult, backgroundColor: CodableColor(red: 204, green: 255, blue: 255))
 
 let manhattan = Cocktail(name: "Manhattan", methods: [.stirred], videoID: "wiOxt4J5zaM", tutorialStartTime: minutesStringtoSecondsInt(numberToConvert: "01:32"), imageURL: "https://i0.wp.com/theeducatedbarfly.com/wp-content/uploads/2020/01/newark-clean-scaled.jpg?resize=2048%2C1152&ssl=1",
                          history: """
@@ -188,7 +205,7 @@ let oldFashioned = Cocktail(name: "Old Fashioned", methods: [.built, .stirred], 
 
     There are many ways to make an Old Fashioned and this video is just one of those ways. And of course it's my favorite. I will though from now on be posting various other recipes for an old fashioned . Some from important cocktail bars and others from bartenders and some from you guys. So comment below and let us know your favorite Old Fashioned build!
     """
-                            , ingQuantities: [2, 1, 4, 1], ingTypes: [.oz, .cube, .dash, .dash], ingNames: ["whiskey", "sugar", "angostura bitters", "seltzer"], garnish: ["orange twist"], instructions: ["place sugar in glass", "add bitters and soda", "muddle and stir to combine", "add whiskey and ice", "stir until chilled and garnish"], countryOfOrigin: "United States", glassType: [.rocks], iceType: .big, shakeOrStirTime: ShakeOrStirTime(minTime: 30, maxTime: 60), boozeLevel: .medium, flavorProfile: [.strong], dryShake: false, difficultyLevel: .hard, backgroundColor: CodableColor(red: 255, green: 128, blue: 0))
+                            , ingQuantities: [2, 1, 4, 1], ingTypes: [.oz, .cube, .dash, .dash], ingNames: ["whiskey", "sugar", "angostura bitters", "seltzer"], garnish: ["orange twist"], instructions: ["place sugar in glass", "add bitters and soda", "muddle and stir to combine", "add whiskey and ice", "stir until chilled and garnish"], countryOfOrigin: "United States", glassType: [.rocks], iceType: .big, shakeOrStirTime: ShakeOrStirTime(minTime: 30, maxTime: 60), boozeLevel: .medium, flavorProfile: [.strong], dryShake: false, difficultyLevel: .diffficult, backgroundColor: CodableColor(red: 255, green: 128, blue: 0))
 
 let sazerac = Cocktail(name: "Sazerac", methods: [.stirred], videoID: "RuZzOcjJUYw", tutorialStartTime: minutesStringtoSecondsInt(numberToConvert: "00:44"),
                        history: """
@@ -196,10 +213,10 @@ let sazerac = Cocktail(name: "Sazerac", methods: [.stirred], videoID: "RuZzOcjJU
     in 2002 the ban was lifted and we can have Absinthe again, and of course we have brandy and cognac available, but the rye version has really established itself. In this video we teach with Rye, but feel fee to either replace with Brandy or split the main spirit with Brandy however you like.
     Hope you guys enjoy and don't forget to subscribe for more videos released every week.
     """
-                       , ingQuantities: [2, 1, 4, 1], ingTypes: [.oz, .cube, .dash, .dash], ingNames: ["rye whiskey", "sugar", "peychauds bitters", "absinthe"], garnish: ["lemon twist"], instructions: ["wash chilled glass with absinthe", "add sugar, bitters and whiskey and muddle", "add ice and stir until chilled", "strain into prepared glass and garnish"], countryOfOrigin: "United States", glassType: [.rocks], iceType: .neat, shakeOrStirTime: ShakeOrStirTime(minTime: 15, maxTime: 20), boozeLevel: .medium, flavorProfile: [.boozy, .bitter], dryShake: false, difficultyLevel: .hard, backgroundColor: CodableColor(red: 255, green: 153, blue: 51))
+                       , ingQuantities: [2, 1, 4, 1], ingTypes: [.oz, .cube, .dash, .dash], ingNames: ["rye whiskey", "sugar", "peychauds bitters", "absinthe"], garnish: ["lemon twist"], instructions: ["wash chilled glass with absinthe", "add sugar, bitters and whiskey and muddle", "add ice and stir until chilled", "strain into prepared glass and garnish"], countryOfOrigin: "United States", glassType: [.rocks], iceType: .neat, shakeOrStirTime: ShakeOrStirTime(minTime: 15, maxTime: 20), boozeLevel: .medium, flavorProfile: [.boozy, .bitter], dryShake: false, difficultyLevel: .diffficult, backgroundColor: CodableColor(red: 255, green: 153, blue: 51))
 
 let whiskeySour = Cocktail(name: "Whiskey Sour", methods: [.shaken], videoID: "hFKZPzfngcU", tutorialStartTime: minutesStringtoSecondsInt(numberToConvert: "04:18"), history: """
     Before the singular mixed drink (what we now think of as a cocktail) the practice was to drink large format drinks in a punch bowl and share it amongst friends. As time went on this began to change as the pace of life got busier and it people began to look down on sitting around for hours on end to drink a punch bowl and get hammered. People were just too busy for so much day drinking, but that didn't mean they didn't want to drink. They just needed something they could imbibe quickly: enter the one-off punch in the late 1850's. Because people had less time, bartenders began making punch recipes designed to be served to one person in a glass that could be drank quickly. According to David Wondrich the very first of these were the Fix and the Sour. And while these drinks were almost identical in ingredients, each had a different build entirely centered around how quickly you were meant to drink them. Of these two drinks it was the Sour (originally done with Gin) which captured the imagination of the public and found itself expanding into it's own category. So the sour began to get spun out into all sorts of different variations and was in it's day the most requested drink. Although the first sours were done over crushed ice the egg white variation of the drink emerged around 1890's and it was in the decade leading up to the turn of the century that so many popular variations such as the New York Sour, Jersey Sour, Jack Frost Sour and Dizzy Sour emerged. It was as Davind Wonndrich writes: "one of the cardinal points of American Drinking" and it definitely deserves consideration today. Enjoy!
     """
-                           , ingQuantities: [2, 0.75, 0.75, 1], ingTypes: [.oz, .oz, .oz, .none], ingNames: ["whiskey", "lemon juice", "simple syrup", "egg white"], garnish: ["angostura bitters"], instructions: ["Add egg white into big tin of shaker", "Pour whiskey, lemon juice and simple syrup into small tin", "Combine and close tins together", "Let sit for 10 seconds then shake for 30", "Add big rock of ice and shake hard", "Double strain into chilled glass and garnish"], countryOfOrigin: "United States", glassType: [.martini, .coupe], iceType: .neat, shakeOrStirTime: ShakeOrStirTime(minTime: 12, maxTime: 15), boozeLevel: .medium, flavorProfile: [.sour, .aromatic, .creamy], dryShake: false, difficultyLevel: .hard, backgroundColor: CodableColor(red: 255, green: 255, blue: 102))
+                           , ingQuantities: [2, 0.75, 0.75, 1], ingTypes: [.oz, .oz, .oz, .none], ingNames: ["whiskey", "lemon juice", "simple syrup", "egg white"], garnish: ["angostura bitters"], instructions: ["Add egg white into big tin of shaker", "Pour whiskey, lemon juice and simple syrup into small tin", "Combine and close tins together", "Let sit for 10 seconds then shake for 30", "Add big rock of ice and shake hard", "Double strain into chilled glass and garnish"], countryOfOrigin: "United States", glassType: [.martini, .coupe], iceType: .neat, shakeOrStirTime: ShakeOrStirTime(minTime: 12, maxTime: 15), boozeLevel: .medium, flavorProfile: [.sour, .aromatic, .creamy], dryShake: false, difficultyLevel: .diffficult, backgroundColor: CodableColor(red: 255, green: 255, blue: 102))
 
