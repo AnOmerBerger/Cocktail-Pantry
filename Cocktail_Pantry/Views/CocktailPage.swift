@@ -9,6 +9,7 @@ import SwiftUI
 import YouTubePlayerKit
 
 struct CocktailPage: View { // the cocktail page for when you select a cocktail
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var viewModel: ViewModel
     var cocktail: Cocktail // loads from the previews page's click
     var youTubePlayer: YouTubePlayer
@@ -24,25 +25,12 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
         ScrollView {
             VStack (spacing: 20) {
                 ZStack {
-                    HStack {
-                        Spacer()
-                        Image(systemName: isCocktailSaved() ? "star.fill" : "star")
-                            .onTapGesture { viewModel.saveOrRemoveCocktail(cocktail: self.cocktail) }
-                    }
                     Text(cocktail.name.uppercased()).font(.largeTitle).bold() // Title
                 }
                 
-                AsyncImage(url: URL(string: cocktail.imageURL ?? "http://stupid")) { phase in
-                    if let image = phase.image {
-                        image
-                            .resizable()
-                            .scaledToFit()
-                    } else if phase.error != nil {
-                    } else {
-                        ImageLoading()
-                    }
-                }
-                .frame(maxWidth: UIDevice.current.userInterfaceIdiom == .pad ? 400 : 300,
+                CustomAsyncImage(urlString: cocktail.imageURL, withPlaceholder: false)
+                    .scaledToFit()
+                    .frame(maxWidth: UIDevice.current.userInterfaceIdiom == .pad ? 400 : 300,
                        maxHeight: UIDevice.current.userInterfaceIdiom == .pad ? 400 : 300)
                 
                 VStack(spacing: 5) { // view for the ingredients
@@ -107,8 +95,11 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
 //                DispatchQueue.main.asyncAfter(deadline: .now() + 3) { fetchImageTimeLimitReached = true }
             }
         }
+        .navigationBarItems(leading: Image(systemName: "chevron.left").onTapGesture { self.presentationMode.wrappedValue.dismiss() }, trailing: Image(systemName: isCocktailSaved() ? "star.fill" : "star")
+            .onTapGesture { viewModel.saveOrRemoveCocktail(cocktail: self.cocktail) })
 //        .navigationTitle(Text(cocktail.name))
-        .navigationBarTitleDisplayMode(.inline)
+//        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
     }
     
     func isCocktailSaved() -> Bool {

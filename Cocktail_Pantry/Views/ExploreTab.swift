@@ -12,7 +12,7 @@ struct ExploreTab: View {
     @State var selection: String = "method"
     var body: some View {
         VStack {
-            Text("Try something new!").foregroundColor(.black).fontWeight(.heavy)
+            Text("Try one of our favorites!").foregroundColor(.black).fontWeight(.heavy)
             NavigationLink(destination: CocktailPage(cocktail: viewModel.randomCocktail).environmentObject(viewModel)) {
                 PhotoOnlyCard(cocktail: viewModel.randomCocktail).environmentObject(viewModel)
             }

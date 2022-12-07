@@ -17,12 +17,9 @@ struct IngredientSelectList: View {
         // rows setting for horizontal ingredient display
         let rows: [GridItem] =
                 Array(repeating: .init(.flexible()), count: 2)
-        // colums for cocktail cards display
-//        let columns: [GridItem] =
-//                Array(repeating: .init(.flexible()), count: 2)
 
         VStack {
-            bigTextField(title: "search ingredients", text: $searchText).padding(.horizontal).padding(.vertical, 3)
+            bigTextField(title: "filter ingredients", text: $searchText).padding(.horizontal).padding(.vertical, 3)
             ScrollView(.horizontal) {
                 LazyHGrid(rows: rows, spacing: 5) {
                     ForEach((viewModel.ingredients).filter({ "\($0.name)".contains(searchText.lowercased()) || searchText.isEmpty }).sorted(by: <)) { ingredient in
@@ -35,20 +32,27 @@ struct IngredientSelectList: View {
                 .frame(maxHeight: 100)
             }
             Divider()
-            ScrollView(.horizontal) {
-                HStack {
-                    Image(systemName: "checkmark.square.fill")
-                    if viewModel.selected.isEmpty {
-                        Text("press ingredients to select them").font(.caption).opacity(0.3)
-                    }
-                    ForEach(viewModel.selected) { ingredient in
-                        ClickForIngredient(ingredient: ingredient)
-                            .onTapGesture { viewModel.select(ingredient: ingredient) }
+            HStack {
+                Image(systemName: "checkmark.square.fill")
+                ScrollView(.horizontal) {
+                    HStack {
+                        if viewModel.selected.isEmpty {
+                            Text("press ingredients to add them to your pantry").font(.caption).opacity(0.3)
+                        }
+                        ForEach(viewModel.selected) { ingredient in
+                            ClickForIngredient(ingredient: ingredient)
+                                .onTapGesture { viewModel.select(ingredient: ingredient) }
+                        }
                     }
                 }
-                .padding()
-                .frame(maxHeight: 50)
+                if !viewModel.selected.isEmpty {
+                    Button(action: { viewModel.clearSelectedIngredients() }) { Text("clear").font(.caption) }
+                }
             }
+            .padding(.vertical)
+            .padding(.horizontal, 3)
+            .frame(maxHeight: 50)
+            
             Divider()
             if viewModel.cocktailsFilteredThroughSelectedIngredients.isEmpty {
                 Spacer()
@@ -61,7 +65,7 @@ struct IngredientSelectList: View {
                             Text("missing \(numberAndCocktailGroup.numberOfMissingIngredients) ingredients").padding(.horizontal, 5).foregroundColor(numberAndCocktailGroup.numberOfMissingIngredients == 0 ? .green : .black)
 //                            LazyVGrid(columns: columns) {
                                 ForEach(numberAndCocktailGroup.cocktailList) { cocktail in
-                                    VStack(alignment: .leading, spacing: 2) {
+                                    VStack(alignment: .center, spacing: 3) {
                                         let missingIngredientsString = returnMissingIngredientsForCocktail(cocktail: cocktail, selectedIngredients: viewModel.selected).joined(separator: ", ")
                                         ScrollView(.horizontal) {
                                             HStack {
@@ -69,12 +73,13 @@ struct IngredientSelectList: View {
 //                                                Text("(missing: ")
                                                 Text("(\(missingIngredientsString))").foregroundColor(.red)
                                             }
-                                            .padding(.horizontal, 3)
-                                            .foregroundColor(.black)
                                         }
+                                        .padding(.horizontal, 3)
+                                        .foregroundColor(.black)
                                         NavigationLink(destination: CocktailPage(cocktail: cocktail).environmentObject(viewModel)) {
                                             CocktailCardWithImage(cocktail: cocktail)
                                         }
+                                        .padding(.vertical, 5)
                                     }
                                     .padding(.vertical, 5)
                                 }
@@ -113,6 +118,9 @@ struct ClickForIngredient: View {
                 .foregroundColor(ingredient.isSelected ? Color.green : Color.blue).opacity(0.3)
             HStack {
                 Text(ingredient.name)
+                if ingredient.isSelected {
+                    Image(systemName: "x.square.fill").imageScale(.small)
+                }
             }
             .padding(7)
         }

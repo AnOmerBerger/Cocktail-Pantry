@@ -34,17 +34,8 @@ struct CocktailCardWithImage: View {
                 HStack {
                     ZStack {
                         Color.gray.opacity(0.2)
-                        AsyncImage(url: URL(string: cocktail.imageURL ?? "http://stupid")) { phase in
-                            if let image = phase.image {
-                                image
-                                    .resizable()
-                                    .scaledToFill()
-                            } else if phase.error != nil {
-                                ImagePlaceholder()
-                            } else {
-                                ImageLoading()
-                            }
-                        }
+                        CustomAsyncImage(urlString: cocktail.imageURL, withPlaceholder: true)
+                            .scaledToFill()
                     }
                     .frame(maxWidth: (UIScreen.main.bounds.size.width - 20) / 3.5, maxHeight: UIDevice.current.userInterfaceIdiom == .pad ? 170 : 100)
                     .clipped()

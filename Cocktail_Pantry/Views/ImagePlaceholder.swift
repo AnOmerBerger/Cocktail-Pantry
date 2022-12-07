@@ -25,6 +25,7 @@ struct ImagePlaceholder: View {
             Image("The Educated Barfly Logo")
                 .resizable()
                 .scaledToFit()
+                .padding(5)
         }
         .padding()
         .foregroundColor(.black)

@@ -94,7 +94,7 @@ enum FlavorProfile: String, Codable {
 }
 
 enum DifficultyLevel: String, Codable {
-    case easy = "easy", medium = "medium", diffficult = "difficult"
+    case easy = "easy", medium = "medium", difficult = "difficult"
 }
 
 struct ShakeOrStirTime: Codable {
@@ -147,4 +147,8 @@ func minutesStringtoSecondsInt(numberToConvert: String) -> Int {
 
 public enum StoreError: Error {
     case failedVerification
+}
+
+enum SearchMode {
+    case ingredient, cocktail
 }

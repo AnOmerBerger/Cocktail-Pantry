@@ -24,6 +24,7 @@ struct PhotoOnlyCard: View {
                         ImageLoading()
                     }
                 }
+                .clipShape(Circle())
                 .blur(radius: 2)
                 .overlay {
                     ZStack {

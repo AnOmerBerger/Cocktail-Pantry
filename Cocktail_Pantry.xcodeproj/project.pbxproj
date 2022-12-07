@@ -25,6 +25,8 @@
 		5D34F93C29370A8500F669E4 /* SavedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34F93B29370A8500F669E4 /* SavedTab.swift */; };
 		5D34F93E2938327F00F669E4 /* ExploreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34F93D2938327F00F669E4 /* ExploreTab.swift */; };
 		5D34F940293832F700F669E4 /* PhotoOnlyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34F93F293832F700F669E4 /* PhotoOnlyCard.swift */; };
+		5D34F942293D001700F669E4 /* CustomAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34F941293D001700F669E4 /* CustomAsyncImage.swift */; };
+		5D34F944293FA30F00F669E4 /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34F943293FA30F00F669E4 /* HomeTab.swift */; };
 		5D71CAD1292FF0E900C88B81 /* TestTips.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 5D71CAD0292FF0E900C88B81 /* TestTips.storekit */; };
 		5D984F9929352BE300FF3A5F /* ActualLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */; };
 		5D9C4E99284BE7CD00241202 /* MultiLine Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9C4E98284BE7CD00241202 /* MultiLine Picker.swift */; };
@@ -77,6 +79,8 @@
 		5D34F93B29370A8500F669E4 /* SavedTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTab.swift; sourceTree = "<group>"; };
 		5D34F93D2938327F00F669E4 /* ExploreTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTab.swift; sourceTree = "<group>"; };
 		5D34F93F293832F700F669E4 /* PhotoOnlyCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoOnlyCard.swift; sourceTree = "<group>"; };
+		5D34F941293D001700F669E4 /* CustomAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAsyncImage.swift; sourceTree = "<group>"; };
+		5D34F943293FA30F00F669E4 /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
 		5D71CAD0292FF0E900C88B81 /* TestTips.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestTips.storekit; sourceTree = "<group>"; };
 		5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ActualLaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D9C4E98284BE7CD00241202 /* MultiLine Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultiLine Picker.swift"; sourceTree = "<group>"; };
@@ -181,13 +185,15 @@
 			isa = PBXGroup;
 			children = (
 				5D0F9E9E2836BFB900B99F98 /* IngredientSelectList.swift */,
-				5DD5043A284567610095CEE1 /* ChangeableFilteringList.swift */,
 				5DD504382845634B0095CEE1 /* SimpleSearchPage.swift */,
+				5DD5043A284567610095CEE1 /* ChangeableFilteringList.swift */,
 				5DBEFB54283DAD4B0006C326 /* CocktailCard.swift */,
 				5D34F93F293832F700F669E4 /* PhotoOnlyCard.swift */,
 				5DBEFB56283DAE170006C326 /* CocktailPage.swift */,
 				5D1E920529296ED300A04345 /* ImagePlaceholder.swift */,
 				5D06EB67290EE73300FAA456 /* VideoPlayerOverlay.swift */,
+				5D34F941293D001700F669E4 /* CustomAsyncImage.swift */,
+				5D34F943293FA30F00F669E4 /* HomeTab.swift */,
 				5D34F93D2938327F00F669E4 /* ExploreTab.swift */,
 				5D34F93B29370A8500F669E4 /* SavedTab.swift */,
 				5D34F9392936FB9700F669E4 /* StoreTab.swift */,
@@ -354,10 +360,12 @@
 				5D34F93A2936FB9700F669E4 /* StoreTab.swift in Sources */,
 				5D0F9E9F2836BFB900B99F98 /* IngredientSelectList.swift in Sources */,
 				5D06EB68290EE73300FAA456 /* VideoPlayerOverlay.swift in Sources */,
+				5D34F942293D001700F669E4 /* CustomAsyncImage.swift in Sources */,
 				5D0F9E99283486F400B99F98 /* Model.swift in Sources */,
 				5D0F9E9D2836BB5800B99F98 /* ViewModel.swift in Sources */,
 				5DD5043B284567610095CEE1 /* ChangeableFilteringList.swift in Sources */,
 				5D0F9E9B2836B5D800B99F98 /* Array Extention.swift in Sources */,
+				5D34F944293FA30F00F669E4 /* HomeTab.swift in Sources */,
 				5DED7CEF2922B5C400112DA5 /* TipViewV2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,63 +14,57 @@ struct DoubleSidedCoin: View {
     @Binding var showTipView: Bool
     @State var frontDegree: Double = 0.0
     @State var backDegree: Double = -90
-    @State var startFlip: Bool = false
+    @State var selectedAmount: Product? = nil
     
     
-    let durationAndDelay: CGFloat = 0.13
+    let durationAndDelay: CGFloat = 0.12
     
     var body: some View {
         ZStack {
-            CoinBack(degrees: $backDegree)
-            CoinFront(showTipView: $showTipView, degrees: $frontDegree).environmentObject(viewModel)
+            CoinBack
+            CoinFront
         }
         .opacity(showTipView ? 1 : 0)
+        .scaleEffect(showTipView ? 1 : 0.35)
+        .onDisappear { selectedAmount = nil ; frontDegree = 0.0 ; backDegree = -90 }
     }
     
     
     
     
     func flipCoin() {
-        startFlip = true
-        if startFlip == true {
-            withAnimation(.linear(duration: durationAndDelay)) {
-                frontDegree = 90
-            }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)) {
-                backDegree = 0
-            }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay*2)) {
-                backDegree = 90
-            }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay*3)) {
-                frontDegree = 180
-            }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay*4)) {
-                frontDegree = 270
-            }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay*5)) {
-                backDegree = 180
-            }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay*6)) {
-                backDegree = 270
-            }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay*7)) {
-                frontDegree = 360
-            }
+        withAnimation(.linear(duration: durationAndDelay)) {
+            frontDegree = 90
+        }
+        withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)) {
+            backDegree = 0
+        }
+        withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay*2)) {
+            backDegree = 90
+        }
+        withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay*3)) {
+            frontDegree = 180
+        }
+        withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay*4)) {
+            frontDegree = 270
+        }
+        withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay*5)) {
+            backDegree = 180
+        }
+        withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay*6)) {
+            backDegree = 270
+        }
+        withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay*7)) {
+            frontDegree = 360
         }
     }
     
 }
 
 
-
-struct CoinFront: View {
-    @EnvironmentObject var viewModel: ViewModel
-    @Binding var showTipView: Bool
-    @Binding var degrees: Double
-    @State var selectedAmount: Product? = nil
-    
-    var body: some View {
+extension DoubleSidedCoin {
+    var CoinFront: some View {
+        
         ZStack {
             Circle()
                 .stroke(lineWidth: 3)
@@ -113,51 +107,56 @@ struct CoinFront: View {
                                 }
                             
                             Text("Next time").font(.caption).italic().underline()
-                                .onTapGesture { showTipView = false }
+                                .onTapGesture {
+                                    flipCoin()
+                                    withAnimation(.linear(duration: durationAndDelay * 9)) {
+                                        showTipView = false
+                                }
+                            }
                         }
                     }
                 }
         }
-        .onDisappear { selectedAmount = nil }
-        .rotation3DEffect(.degrees(degrees), axis: (x: 0, y: 1, z: 0))
+        .rotation3DEffect(.degrees(frontDegree), axis: (x: 0, y: 1, z: 0))
     }
     
     @MainActor
     func tip(amount: Product) async {
         if ((await viewModel.tip(amount: amount)) != nil) {
-            showTipView = false
+            flipCoin()
+            withAnimation(.linear(duration: durationAndDelay * 9)) {
+                showTipView = false
+            }
         }
     }
 }
 
-struct CoinBack: View {
-    @Binding var degrees: Double
 
-    
-    var body: some View {
-        ZStack {
-            Circle()
-                .stroke(lineWidth: 3)
-                .foregroundColor(.blue.opacity(0.5))
-                .frame(width: UIScreen.main.bounds.size.width - 20)
-            Circle()
-                .foregroundColor(.white)
-                .frame(width: UIScreen.main.bounds.size.width - 20)
-            Circle()
-                .foregroundColor(.blue.opacity(0.7))
-                .frame(width: UIScreen.main.bounds.size.width - 30)
-                .shadow(color: Color.gray, radius: 20, x: 0, y: 0)
-                .overlay {
-                    VStack {
-                        Text("Cocktail Pantry").font(.headline).bold()
-                        Text("in association with").font(.caption).italic()
-                        Image("The Educated Barfly Logo")
-                            .resizable()
-                            .frame(width: UIScreen.main.bounds.size.width - 160, height: UIScreen.main.bounds.size.width - 310)
-                    }
+extension DoubleSidedCoin {
+    var CoinBack: some View {
+            ZStack {
+                Circle()
+                    .stroke(lineWidth: 3)
+                    .foregroundColor(.blue.opacity(0.5))
+                    .frame(width: UIScreen.main.bounds.size.width - 20)
+                Circle()
+                    .foregroundColor(.white)
+                    .frame(width: UIScreen.main.bounds.size.width - 20)
+                Circle()
+                    .foregroundColor(.blue.opacity(0.7))
+                    .frame(width: UIScreen.main.bounds.size.width - 30)
+                    .shadow(color: Color.gray, radius: 20, x: 0, y: 0)
+                    .overlay {
+                        VStack {
+                            Text("Cocktail Pantry").font(.headline).bold()
+                            Text("in association with").font(.caption).italic()
+                            Image("The Educated Barfly Logo")
+                                .resizable()
+                                .frame(width: UIScreen.main.bounds.size.width - 160, height: UIScreen.main.bounds.size.width - 310)
+                        }
+                }
             }
-        }
-        .rotation3DEffect(.degrees(degrees), axis: (x: 0, y: 1, z: 0))
+            .rotation3DEffect(.degrees(backDegree), axis: (x: 0, y: 1, z: 0))
     }
 }
 

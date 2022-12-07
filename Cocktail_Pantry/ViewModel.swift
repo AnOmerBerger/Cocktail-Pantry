@@ -40,11 +40,16 @@ class ViewModel: ObservableObject {
             //During store initialization, request products from the App Store.
             await fetchProducts()
         }
+        Task {
+            await checkForNewVersion(currentVersion: model.version)
+        }
     }
     
-    //MARK: - Call to Server
+    //MARK: - Calls to Server
+    var newVersionAvailable: Double? = nil
+    var showAlert: Bool = false
+    
     func getCocktails(fromVersion: Double) {
-        print("got to function")
         if let response = URL(string: "http://127.0.0.1:8080/cocktailList") {
             do {
                 guard let cocktailData = try? Data(contentsOf: response) else { return }
@@ -57,7 +62,30 @@ class ViewModel: ObservableObject {
         }
     }
     
-    
+    func checkForNewVersion(currentVersion: Double) async {
+        guard let response = URL(string: "http://127.0.0.1:8080/versionCheck") else {
+            print("invalid url")
+            return
+        }
+            do {
+                let (serverData, _) = try await URLSession.shared.data(from: response)
+                if let serverVersion = try? JSONDecoder().decode(CodedString.self, from: serverData) {
+                    print("****** \(currentVersion) *******")
+                    print("****** \(serverVersion) *******")
+                    if currentVersion <  Double(serverVersion.string) ?? 0 {
+                        print("server version greater")
+                        self.newVersionAvailable = Double(serverVersion.string)!
+                        showAlert = true
+                        print("\(showAlert)")
+                    }
+                } else {
+                    print("*** Couldn't Decode ***")
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        
+    }
     // MARK: - inApp Purchase
     var tipOptions: [Product] = []
     
@@ -119,6 +147,7 @@ class ViewModel: ObservableObject {
     func select(ingredient: Ingredient) {
         model.addRemoveFromSelected(ingredient: ingredient)
     }
+    func clearSelectedIngredients() { model.clearSelectedIngredients() }
     func visitACocktailPage() { model.addOneToNumberOfCocktailPagesVisited() }
     func saveOrRemoveCocktail(cocktail: Cocktail) {
         model.saveOrRemoveCocktail(cocktail: cocktail)
