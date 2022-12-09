@@ -11,7 +11,7 @@ struct ContentView: View {
     @ObservedObject var viewModel: ViewModel
     @State var ingredientSearchText = ""
     @State var cocktaileSearchText = ""
-    @State var mainViewSelection: Int = 0
+    @State var mainViewSelection: Int = 2
     @State var searchMode: SearchMode = .ingredient
     @State var pantryFilter: Bool = true
     @State var customFilterSelection = "name"
