@@ -32,7 +32,7 @@ struct ChangeableFilteringList: View {
                     Text(selection).tag(selection)
                 }
             }
-            .pickerStyle(.segmented).padding(5)
+            .pickerStyle(.segmented).padding(.horizontal, 5)
             switch selection {
 //            case "name":
 //                SimpleSearchPage(searchText: $cocktailSearchText).environmentObject(viewModel)
@@ -68,7 +68,8 @@ struct AbstractBasedCocktailList<T: Identifiable>: View {
                     Text(selection).tag(selection)
                 }
             }
-            .pickerStyle(.segmented).padding()
+            .pickerStyle(.segmented)
+            .padding(5)
             ScrollView(.vertical) {
                 LazyVStack {
                     ForEach(try! arrayToBeFiltered.filter(filteringThrow)) { item in
