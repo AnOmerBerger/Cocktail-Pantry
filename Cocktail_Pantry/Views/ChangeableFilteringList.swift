@@ -54,7 +54,7 @@ struct ChangeableFilteringList: View {
 }
 
 struct AbstractBasedCocktailList<T: Identifiable>: View {
-    @EnvironmentObject var viewModel: ViewModel
+     @EnvironmentObject var viewModel: ViewModel
     @Binding var selection: String
     let selectionOptions: [String]
     var arrayToBeFiltered: [T]

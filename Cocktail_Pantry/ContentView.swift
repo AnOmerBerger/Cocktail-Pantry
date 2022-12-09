@@ -71,6 +71,7 @@ struct ContentView: View {
                                     Toggle("", isOn: $pantryFilter)
                 .toggleStyle(SwitchToggleStyle(tint: .purple)).opacity(mainViewSelection == 0 ? 1 : 0))
             .onAppear {
+//                printFonts()
                 UITabBar.appearance().backgroundColor = UIColor(.white.opacity(0.92))
                 if viewModel.numberOfCocktailPagesVisited % 5 == 0 && viewModel.numberOfCocktailPagesVisited != 0 && !viewModel.tipOptions.isEmpty {
                     showTipView = true
@@ -80,7 +81,13 @@ struct ContentView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
-    
+    func printFonts() {
+        for familyName in UIFont.familyNames {
+            print("-------")
+            print("Font family name -> [\(familyName)]")
+            print("Font names ==> [\(UIFont.fontNames(forFamilyName: familyName))]")
+        }
+    }
     
 //    func checkForNewVersion(currentVersion: Double) async {
 //        guard let response = URL(string: "http://127.0.0.1:8080/versionCheck") else {

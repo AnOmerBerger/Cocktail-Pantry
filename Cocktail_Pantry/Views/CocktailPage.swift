@@ -34,6 +34,11 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                        maxHeight: UIDevice.current.userInterfaceIdiom == .pad ? 400 : 300)
                 
                 VStack(spacing: 5) { // view for the ingredients
+                    HStack {
+                        ForEach(cocktail.flavorProfile, id: \.self) { flavor in
+                            FlavorProfileView(text: flavor.rawValue).font(.caption)
+                        }
+                    }
                     Text("*  *  *  *  *  *  *")
                     // for each ingredient creates a line with its corresponding quantity, quantity type, and name
                     ForEach(0..<cocktail.ingQuantities.count, id: \.self) { index in

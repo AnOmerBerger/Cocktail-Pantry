@@ -27,6 +27,12 @@
 		5D34F940293832F700F669E4 /* PhotoOnlyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34F93F293832F700F669E4 /* PhotoOnlyCard.swift */; };
 		5D34F942293D001700F669E4 /* CustomAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34F941293D001700F669E4 /* CustomAsyncImage.swift */; };
 		5D34F944293FA30F00F669E4 /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34F943293FA30F00F669E4 /* HomeTab.swift */; };
+		5D34F94B2942812E00F669E4 /* Teko-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D34F9462942812E00F669E4 /* Teko-Light.ttf */; };
+		5D34F94C2942812E00F669E4 /* Teko-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D34F9472942812E00F669E4 /* Teko-Medium.ttf */; };
+		5D34F94D2942812E00F669E4 /* Teko-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D34F9482942812E00F669E4 /* Teko-Bold.ttf */; };
+		5D34F94E2942812E00F669E4 /* Teko-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D34F9492942812E00F669E4 /* Teko-SemiBold.ttf */; };
+		5D34F94F2942812E00F669E4 /* Teko-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D34F94A2942812E00F669E4 /* Teko-Regular.ttf */; };
+		5D34F9522942AFFF00F669E4 /* Font add-ons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34F9512942AFFF00F669E4 /* Font add-ons.swift */; };
 		5D71CAD1292FF0E900C88B81 /* TestTips.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 5D71CAD0292FF0E900C88B81 /* TestTips.storekit */; };
 		5D984F9929352BE300FF3A5F /* ActualLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */; };
 		5D9C4E99284BE7CD00241202 /* MultiLine Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9C4E98284BE7CD00241202 /* MultiLine Picker.swift */; };
@@ -81,6 +87,13 @@
 		5D34F93F293832F700F669E4 /* PhotoOnlyCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoOnlyCard.swift; sourceTree = "<group>"; };
 		5D34F941293D001700F669E4 /* CustomAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAsyncImage.swift; sourceTree = "<group>"; };
 		5D34F943293FA30F00F669E4 /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
+		5D34F9462942812E00F669E4 /* Teko-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Teko-Light.ttf"; sourceTree = "<group>"; };
+		5D34F9472942812E00F669E4 /* Teko-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Teko-Medium.ttf"; sourceTree = "<group>"; };
+		5D34F9482942812E00F669E4 /* Teko-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Teko-Bold.ttf"; sourceTree = "<group>"; };
+		5D34F9492942812E00F669E4 /* Teko-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Teko-SemiBold.ttf"; sourceTree = "<group>"; };
+		5D34F94A2942812E00F669E4 /* Teko-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Teko-Regular.ttf"; sourceTree = "<group>"; };
+		5D34F9502942879000F669E4 /* Cocktail-Pantry-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Cocktail-Pantry-Info.plist"; sourceTree = SOURCE_ROOT; };
+		5D34F9512942AFFF00F669E4 /* Font add-ons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font add-ons.swift"; sourceTree = "<group>"; };
 		5D71CAD0292FF0E900C88B81 /* TestTips.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestTips.storekit; sourceTree = "<group>"; };
 		5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ActualLaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D9C4E98284BE7CD00241202 /* MultiLine Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultiLine Picker.swift"; sourceTree = "<group>"; };
@@ -142,6 +155,7 @@
 		5D0F9E6B28344FC400B99F98 /* Cocktail_Pantry */ = {
 			isa = PBXGroup;
 			children = (
+				5D34F9502942879000F669E4 /* Cocktail-Pantry-Info.plist */,
 				5D0F9E6C28344FC400B99F98 /* Cocktail_PantryApp.swift */,
 				5D0F9E6E28344FC400B99F98 /* ContentView.swift */,
 				5DBEFB5B283DAF260006C326 /* Views */,
@@ -150,6 +164,7 @@
 				5D0F9E9C2836BB5800B99F98 /* ViewModel.swift */,
 				5D71CAD0292FF0E900C88B81 /* TestTips.storekit */,
 				5D0F9E9A2836B5D800B99F98 /* Array Extention.swift */,
+				5D34F9452942810D00F669E4 /* Fonts */,
 				5D0F9E7028344FC400B99F98 /* Assets.xcassets */,
 				5D0F9E7228344FC400B99F98 /* Preview Content */,
 			);
@@ -179,6 +194,19 @@
 				5D0F9E8928344FC400B99F98 /* Cocktail_PantryUITestsLaunchTests.swift */,
 			);
 			path = Cocktail_PantryUITests;
+			sourceTree = "<group>";
+		};
+		5D34F9452942810D00F669E4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5D34F9482942812E00F669E4 /* Teko-Bold.ttf */,
+				5D34F9462942812E00F669E4 /* Teko-Light.ttf */,
+				5D34F9472942812E00F669E4 /* Teko-Medium.ttf */,
+				5D34F94A2942812E00F669E4 /* Teko-Regular.ttf */,
+				5D34F9492942812E00F669E4 /* Teko-SemiBold.ttf */,
+				5D34F9512942AFFF00F669E4 /* Font add-ons.swift */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		5DBEFB5B283DAF260006C326 /* Views */ = {
@@ -319,8 +347,13 @@
 			files = (
 				5D0F9E7428344FC400B99F98 /* Preview Assets.xcassets in Resources */,
 				5D984F9929352BE300FF3A5F /* ActualLaunchScreen.storyboard in Resources */,
+				5D34F94C2942812E00F669E4 /* Teko-Medium.ttf in Resources */,
 				5D71CAD1292FF0E900C88B81 /* TestTips.storekit in Resources */,
+				5D34F94E2942812E00F669E4 /* Teko-SemiBold.ttf in Resources */,
 				5D0F9E7128344FC400B99F98 /* Assets.xcassets in Resources */,
+				5D34F94F2942812E00F669E4 /* Teko-Regular.ttf in Resources */,
+				5D34F94B2942812E00F669E4 /* Teko-Light.ttf in Resources */,
+				5D34F94D2942812E00F669E4 /* Teko-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +395,7 @@
 				5D06EB68290EE73300FAA456 /* VideoPlayerOverlay.swift in Sources */,
 				5D34F942293D001700F669E4 /* CustomAsyncImage.swift in Sources */,
 				5D0F9E99283486F400B99F98 /* Model.swift in Sources */,
+				5D34F9522942AFFF00F669E4 /* Font add-ons.swift in Sources */,
 				5D0F9E9D2836BB5800B99F98 /* ViewModel.swift in Sources */,
 				5DD5043B284567610095CEE1 /* ChangeableFilteringList.swift in Sources */,
 				5D0F9E9B2836B5D800B99F98 /* Array Extention.swift in Sources */,
@@ -454,6 +488,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -509,6 +544,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -530,13 +566,14 @@
 				DEVELOPMENT_TEAM = ZNDBCTRF4C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Cocktail-Pantry-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = ActualLaunchScreen.storyboard;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -561,13 +598,14 @@
 				DEVELOPMENT_TEAM = ZNDBCTRF4C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Cocktail-Pantry-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = ActualLaunchScreen.storyboard;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

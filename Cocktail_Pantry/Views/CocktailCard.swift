@@ -27,7 +27,7 @@ struct CocktailCardWithImage: View {
     }
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 22)
+        RoundedRectangle(cornerRadius: 30, style: .continuous)
             .frame(width: UIScreen.main.bounds.size.width - 15, height: UIDevice.current.userInterfaceIdiom == .pad ? 250 : 150, alignment: .center)
             .foregroundColor(cardColor).opacity(0.8)
             .overlay {
@@ -49,19 +49,21 @@ struct CocktailCardWithImage: View {
                     
                     Divider()
                     
-                    VStack {
+                    VStack(spacing: 2) {
                         ForEach(cocktail.flavorProfile, id: \.self) { flavor in
                             FlavorProfileView(text: flavor.rawValue)
+                                .font(.custom(.light, size: 18))
                         }
                         Spacer()
                         Divider()
-                        Text(cocktail.difficultyLevel.rawValue).bold()
+                        Text(cocktail.difficultyLevel.rawValue).bold().font(.custom(.semiBold, size: 22))
                     }
                     .frame(maxWidth: (UIScreen.main.bounds.size.width - 20) / 3.5)
                 }
                 .foregroundColor(.black)
                 .padding()
             }
+            .font(.custom(.regular, size: 22))
     }
 }
 
@@ -216,7 +218,7 @@ struct FlavorProfileView: View {
             }
             .frame(width: 70, height: 25, alignment: .center)
             Text(text)
-                .font(.caption)
+//                .font(.caption)
                 .italic()
                 .padding(.horizontal, 3)
         }

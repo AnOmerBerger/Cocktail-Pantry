@@ -29,7 +29,7 @@ struct IngredientSelectList: View {
                 }
                 .padding(.vertical)
                 .padding(.horizontal, 5)
-                .frame(maxHeight: 100)
+                .frame(maxHeight: 120)
             }
             Divider()
             HStack {
@@ -56,22 +56,22 @@ struct IngredientSelectList: View {
             Divider()
             if viewModel.cocktailsFilteredThroughSelectedIngredients.isEmpty {
                 Spacer()
-                Text("What ingredients do you have?").font(.largeTitle).multilineTextAlignment(.center)
+                Text("What ingredients do you have?").font(.custom(.regular, size: 40)).kerning(0.7).multilineTextAlignment(.center)
                 Spacer()
             } else {
                 ScrollView(.vertical) {
                     VStack(alignment: .leading) {
                         ForEach(viewModel.cocktailsFilteredThroughSelectedIngredients, id: \.numberOfMissingIngredients) { numberAndCocktailGroup in
-                            Text("missing \(numberAndCocktailGroup.numberOfMissingIngredients) ingredients").padding(.horizontal, 5).foregroundColor(numberAndCocktailGroup.numberOfMissingIngredients == 0 ? .green : .black)
+                            Text("missing \(numberAndCocktailGroup.numberOfMissingIngredients) ingredients").fontWeight(.semibold).kerning(0.8).padding(.horizontal, 6).foregroundColor(numberAndCocktailGroup.numberOfMissingIngredients == 0 ? .green : .black)
 //                            LazyVGrid(columns: columns) {
                                 ForEach(numberAndCocktailGroup.cocktailList) { cocktail in
-                                    VStack(alignment: .center, spacing: 3) {
+                                    VStack(alignment: .center, spacing: 1) {
                                         let missingIngredientsString = returnMissingIngredientsForCocktail(cocktail: cocktail, selectedIngredients: viewModel.selected).joined(separator: ", ")
                                         ScrollView(.horizontal) {
                                             HStack {
-                                                Text(cocktail.name).font(.headline)
+                                                Text(cocktail.name).font(.custom(.semiBold, size: 25))
 //                                                Text("(missing: ")
-                                                Text("(\(missingIngredientsString))").foregroundColor(.red)
+                                                Text("(\(missingIngredientsString))").font(.custom(.regular, size: 20)).foregroundColor(.red.opacity(0.75))
                                             }
                                         }
                                         .padding(.horizontal, 3)
@@ -79,8 +79,8 @@ struct IngredientSelectList: View {
                                         NavigationLink(destination: CocktailPage(cocktail: cocktail).environmentObject(viewModel)) {
                                             CocktailCardWithImage(cocktail: cocktail)
                                         }
-                                        .padding(.vertical, 5)
                                     }
+                                    .padding(.horizontal, 3)
                                     .padding(.vertical, 5)
                                 }
 //                            }
@@ -114,17 +114,18 @@ struct ClickForIngredient: View {
     var ingredient: Ingredient
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 20)
+            Capsule()
                 .foregroundColor(ingredient.isSelected ? Color.green : Color.blue).opacity(0.3)
             HStack {
-                Text(ingredient.name)
+                Text(ingredient.name).font(.custom(.light, size: 20))
                 if ingredient.isSelected {
                     Image(systemName: "x.square.fill").imageScale(.small)
                 }
             }
-            .padding(7)
+            .padding(.horizontal, 10)
+            .padding(.vertical, 5)
         }
-        .padding(.vertical)
+        .padding(3)
     }
 }
 

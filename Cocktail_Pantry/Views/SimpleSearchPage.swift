@@ -20,7 +20,7 @@ struct SimpleSearchPage: View {
                 LazyVStack(spacing: 16) {
                     ForEach((viewModel.cocktails).filter({ "\($0.name)".lowercased().contains(searchText.lowercased()) || "\($0.ingNames)".contains(searchText.lowercased()) || searchText.isEmpty }).sorted(by: <)) { cocktail in
                         VStack(alignment: .leading, spacing: 3) {
-                            Text(cocktail.name).font(.headline).foregroundColor(.black).padding(.horizontal, 3)
+                            Text(cocktail.name).font(.custom(.semiBold, size: 25)).foregroundColor(.black).padding(.horizontal, 3)
                             NavigationLink(destination: CocktailPage(cocktail: cocktail).environmentObject(viewModel)) {
                                 CocktailCardWithImage(cocktail: cocktail)
                             }
