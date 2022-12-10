@@ -18,7 +18,6 @@ struct ExploreTab: View {
             }
             Divider()
             Divider()
-//            ChangeableFilteringList(selection: $selection).environmentObject(viewModel)
             ScrollView(.vertical) {
                 VStack(alignment: .center) {
                     ExploreCardHorizontalContainer(title: "Method", selectionAndAssociatedImage:
