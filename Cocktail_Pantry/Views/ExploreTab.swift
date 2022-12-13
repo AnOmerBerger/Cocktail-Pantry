@@ -22,13 +22,13 @@ struct ExploreTab: View {
             ScrollView(.vertical) {
                 VStack(alignment: .center) {
                     ExploreCardHorizontalContainer(title: "Method", selectionAndAssociatedImage:
-                                                    [("stirred", "stirred_drink"), ("shaken", "shaken_drink"), ("built", "built_drink")]).environmentObject(viewModel)
+                                                    [("stirred", "stirred_drink_small"), ("shaken", "shaken_drink_small"), ("built", "built_drink_small")]).environmentObject(viewModel)
                     ExploreCardHorizontalContainer(title: "Booze Level", selectionAndAssociatedImage:
-                                                    [("low", "low_alcohol_drink"), ("medium", "medium_drink"), ("high", "high_alcohol_drink")]).environmentObject(viewModel)
+                                                    [("low", "low_alcohol_drink_small"), ("medium", "medium_drink_small"), ("high", "high_alcohol_drink_small")]).environmentObject(viewModel)
                     ExploreCardHorizontalContainer(title: "Flavor Profile", selectionAndAssociatedImage:
-                                                    [("fruity", "fruity_drink"), ("light", "medium_drink"), ("strong", "boozy_drink"), ("refreshing", "refreshing_drink"), ("aromatic", "difficult_drink"), ("citrusy", "citrusy_drink"), ("dry", "dry_drink"), ("sparkling", "sparkling_drink"), ("sweet", "sweet_drink2"), ("sour", "sour_drink"), ("bitter", "bitter_drink"), ("creamy", "creamy_drink")] ).environmentObject(viewModel)
-                    ExploreCardHorizontalContainer(title: "Difficulty Level", selectionAndAssociatedImage: [("easy", "easy_drink"), ("medium", "coupe_drink"), ("difficult", "torched_drink")])
-                    ExploreCardHorizontalContainer(title: "Glass Type", selectionAndAssociatedImage: [("rocks glass", "rocks_drink"), ("martini glass", "martini"), ("coupe", "espresso_martini"), ("copper cup", "copper_cup"), ("highball", "highball_drink"), ("beer glass", "beer_glass")])
+                                                    [("fruity", "fruity_drink_small"), ("light", "light_drink_small"), ("strong", "boozy_drink_small"), ("refreshing", "refreshing_drink_small"), ("aromatic", "difficult_drink_small"), ("citrusy", "citrusy_drink_small"), ("dry", "dry_drink_small"), ("sparkling", "sparkling_drink_small"), ("sweet", "sweet_drink2_small"), ("sour", "sour_drink_small"), ("bitter", "bitter_drink_small"), ("creamy", "creamy_drink_small")] ).environmentObject(viewModel)
+                    ExploreCardHorizontalContainer(title: "Difficulty Level", selectionAndAssociatedImage: [("easy", "easy_drink_small"), ("medium", "coupe_drink_small"), ("difficult", "torched_drink_small")])
+                    ExploreCardHorizontalContainer(title: "Glass Type", selectionAndAssociatedImage: [("rocks glass", "rocks_drink_small"), ("martini glass", "martini_small"), ("coupe", "espresso_martini_small"), ("copper cup", "copper_cup_small"), ("highball", "highball_drink_small"), ("beer glass", "beer_glass_small")])
                 }
             }
             .padding(.horizontal, 8)
@@ -65,7 +65,6 @@ struct ExploreCardHorizontalContainer: View {
             Divider()
         }
         .padding(.vertical, 3)
-        .onAppear { print("CONTAINER APPEARS") }
 //        .frame(height: 180)
     }
 }

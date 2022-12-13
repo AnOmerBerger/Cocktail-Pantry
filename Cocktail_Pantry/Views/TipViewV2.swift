@@ -108,6 +108,7 @@ extension DoubleSidedCoin {
                             
                             Text("Next time").font(.caption).italic().underline()
                                 .onTapGesture {
+                                    viewModel.visitACocktailPage()
                                     flipCoin()
                                     withAnimation(.linear(duration: durationAndDelay * 9)) {
                                         showTipView = false
@@ -123,6 +124,7 @@ extension DoubleSidedCoin {
     @MainActor
     func tip(amount: Product) async {
         if ((await viewModel.tip(amount: amount)) != nil) {
+            viewModel.visitACocktailPage()
             flipCoin()
             withAnimation(.linear(duration: durationAndDelay * 9)) {
                 showTipView = false

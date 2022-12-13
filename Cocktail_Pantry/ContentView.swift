@@ -71,7 +71,7 @@ struct ContentView: View {
             .onAppear {
 //                printFonts()
                 UITabBar.appearance().backgroundColor = UIColor(.white.opacity(0.92))
-                if viewModel.numberOfCocktailPagesVisited % 5 == 0 && viewModel.numberOfCocktailPagesVisited != 0 && !viewModel.tipOptions.isEmpty {
+                if viewModel.numberOfCocktailPagesVisited % 9 == 0 && viewModel.numberOfCocktailPagesVisited != 0 && !viewModel.tipOptions.isEmpty {
                     showTipView = true
                 }
             }
