@@ -62,7 +62,7 @@ struct IngredientSelectList: View {
                 ScrollView(.vertical) {
                     VStack(alignment: .leading) {
                         ForEach(viewModel.cocktailsFilteredThroughSelectedIngredients, id: \.numberOfMissingIngredients) { numberAndCocktailGroup in
-                            Text("missing \(numberAndCocktailGroup.numberOfMissingIngredients) ingredients").fontWeight(.semibold).kerning(0.8).padding(.horizontal, 6).foregroundColor(numberAndCocktailGroup.numberOfMissingIngredients == 0 ? .green : .black)
+                            Text("missing \(numberAndCocktailGroup.numberOfMissingIngredients) ingredients").fontWeight(.semibold).kerning(0.3).padding(.horizontal, 6).foregroundColor(numberAndCocktailGroup.numberOfMissingIngredients == 0 ? .green : .black).padding(.top, 2)
 //                            LazyVGrid(columns: columns) {
                                 ForEach(numberAndCocktailGroup.cocktailList) { cocktail in
                                     VStack(alignment: .center, spacing: 1) {
@@ -70,8 +70,9 @@ struct IngredientSelectList: View {
                                         ScrollView(.horizontal) {
                                             HStack {
                                                 Text(cocktail.name).font(.custom(.semiBold, size: 25))
-//                                                Text("(missing: ")
-                                                Text("(\(missingIngredientsString))").font(.custom(.regular, size: 20)).foregroundColor(.red.opacity(0.75))
+                                                if !missingIngredientsString.isEmpty {
+                                            Text("(\(missingIngredientsString))").font(.custom(.regular, size: 20)).foregroundColor(.red.opacity(0.75))
+                                                }
                                             }
                                         }
                                         .padding(.horizontal, 3)

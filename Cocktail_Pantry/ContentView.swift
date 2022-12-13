@@ -11,13 +11,10 @@ struct ContentView: View {
     @ObservedObject var viewModel: ViewModel
     @State var ingredientSearchText = ""
     @State var cocktaileSearchText = ""
-    @State var mainViewSelection: Int = 2
+    @State var mainViewSelection: Int = 0
     @State var searchMode: SearchMode = .ingredient
     @State var pantryFilter: Bool = true
-    @State var customFilterSelection = "name"
-    @State var viewInView: Bool = false
     @State var showTipView: Bool = false
-//    @State var showAlert: Bool = false
     
 //    @State var newVersionAvailable: Double? = nil
     
@@ -44,7 +41,7 @@ struct ContentView: View {
                             Text("Explore")
                         }.tag(2)
                     VStack {
-                        StoreTab()
+                        StoreTab().environmentObject(viewModel)
                     }
                     .tabItem {
                         Image(systemName: "bag")
@@ -59,7 +56,8 @@ struct ContentView: View {
                     }, label: { Text("Yes").bold() })
                 }, message: { Text("an updated cocktail list is available. Warning: you will need to re-select your ingredients." ) })
                 
-            DoubleSidedCoin(showTipView: $showTipView).environmentObject(viewModel)
+                
+                DoubleSidedCoin(showTipView: $showTipView).environmentObject(viewModel)
             }
 //            .task { await checkForNewVersion(currentVersion: viewModel.version) }
             .navigationTitle("Cocktail Pantry").padding(.vertical, 3)

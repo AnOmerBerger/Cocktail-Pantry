@@ -50,7 +50,7 @@ class ViewModel: ObservableObject {
     var showAlert: Bool = false
     
     func getCocktails(fromVersion: Double) {
-        if let response = URL(string: "http://127.0.0.1:8080/cocktailList") {
+        if let response = URL(string: "https://cocktail-pantry-vapor-dataset.herokuapp.com/cocktailList") {
             do {
                 guard let cocktailData = try? Data(contentsOf: response) else { return }
                 if let decodedCocktails = try? JSONDecoder().decode([Cocktail].self, from: cocktailData) {
@@ -63,7 +63,7 @@ class ViewModel: ObservableObject {
     }
     
     func checkForNewVersion(currentVersion: Double) async {
-        guard let response = URL(string: "http://127.0.0.1:8080/versionCheck") else {
+        guard let response = URL(string: "https://cocktail-pantry-vapor-dataset.herokuapp.com/versionCheck") else {
             print("invalid url")
             return
         }
@@ -131,6 +131,15 @@ class ViewModel: ObservableObject {
             return safe
         }
     }
+    
+    
+    //MARK: - Tracking View
+//    var showTabLoadingView: Bool = false
+    
+    var showingHomeTab: Bool = false
+    var showingSavedTab: Bool = false
+    var showingExploreTab: Bool = false
+    var showingStoreTab: Bool = false
     
     // MARK: - Access to Model
     var version: Double { model.version }

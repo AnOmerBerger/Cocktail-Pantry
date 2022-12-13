@@ -10,11 +10,12 @@ import SwiftUI
 struct ExploreTab: View {
     @EnvironmentObject var viewModel: ViewModel
     @State var selection: String = "method"
+    
     var body: some View {
         VStack {
             Text("Try one of our favorites!").foregroundColor(.black).fontWeight(.heavy)
             NavigationLink(destination: CocktailPage(cocktail: viewModel.randomCocktail).environmentObject(viewModel)) {
-                PhotoOnlyCard(cocktail: viewModel.randomCocktail).environmentObject(viewModel)
+                PhotoOnlyCard(cocktail: viewModel.randomCocktail).environmentObject(viewModel).padding(.vertical, 5)
             }
             Divider()
             Divider()
@@ -25,7 +26,9 @@ struct ExploreTab: View {
                     ExploreCardHorizontalContainer(title: "Booze Level", selectionAndAssociatedImage:
                                                     [("low", "low_alcohol_drink"), ("medium", "medium_drink"), ("high", "high_alcohol_drink")]).environmentObject(viewModel)
                     ExploreCardHorizontalContainer(title: "Flavor Profile", selectionAndAssociatedImage:
-                                                    [("fruity", "fruity_drink"), ("light", "medium_drink"), ("strong", "boozy_drink"), ("refreshing", "refreshing_drink"), ("aromatic", "difficult_drink"), ("citrusy", "citrusy_drink")]).environmentObject(viewModel)
+                                                    [("fruity", "fruity_drink"), ("light", "medium_drink"), ("strong", "boozy_drink"), ("refreshing", "refreshing_drink"), ("aromatic", "difficult_drink"), ("citrusy", "citrusy_drink"), ("dry", "dry_drink"), ("sparkling", "sparkling_drink"), ("sweet", "sweet_drink2"), ("sour", "sour_drink"), ("bitter", "bitter_drink"), ("creamy", "creamy_drink")] ).environmentObject(viewModel)
+                    ExploreCardHorizontalContainer(title: "Difficulty Level", selectionAndAssociatedImage: [("easy", "easy_drink"), ("medium", "coupe_drink"), ("difficult", "torched_drink")])
+                    ExploreCardHorizontalContainer(title: "Glass Type", selectionAndAssociatedImage: [("rocks glass", "rocks_drink"), ("martini glass", "martini"), ("coupe", "espresso_martini"), ("copper cup", "copper_cup"), ("highball", "highball_drink"), ("beer glass", "beer_glass")])
                 }
             }
             .padding(.horizontal, 8)
@@ -61,7 +64,9 @@ struct ExploreCardHorizontalContainer: View {
             Divider()
             Divider()
         }
-        .frame(height: 150)
+        .padding(.vertical, 3)
+        .onAppear { print("CONTAINER APPEARS") }
+//        .frame(height: 180)
     }
 }
 
@@ -71,15 +76,14 @@ struct ExploreCard: View {
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 0).foregroundColor(.white).frame(width: 100, height: 100)
+            RoundedRectangle(cornerRadius: 0).foregroundColor(.white).frame(width: 130, height: 100)
             VStack {
                 Image(imageName)
-                    .resizable().scaledToFill().padding(2).frame(width:100, height: 70).clipped()
-//                Divider()
+                    .resizable().scaledToFill().frame(width: 130, height: 100).clipped()
                 Text(text).padding(.bottom, 8).foregroundColor(.black).frame(height: 30)
             }
-            .frame(width: 100, height: 100)
-            RoundedRectangle(cornerRadius: 0).stroke(lineWidth: 1).foregroundColor(.gray).frame(width: 100, height: 100)
+            .frame(width: 130, height: 130)
+            RoundedRectangle(cornerRadius: 0).stroke(lineWidth: 1.5).foregroundColor(.gray).frame(width: 130, height: 130)
         }
     }
 }
@@ -97,6 +101,10 @@ struct FilteredCocktailList: View {
             return viewModel.cocktails.filter { $0.boozeLevel == BoozeLevel(rawValue: filteringSelection) }
         case "Flavor Profile":
             return viewModel.cocktails.filter { $0.flavorProfile.contains(where: { $0 == FlavorProfile(rawValue: filteringSelection) }) }
+        case "Difficulty Level":
+            return viewModel.cocktails.filter { $0.difficultyLevel == DifficultyLevel(rawValue: filteringSelection) }
+        case "Glass Type":
+            return viewModel.cocktails.filter { $0.glassType.contains(where: { $0 == GlassType(rawValue: filteringSelection) }) }
         default:
             return viewModel.cocktails
         }

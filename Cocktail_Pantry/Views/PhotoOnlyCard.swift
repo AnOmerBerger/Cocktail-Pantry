@@ -11,8 +11,8 @@ struct PhotoOnlyCard: View {
     var cocktail: Cocktail
     
     var body: some View {
-        VStack {
-            ZStack {
+        ZStack {
+            VStack {
                 AsyncImage(url: URL(string: cocktail.imageURL ?? "http://stupid")) { phase in
                     if let image = phase.image {
                         image
@@ -24,31 +24,30 @@ struct PhotoOnlyCard: View {
                         ImageLoading()
                     }
                 }
-                .clipShape(Circle())
-                .blur(radius: 2)
+                .blur(radius: 1.5)
                 .overlay {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 0)
-                            .foregroundColor(.white).opacity(0.4)
-                        Text(cocktail.name)
-                            .foregroundColor(.black)
-                            .font(.headline)
-                            .bold()
-                            .kerning(5)
-                            .italic()
-                            .shadow(radius: 2)
-                    }
+                    RoundedRectangle(cornerRadius: 30, style: .continuous )
+                        .foregroundColor(.white).opacity(0.4)
                 }
                 
             }
-            .frame(width: 250, height: 160)
+            .frame(width: 220, height: 135)
             .clipped()
+            .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous ))
+            
+            Text(cocktail.name)
+                .foregroundColor(.black)
+                .font(.headline)
+                .fontWeight(.black)
+                .kerning(4.5)
+                .italic()
+                .shadow(radius: 1, x: 3, y: 2.4)
         }
     }
 }
 
 struct PhotoOnlyCard_Previews: PreviewProvider {
     static var previews: some View {
-        PhotoOnlyCard(cocktail: sazerac)
+        PhotoOnlyCard(cocktail: negroni)
     }
 }

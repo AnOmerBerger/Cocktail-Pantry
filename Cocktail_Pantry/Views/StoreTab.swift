@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct StoreTab: View {
+    @EnvironmentObject var viewModel: ViewModel
+    
     var body: some View {
         VStack(spacing: 18) {
             Image("The Educated Barfly Logo")
