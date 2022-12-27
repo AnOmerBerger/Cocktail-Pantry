@@ -35,7 +35,6 @@
 		5D34F9522942AFFF00F669E4 /* Font add-ons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34F9512942AFFF00F669E4 /* Font add-ons.swift */; };
 		5D71CAD1292FF0E900C88B81 /* TestTips.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 5D71CAD0292FF0E900C88B81 /* TestTips.storekit */; };
 		5D984F9929352BE300FF3A5F /* ActualLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */; };
-		5D9C4E99284BE7CD00241202 /* MultiLine Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9C4E98284BE7CD00241202 /* MultiLine Picker.swift */; };
 		5D9C4E9C284EB58C00241202 /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 5D9C4E9B284EB58C00241202 /* Disk */; };
 		5D9C4E9E284F113900241202 /* TipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9C4E9D284F113900241202 /* TipView.swift */; };
 		5DBEFB55283DAD4B0006C326 /* CocktailCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEFB54283DAD4B0006C326 /* CocktailCard.swift */; };
@@ -96,7 +95,6 @@
 		5D34F9512942AFFF00F669E4 /* Font add-ons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font add-ons.swift"; sourceTree = "<group>"; };
 		5D71CAD0292FF0E900C88B81 /* TestTips.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestTips.storekit; sourceTree = "<group>"; };
 		5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ActualLaunchScreen.storyboard; sourceTree = "<group>"; };
-		5D9C4E98284BE7CD00241202 /* MultiLine Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultiLine Picker.swift"; sourceTree = "<group>"; };
 		5D9C4E9D284F113900241202 /* TipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipView.swift; sourceTree = "<group>"; };
 		5DBEFB54283DAD4B0006C326 /* CocktailCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCard.swift; sourceTree = "<group>"; };
 		5DBEFB56283DAE170006C326 /* CocktailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailPage.swift; sourceTree = "<group>"; };
@@ -160,10 +158,10 @@
 				5D0F9E6E28344FC400B99F98 /* ContentView.swift */,
 				5DBEFB5B283DAF260006C326 /* Views */,
 				5D0F9E9628344FF500B99F98 /* Global Structs+Enums.swift */,
+				5D0F9E9A2836B5D800B99F98 /* Array Extention.swift */,
 				5D0F9E98283486F400B99F98 /* Model.swift */,
 				5D0F9E9C2836BB5800B99F98 /* ViewModel.swift */,
 				5D71CAD0292FF0E900C88B81 /* TestTips.storekit */,
-				5D0F9E9A2836B5D800B99F98 /* Array Extention.swift */,
 				5D34F9452942810D00F669E4 /* Fonts */,
 				5D0F9E7028344FC400B99F98 /* Assets.xcassets */,
 				5D0F9E7228344FC400B99F98 /* Preview Content */,
@@ -212,25 +210,64 @@
 		5DBEFB5B283DAF260006C326 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5D0F9E9E2836BFB900B99F98 /* IngredientSelectList.swift */,
-				5DD504382845634B0095CEE1 /* SimpleSearchPage.swift */,
-				5DD5043A284567610095CEE1 /* ChangeableFilteringList.swift */,
-				5DBEFB54283DAD4B0006C326 /* CocktailCard.swift */,
-				5D34F93F293832F700F669E4 /* PhotoOnlyCard.swift */,
+				5DE4DD3F295B8FEA007F9C70 /* Cocktail Cards */,
+				5DE4DD40295B9017007F9C70 /* Tab Views */,
+				5DE4DD42295B90CE007F9C70 /* Images */,
+				5DE4DD43295B90E2007F9C70 /* Old or Unused */,
 				5DBEFB56283DAE170006C326 /* CocktailPage.swift */,
-				5D1E920529296ED300A04345 /* ImagePlaceholder.swift */,
-				5D06EB67290EE73300FAA456 /* VideoPlayerOverlay.swift */,
-				5D34F941293D001700F669E4 /* CustomAsyncImage.swift */,
-				5D34F943293FA30F00F669E4 /* HomeTab.swift */,
-				5D34F93D2938327F00F669E4 /* ExploreTab.swift */,
-				5D34F93B29370A8500F669E4 /* SavedTab.swift */,
-				5D34F9392936FB9700F669E4 /* StoreTab.swift */,
-				5D9C4E98284BE7CD00241202 /* MultiLine Picker.swift */,
-				5D9C4E9D284F113900241202 /* TipView.swift */,
 				5DED7CEE2922B5C400112DA5 /* TipViewV2.swift */,
 				5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		5DE4DD3F295B8FEA007F9C70 /* Cocktail Cards */ = {
+			isa = PBXGroup;
+			children = (
+				5DBEFB54283DAD4B0006C326 /* CocktailCard.swift */,
+				5D34F93F293832F700F669E4 /* PhotoOnlyCard.swift */,
+			);
+			path = "Cocktail Cards";
+			sourceTree = "<group>";
+		};
+		5DE4DD40295B9017007F9C70 /* Tab Views */ = {
+			isa = PBXGroup;
+			children = (
+				5DE4DD41295B9030007F9C70 /* Home Tab Views */,
+				5D34F93D2938327F00F669E4 /* ExploreTab.swift */,
+				5D34F93B29370A8500F669E4 /* SavedTab.swift */,
+				5D34F9392936FB9700F669E4 /* StoreTab.swift */,
+			);
+			path = "Tab Views";
+			sourceTree = "<group>";
+		};
+		5DE4DD41295B9030007F9C70 /* Home Tab Views */ = {
+			isa = PBXGroup;
+			children = (
+				5D34F943293FA30F00F669E4 /* HomeTab.swift */,
+				5D0F9E9E2836BFB900B99F98 /* IngredientSelectList.swift */,
+				5DD504382845634B0095CEE1 /* SimpleSearchPage.swift */,
+			);
+			path = "Home Tab Views";
+			sourceTree = "<group>";
+		};
+		5DE4DD42295B90CE007F9C70 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5D34F941293D001700F669E4 /* CustomAsyncImage.swift */,
+				5D1E920529296ED300A04345 /* ImagePlaceholder.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		5DE4DD43295B90E2007F9C70 /* Old or Unused */ = {
+			isa = PBXGroup;
+			children = (
+				5DD5043A284567610095CEE1 /* ChangeableFilteringList.swift */,
+				5D9C4E9D284F113900241202 /* TipView.swift */,
+				5D06EB67290EE73300FAA456 /* VideoPlayerOverlay.swift */,
+			);
+			path = "Old or Unused";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,7 +425,6 @@
 				5DBEFB57283DAE170006C326 /* CocktailPage.swift in Sources */,
 				5D34F940293832F700F669E4 /* PhotoOnlyCard.swift in Sources */,
 				5D1E920629296ED300A04345 /* ImagePlaceholder.swift in Sources */,
-				5D9C4E99284BE7CD00241202 /* MultiLine Picker.swift in Sources */,
 				5D34F93C29370A8500F669E4 /* SavedTab.swift in Sources */,
 				5D34F93A2936FB9700F669E4 /* StoreTab.swift in Sources */,
 				5D0F9E9F2836BFB900B99F98 /* IngredientSelectList.swift in Sources */,
