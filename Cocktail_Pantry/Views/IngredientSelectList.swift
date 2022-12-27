@@ -144,6 +144,7 @@ struct bigTextField: View {
                 HStack {
                     Image(systemName: "magnifyingglass").foregroundColor(.blue.opacity(0.6))
                     TextField(title, text: $text)
+                        .autocorrectionDisabled(true)
                         .onTapGesture { isSearching = true }
                     if !text.isEmpty {
                         Image(systemName: "xmark.circle.fill").foregroundColor(.blue.opacity(0.6))

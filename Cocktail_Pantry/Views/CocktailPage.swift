@@ -14,8 +14,10 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
     var cocktail: Cocktail // loads from the previews page's click
     var youTubePlayer: YouTubePlayer
     var missingIngredients: [String]
+    var cardColor: Color { Color(red: cocktail.backgroundColor.red/255, green: cocktail.backgroundColor.green/255, blue: cocktail.backgroundColor.blue/255) }
     @State var showHistory = false
     @State var fetchImageTimeLimitReached = false
+    @State var titlePosition: CGFloat = 100
     
     init(cocktail: Cocktail, missingIngredients: [String] = [String]()) {
         self.cocktail = cocktail
@@ -26,10 +28,8 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
     var body: some View {
         ScrollView {
             VStack (spacing: 20) {
-                ZStack {
-                    Text(cocktail.name.uppercased()).font(.largeTitle).bold() // Title
-                }
-                
+                Text(cocktail.name.uppercased()).font(.largeTitle).bold()
+                    .multilineTextAlignment(.center) // Title
                 CustomAsyncImage(urlString: cocktail.imageURL, withPlaceholder: false)
                     .scaledToFit()
                     .frame(maxWidth: UIDevice.current.userInterfaceIdiom == .pad ? 400 : 300,
@@ -48,8 +48,9 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                             .foregroundColor(missingIngredients.contains(cocktail.ingNames[index]) ? .red : .black)
                     }
                     Text("*  *  *  *  *  *  *")
+                    GlassAndGarnishText
                 }
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 4) {
                     ForEach(0..<cocktail.instructions.count, id: \.self) { index in
                         HStack {
                             Text("\(index+1)").font(.largeTitle)
@@ -57,6 +58,9 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                         }
                     }
                 }
+                .padding(35)
+                .background(cardColor.opacity(0.4), in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+                IceAndTimeText
                 Divider()
                 YouTubePlayerView(self.youTubePlayer) { state in
                             // Overlay ViewBuilder closure to place an overlay View
@@ -80,22 +84,7 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                 .frame(maxWidth: 150)
                 
                 Divider()
-                if cocktail.history != nil {
-                    ZStack {
-                        HStack {
-                            Image(systemName: showHistory ? "chevron.down" : "chevron.right")
-                            Spacer()
-                        }
-                        HStack {
-                            Text("History").font(.title)
-                        }
-                    }
-                    .onTapGesture { showHistory.toggle() }
-                }
-                if showHistory {
-                    Text(cocktail.history ?? "") // Text
-                        .multilineTextAlignment(.center)
-                }
+                HistorySection
             }
             .padding()
             .onAppear {
@@ -105,7 +94,7 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
         }
         .navigationBarItems(leading: Image(systemName: "chevron.left").onTapGesture { self.presentationMode.wrappedValue.dismiss() }, trailing: Image(systemName: isCocktailSaved() ? "star.fill" : "star")
             .onTapGesture { viewModel.saveOrRemoveCocktail(cocktail: self.cocktail) })
-//        .navigationTitle(Text(cocktail.name))
+//        .navigationTitle(Text(cocktail.name)
 //        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
     }
@@ -120,9 +109,93 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
     }
 }
 
+extension CocktailPage {
+    var HistorySection: some View {
+        VStack(spacing: 10) {
+            if cocktail.history != nil {
+                ZStack {
+                    HStack {
+                        Image(systemName: showHistory ? "chevron.down" : "chevron.right")
+                        Spacer()
+                    }
+                    HStack {
+                        Text("History").font(.title)
+                    }
+                }
+                .onTapGesture { showHistory.toggle() }
+            }
+            if showHistory {
+                Text(cocktail.history ?? "") // Text
+                    .multilineTextAlignment(.center)
+            }
+        }
+    }
+}
 
-//struct CocktailPage_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CocktailPage(cocktail: oldFashioned)
-//    }
-//}
+extension CocktailPage {
+    var glassString: String {
+        var string = ""
+        for glass in cocktail.glassType {
+            string += ("\(glass.rawValue)/")
+        }
+        string.removeLast(1)
+        return string
+    }
+    var garnishString: String {
+        var string = ""
+        for garnish in cocktail.garnish ?? ["--"] {
+            string += ("\(garnish)/")
+        }
+        string.removeLast(1)
+        return string
+    }
+    var GlassAndGarnishText: some View {
+        HStack {
+            HStack {
+                if #available(iOS 16.0, *) {
+                    Image(systemName: "wineglass")
+                } else {
+                    Image(systemName: "cup.and.saucer")
+                }
+                Text(glassString)
+            }
+            Spacer()
+            HStack {
+                Image(systemName: "leaf.fill")
+                Text(garnishString)
+            }
+        }
+        .font(.callout)
+    }
+    
+    var shakeTimeString: String {
+        var string = ""
+        if cocktail.shakeOrStirTime.minTime == 0 && cocktail.shakeOrStirTime.maxTime == 0 {
+            string = "--"
+        } else {
+            string = "\(cocktail.shakeOrStirTime.minTime)-\(cocktail.shakeOrStirTime.maxTime)"
+        }
+        return string
+    }
+    
+    var IceAndTimeText: some View {
+        HStack {
+            HStack {
+                Image(systemName: "snowflake.circle.fill")
+                Text(cocktail.iceType.rawValue)
+            }
+            Spacer()
+            HStack {
+                Image(systemName: "clock")
+                Text(shakeTimeString)
+            }
+        }
+        .font(.callout)
+    }
+}
+
+struct CocktailPage_Previews: PreviewProvider {
+    static var previews: some View {
+        CocktailPage(cocktail: oldFashioned).environmentObject(ViewModel())
+    }
+}

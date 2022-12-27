@@ -49,14 +49,15 @@ struct CocktailCardWithImage: View {
                     
                     Divider()
                     
-                    VStack(spacing: 2) {
-                        ForEach(cocktail.flavorProfile, id: \.self) { flavor in
-                            FlavorProfileView(text: flavor.rawValue)
-                                .font(.custom(.light, size: 18))
-                        }
+                    VStack {
+                        Spacer()
+                        allFlavors
+                            .padding(.top, 8)
                         Spacer()
                         Divider()
+                        Spacer()
                         Text(cocktail.difficultyLevel.rawValue).bold().font(.custom(.semiBold, size: 22))
+                        Spacer()
                     }
                     .frame(maxWidth: (UIScreen.main.bounds.size.width - 20) / 3.5)
                 }
@@ -206,6 +207,30 @@ struct CocktailCard: View {
 
 // MARK: - assisting structs
 
+extension CocktailCardWithImage {
+    var allFlavors: some View {
+        VStack (spacing: 0){
+            if cocktail.flavorProfile.count <= 3 {
+                VStack(spacing: 2) {
+                    ForEach(cocktail.flavorProfile, id: \.self) { flavor in
+                        FlavorProfileView(text: flavor.rawValue)
+                            .font(.custom(.light, size: 18))
+                    }
+                }
+            } else {
+                VStack(spacing: 2) {
+                    ForEach(0..<3, id: \.self) { index in
+                        FlavorProfileView(text: cocktail.flavorProfile[index].rawValue)
+                            .font(.custom(.light, size: 18))
+                    }
+                }
+                Text("...").font(.custom(.semiBold, size: 18)).kerning(3).padding(.vertical, -8)
+            }
+        }
+        .frame(alignment: .bottom)
+    }
+}
+
 struct FlavorProfileView: View {
     let text: String
     
@@ -216,14 +241,19 @@ struct FlavorProfileView: View {
                 RoundedRectangle(cornerRadius: 0).stroke(Color.gray, lineWidth: 1.2)
                 RoundedRectangle(cornerRadius: 0).stroke(Color.black, lineWidth: 0.4)
             }
-            .frame(width: 70, height: 25, alignment: .center)
+            .frame(width: 75, height: 25, alignment: .center)
             Text(text)
-//                .font(.caption)
                 .italic()
                 .padding(.horizontal, 3)
         }
     }
 }
+
+
+
+
+
+//MARK: - Old structs
 
 struct AllFlavorsView: View {
     var profile: [FlavorProfile]
