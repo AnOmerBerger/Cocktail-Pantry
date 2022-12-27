@@ -62,11 +62,12 @@ struct IngredientSelectList: View {
                 ScrollView(.vertical) {
                     VStack(alignment: .leading) {
                         ForEach(viewModel.cocktailsFilteredThroughSelectedIngredients, id: \.numberOfMissingIngredients) { numberAndCocktailGroup in
-                            Text("missing \(numberAndCocktailGroup.numberOfMissingIngredients) ingredients").fontWeight(.semibold).kerning(0.3).padding(.horizontal, 6).foregroundColor(numberAndCocktailGroup.numberOfMissingIngredients == 0 ? .green : .black).padding(.top, 2)
+                            Text(numberAndCocktailGroup.numberOfMissingIngredients == 0 ? "good to go!" : "missing \(numberAndCocktailGroup.numberOfMissingIngredients) ingredients").fontWeight(.semibold).kerning(0.3).padding(.horizontal, 6).foregroundColor(numberAndCocktailGroup.numberOfMissingIngredients == 0 ? .green : .black).padding(.top, 2)
 //                            LazyVGrid(columns: columns) {
                                 ForEach(numberAndCocktailGroup.cocktailList) { cocktail in
                                     VStack(alignment: .center, spacing: 1) {
-                                        let missingIngredientsString = returnMissingIngredientsForCocktail(cocktail: cocktail, selectedIngredients: viewModel.selected).joined(separator: ", ")
+                                        let missingIngredients = returnMissingIngredientsForCocktail(cocktail: cocktail, selectedIngredients: viewModel.selected)
+                                        let missingIngredientsString = missingIngredients.joined(separator: ", ")
                                         ScrollView(.horizontal) {
                                             HStack {
                                                 Text(cocktail.name).font(.custom(.semiBold, size: 25))
@@ -77,7 +78,7 @@ struct IngredientSelectList: View {
                                         }
                                         .padding(.horizontal, 3)
                                         .foregroundColor(.black)
-                                        NavigationLink(destination: CocktailPage(cocktail: cocktail).environmentObject(viewModel)) {
+                                        NavigationLink(destination: CocktailPage(cocktail: cocktail, missingIngredients: missingIngredients).environmentObject(viewModel)) {
                                             CocktailCardWithImage(cocktail: cocktail)
                                         }
                                     }

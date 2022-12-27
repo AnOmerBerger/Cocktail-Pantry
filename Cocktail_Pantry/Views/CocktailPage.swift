@@ -13,12 +13,14 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
     @EnvironmentObject var viewModel: ViewModel
     var cocktail: Cocktail // loads from the previews page's click
     var youTubePlayer: YouTubePlayer
+    var missingIngredients: [String]
     @State var showHistory = false
     @State var fetchImageTimeLimitReached = false
     
-    init(cocktail: Cocktail) {
+    init(cocktail: Cocktail, missingIngredients: [String] = [String]()) {
         self.cocktail = cocktail
         self.youTubePlayer = YouTubePlayer(stringLiteral: "https://www.youtube.com/embed/\(cocktail.videoID)")
+        self.missingIngredients = missingIngredients
     }
 
     var body: some View {
@@ -43,6 +45,7 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                     // for each ingredient creates a line with its corresponding quantity, quantity type, and name
                     ForEach(0..<cocktail.ingQuantities.count, id: \.self) { index in
                         Text("\(cocktail.ingQuantities[index].turnDoubleToStringUnlessZero()) \(cocktail.ingTypes[index].rawValue) \(cocktail.ingNames[index])")
+                            .foregroundColor(missingIngredients.contains(cocktail.ingNames[index]) ? .red : .black)
                     }
                     Text("*  *  *  *  *  *  *")
                 }

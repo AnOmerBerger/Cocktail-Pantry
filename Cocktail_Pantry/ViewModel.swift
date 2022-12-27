@@ -52,11 +52,13 @@ class ViewModel: ObservableObject {
     func getCocktails(fromVersion: Double) {
         if let response = URL(string: "https://cocktail-pantry-vapor-dataset.herokuapp.com/cocktailList") {
             do {
-                guard let cocktailData = try? Data(contentsOf: response) else { return }
+                guard let cocktailData = try? Data(contentsOf: response) else { print("failed guard") ; return}
                 if let decodedCocktails = try? JSONDecoder().decode([Cocktail].self, from: cocktailData) {
                     print("starting with server data")
                     self.model = Model(version: fromVersion, cocktails: decodedCocktails, numberOfCocktailPagesVisited: model.numberOfCocktailPagesVisited)
                     print("current version: \(self.model.version)")
+                } else {
+                    print("failed decoding") ; return
                 }
             }
         }

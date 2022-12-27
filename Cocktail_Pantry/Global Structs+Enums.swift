@@ -74,11 +74,11 @@ enum Method: String, Codable {
 }
 
 enum QuantityType: String, Codable {
-    case oz = "oz", dash = "dash", none = "", cube = "cube", top = "top with"
+    case oz = "oz", dash = "dash", none = "", cube = "cube", top = "top with", splash = "splash", slices = "slices", leaves = "leaves", tsp = "tsp", tbsp = "tbsp", barspoon = "barspoon", wedge = "wedge", float = "float", drops = "drops"
 }
 
 enum GlassType: String, Codable {
-    case rocks = "rocks glass", martini = "martini glass", coupe = "coupe", copper = "copper cup", highball = "highball", beer = "beer glass"
+    case rocks = "rocks glass", martini = "martini glass", coupe = "coupe", copper = "copper cup", highball = "highball", beer = "beer glass", wine = "wine", nickNora = "nick & nora", hurricane = "hurricane", flute = "champagne flute", tiki = "tiki mug", irishMug = "irish coffee mug"
 }
 
 enum IceType: String, Codable {
@@ -90,7 +90,7 @@ enum BoozeLevel: String, Codable {
 }
 
 enum FlavorProfile: String, Codable {
-    case fruity = "fruity", light = "light", strong = "strong", refreshing = "refreshing", boozy = "boozy", aromatic = "aromatic", citrusy = "citrusy", dry = "dry", sparkling = "sparkling", sweet = "sweet", sour = "sour", bitter = "bitter", creamy = "creamy"
+    case fruity = "fruity", light = "light", strong = "strong", refreshing = "refreshing", boozy = "boozy", aromatic = "aromatic", citrusy = "citrusy", dry = "dry", sparkling = "sparkling", sweet = "sweet", sour = "sour", bitter = "bitter", creamy = "creamy", botanical = "botanical", gingery = "gingery", herbaceous = "herbaceous", herbal = "herbal", spicy = "spicy", savory = "savory", bright = "bright", tropical = "tropical", floral = "floral", coffee = "coffee", smoky = "smoky", earthy = "earthy"
 }
 
 enum DifficultyLevel: String, Codable {
@@ -106,11 +106,6 @@ struct CodableColor: Codable {
     var red: CGFloat
     var green: CGFloat
     var blue: CGFloat
-//    var alpha: CGFloat?
-
-//    var cgColor: CGColor {
-//        return CGColor(red: red, green: green, blue: blue, alpha: alpha ?? 1)
-//    }
 }
 
 
