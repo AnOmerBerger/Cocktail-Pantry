@@ -75,6 +75,7 @@ struct ContentView: View {
                     showTipView = true
                 }
             }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
