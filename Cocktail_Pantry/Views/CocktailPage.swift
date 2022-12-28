@@ -21,7 +21,7 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
     
     init(cocktail: Cocktail, missingIngredients: [String] = [String]()) {
         self.cocktail = cocktail
-        self.youTubePlayer = YouTubePlayer(stringLiteral: "https://www.youtube.com/embed/\(cocktail.videoID)")
+        self.youTubePlayer = YouTubePlayer(stringLiteral: "https://www.youtube.com/watch?v=\(cocktail.videoID)")
         self.missingIngredients = missingIngredients
     }
 
@@ -36,11 +36,8 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                        maxHeight: UIDevice.current.userInterfaceIdiom == .pad ? 400 : 300)
                 
                 VStack(spacing: 5) { // view for the ingredients
-                    HStack {
-                        ForEach(cocktail.flavorProfile, id: \.self) { flavor in
-                            FlavorProfileView(text: flavor.rawValue).font(.caption)
-                        }
-                    }
+                    FlavorsForCocktailPage
+                    
                     Text("*  *  *  *  *  *  *")
                     // for each ingredient creates a line with its corresponding quantity, quantity type, and name
                     ForEach(0..<cocktail.ingQuantities.count, id: \.self) { index in
@@ -70,8 +67,8 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                                 ProgressView()
                             case .ready:
                                 EmptyView()
-                            case .error(_):
-                                Text(verbatim: "YouTube player couldn't be loaded")
+                            case .error(let error):
+                                Text(error.localizedDescription)
                             }
                         }
                 .frame(height: UIDevice.current.userInterfaceIdiom == .pad ? UIScreen.main.bounds.height * 0.4 : UIScreen.main.bounds.height * 0.3)
@@ -80,11 +77,12 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                     RoundedRectangle(cornerRadius: 25).stroke()
                     Text("skip to tutorial").padding(8)
                 }
-                .onTapGesture { youTubePlayer.seek(to: Double(cocktail.tutorialStartTime), allowSeekAhead: true) }
-                .frame(maxWidth: 150)
+                .onTapGesture {
+                    youTubePlayer.seek(to: Double(cocktail.tutorialStartTime), allowSeekAhead: true)
+                } .frame(maxWidth: 150)
                 
                 Divider()
-                HistorySection
+//                HistorySection
             }
             .padding()
             .onAppear {
@@ -106,6 +104,33 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
             }
         }
         return false
+    }
+}
+
+// MARK: - view extensions
+
+extension CocktailPage {
+    var FlavorsForCocktailPage: some View {
+        let flavorCount = cocktail.flavorProfile.count
+        var halfwayPoint: Int {
+            if flavorCount > 4 {
+                return Int(ceil(Double(flavorCount/2)))
+            } else {
+                return flavorCount
+            }
+        }
+        return VStack {
+            HStack {
+                ForEach(0..<halfwayPoint, id: \.self) { index in
+                    FlavorProfileView(text: cocktail.flavorProfile[index].rawValue).font(.caption)
+                }
+            }
+            HStack {
+                ForEach(halfwayPoint..<flavorCount, id: \.self) { index in
+                    FlavorProfileView(text: cocktail.flavorProfile[index].rawValue).font(.caption)
+                }
+            }
+        }
     }
 }
 

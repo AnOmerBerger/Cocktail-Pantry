@@ -17,6 +17,24 @@ extension Array where Element: Identifiable {
         }
         return nil
     }
+    
+    func firstIndexByIngName(matching: Element) -> Int? where Element == Ingredient {
+        for index in 0..<self.count {
+            if self[index].name == matching.name {
+                return index
+            }
+        }
+        return nil
+    }
+    
+    func firstIndexByCockName(matching: Element) -> Int? where Element == Cocktail {
+        for index in 0..<self.count {
+            if self[index].name == matching.name {
+                return index
+            }
+        }
+        return nil
+    }
 }
 
 

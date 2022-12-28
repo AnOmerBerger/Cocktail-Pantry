@@ -60,7 +60,7 @@ struct Model: Codable {
         self.cocktailsFilteredThroughSelectedIngredients = [NumOfMissingIngredientsAndAssociatedCocktailList]()
         cocktailsFilteredThroughSelectedIngredients = filterCocktailsWithListOfIngredients(withList: allSelectedIngredients)
     }
-    init(version: Double, cocktails: [Cocktail], numberOfCocktailPagesVisited: Int) { // initializer for when you do a version update
+    init(version: Double, cocktails: [Cocktail], previouslySelectedIngredients: [Ingredient], numberOfCocktailPagesVisited: Int, previouslySavedCocktails: [Cocktail]) { // initializer for when you do a version update
         self.version = version
         self.allCocktails = cocktails
         self.allIngredients = [Ingredient]()
@@ -70,6 +70,10 @@ struct Model: Codable {
         self.savedCocktails = [Cocktail]()
         self.randomCocktail = allCocktails[Int.random(in: 0..<allCocktails.count)]
         buildAllIngredients()
+        //updating
+        allSelectedIngredients = updateSelectedIngredientsForNewVersion(oldSelected: previouslySelectedIngredients)
+        savedCocktails = updateSavedCocktailsForNewVersion(oldSaved: previouslySavedCocktails)
+        cocktailsFilteredThroughSelectedIngredients = filterCocktailsWithListOfIngredients(withList: allSelectedIngredients)
     }
     
     //MARK: - mutating functions
@@ -150,6 +154,27 @@ struct Model: Codable {
         }
     }
     
+    
+    mutating func updateSelectedIngredientsForNewVersion(oldSelected: [Ingredient]) -> [Ingredient] {
+        var newSelected = [Ingredient]()
+        for ing1 in oldSelected {
+            if let index1 = allIngredients.firstIndexByIngName(matching: ing1) {
+                allIngredients[index1].isSelected = true
+                newSelected.append(allIngredients[index1])
+            }
+        }
+        return newSelected
+    }
+    
+    mutating func updateSavedCocktailsForNewVersion(oldSaved: [Cocktail]) -> [Cocktail] {
+        var newSaved = [Cocktail]()
+        for cock1 in oldSaved {
+            if let index1 = allCocktails.firstIndexByCockName(matching: cock1) {
+                newSaved.append(allCocktails[index1])
+            }
+        }
+        return newSaved
+    }
 // MARK: - additionaly structs
     
     struct NumOfMissingIngredientsAndAssociatedCocktailList: Codable {

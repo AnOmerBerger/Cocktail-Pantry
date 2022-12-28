@@ -55,8 +55,22 @@ class ViewModel: ObservableObject {
                 guard let cocktailData = try? Data(contentsOf: response) else { print("failed guard") ; return}
                 if let decodedCocktails = try? JSONDecoder().decode([Cocktail].self, from: cocktailData) {
                     print("starting with server data")
-                    self.model = Model(version: fromVersion, cocktails: decodedCocktails, numberOfCocktailPagesVisited: model.numberOfCocktailPagesVisited)
+                    //relaunching model
+                    self.model = Model(version: fromVersion, cocktails: decodedCocktails, previouslySelectedIngredients: self.selected, numberOfCocktailPagesVisited: self.numberOfCocktailPagesVisited, previouslySavedCocktails: self.savedCocktails)
                     print("current version: \(self.model.version)")
+                    
+                    autoSave = $model.sink { _ in // redoing autosave to ensure immediate save
+                        print("selected ingredients:")
+                        try? Disk.save(self.model, to: .caches, as: "model.json")
+                        print("from viewModel")
+                        for ing in self.model.allSelectedIngredients {
+                            print(ing.name)
+                        }
+            //            print("saved version: \(self.model.version)")
+                        print("---------")
+                        
+                    }
+                    
                 } else {
                     print("failed decoding") ; return
                 }

@@ -48,13 +48,13 @@ struct ContentView: View {
                         Text("Store")
                     }.tag(3)
                 }
-                .alert("Update Available", isPresented: $viewModel.showAlert,
+                .alert("More Cocktails!", isPresented: $viewModel.showAlert,
                        actions: {
                     Button(action: { viewModel.showAlert = false }, label: { Text("No") })
                     Button(action: {
                         viewModel.getCocktails(fromVersion: viewModel.newVersionAvailable!)
                     }, label: { Text("Yes").bold() })
-                }, message: { Text("an updated cocktail list is available. Warning: you will need to re-select your ingredients." ) })
+                }, message: { Text("an updated cocktail list is available. Warning: some selected ingredients and saved cocktails may be lost." ) })
                 
                 
                 DoubleSidedCoin(showTipView: $showTipView).environmentObject(viewModel)
