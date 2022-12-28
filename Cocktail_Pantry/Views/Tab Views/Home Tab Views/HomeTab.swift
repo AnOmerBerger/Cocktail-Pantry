@@ -13,11 +13,12 @@ struct HomeTab: View {
     @Binding var ingredientSearchText: String
     @Binding var cocktaileSearchText: String
     @Binding var pantryFilter: Bool
+    @State var showIngredientsList: Bool = true
     
     var body: some View {
         VStack {
             if pantryFilter {
-                IngredientSelectList(searchText: $ingredientSearchText).environmentObject(viewModel)
+                IngredientSelectList(searchText: $ingredientSearchText, showIngredientsList: $showIngredientsList).environmentObject(viewModel)
             } else {
                 SimpleSearchPage(searchText: $cocktaileSearchText).environmentObject(viewModel)
             }

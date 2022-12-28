@@ -42,6 +42,7 @@
 		5DBEFB5A283DAF0A0006C326 /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5DBEFB59283DAF0A0006C326 /* YouTubePlayerKit */; };
 		5DD504392845634B0095CEE1 /* SimpleSearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD504382845634B0095CEE1 /* SimpleSearchPage.swift */; };
 		5DD5043B284567610095CEE1 /* ChangeableFilteringList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5043A284567610095CEE1 /* ChangeableFilteringList.swift */; };
+		5DE4DD45295CB083007F9C70 /* AllIngredientsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE4DD44295CB083007F9C70 /* AllIngredientsPage.swift */; };
 		5DED7CEF2922B5C400112DA5 /* TipViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED7CEE2922B5C400112DA5 /* TipViewV2.swift */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +101,7 @@
 		5DBEFB56283DAE170006C326 /* CocktailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailPage.swift; sourceTree = "<group>"; };
 		5DD504382845634B0095CEE1 /* SimpleSearchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleSearchPage.swift; sourceTree = "<group>"; };
 		5DD5043A284567610095CEE1 /* ChangeableFilteringList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeableFilteringList.swift; sourceTree = "<group>"; };
+		5DE4DD44295CB083007F9C70 /* AllIngredientsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllIngredientsPage.swift; sourceTree = "<group>"; };
 		5DED7CEE2922B5C400112DA5 /* TipViewV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipViewV2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -247,6 +249,7 @@
 				5D34F943293FA30F00F669E4 /* HomeTab.swift */,
 				5D0F9E9E2836BFB900B99F98 /* IngredientSelectList.swift */,
 				5DD504382845634B0095CEE1 /* SimpleSearchPage.swift */,
+				5DE4DD44295CB083007F9C70 /* AllIngredientsPage.swift */,
 			);
 			path = "Home Tab Views";
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D0F9E6F28344FC400B99F98 /* ContentView.swift in Sources */,
+				5DE4DD45295CB083007F9C70 /* AllIngredientsPage.swift in Sources */,
 				5D9C4E9E284F113900241202 /* TipView.swift in Sources */,
 				5DBEFB55283DAD4B0006C326 /* CocktailCard.swift in Sources */,
 				5D34F93E2938327F00F669E4 /* ExploreTab.swift in Sources */,

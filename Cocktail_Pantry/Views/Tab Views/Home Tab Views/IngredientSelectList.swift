@@ -10,6 +10,8 @@ import SwiftUI
 struct IngredientSelectList: View {
     @EnvironmentObject var viewModel: ViewModel
     @Binding var searchText: String
+    @Binding var showIngredientsList: Bool
+    @State var searchTextForAllIngredients: String = ""
 //    @Binding var videoIDforVideoPlayer: String
 //    @Binding var showVideoPlayerOverlay: Bool
 
@@ -20,17 +22,20 @@ struct IngredientSelectList: View {
 
         VStack {
             bigTextField(title: "filter ingredients", text: $searchText).padding(.horizontal).padding(.vertical, 3)
-            ScrollView(.horizontal) {
-                LazyHGrid(rows: rows, spacing: 5) {
-                    ForEach((viewModel.ingredients).filter({ "\($0.name)".contains(searchText.lowercased()) || searchText.isEmpty }).sorted(by: <)) { ingredient in
-                        ClickForIngredient(ingredient: ingredient)
-                            .onTapGesture { viewModel.select(ingredient: ingredient) }
+            if showIngredientsList {
+                ScrollView(.horizontal) {
+                    LazyHGrid(rows: rows, spacing: 5) {
+                        ForEach((viewModel.ingredients).filter({ "\($0.name)".contains(searchText.lowercased()) || searchText.isEmpty }).sorted(by: <)) { ingredient in
+                            ClickForIngredient(ingredient: ingredient)
+                                .onTapGesture { viewModel.select(ingredient: ingredient) }
+                        }
                     }
+                    .padding(.top)
+                    .padding(.horizontal, 5)
+                    .frame(maxHeight: 120)
                 }
-                .padding(.vertical)
-                .padding(.horizontal, 5)
-                .frame(maxHeight: 120)
             }
+            ShowIngredientsListTexts
             Divider()
             HStack {
                 Image(systemName: "checkmark.square.fill")
@@ -161,5 +166,21 @@ struct bigTextField: View {
             }
         }
         .frame(maxHeight: 50)
+    }
+}
+
+extension IngredientSelectList {
+    var ShowIngredientsListTexts: some View {
+        HStack {
+            Button(action: { showIngredientsList = true } ) { Text("show").foregroundColor(showIngredientsList ? .gray.opacity(0.6) : .blue) }
+            Button(action: { showIngredientsList = false } ) { Text("hide").foregroundColor(showIngredientsList ? .blue : .gray.opacity(0.6)) }
+            Spacer()
+            NavigationLink(destination: AllIngredientsPage(searchText: $searchTextForAllIngredients).environmentObject(viewModel)) {
+                Text("view all").foregroundColor(.blue)
+            }
+        }
+        .font(.caption)
+        .padding(.vertical, 3)
+        .padding(.horizontal, 5)
     }
 }
