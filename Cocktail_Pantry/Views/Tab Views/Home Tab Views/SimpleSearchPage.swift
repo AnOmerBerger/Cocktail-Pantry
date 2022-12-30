@@ -18,7 +18,10 @@ struct SimpleSearchPage: View {
             bigTextField(title: "filter cocktails", text: $searchText).padding(.horizontal).padding(.vertical, 3)
             ScrollView(.vertical) {
                 LazyVStack(spacing: 16) {
-                    ForEach((viewModel.cocktails).filter({ "\($0.name)".lowercased().contains(searchText.lowercased()) || "\($0.ingNames)".contains(searchText.lowercased()) || searchText.isEmpty }).sorted(by: <)) { cocktail in
+                    ForEach((viewModel.cocktails).filter({
+                        "\($0.name)".lowercased().contains(searchText.lowercased()) || "\($0.ingNames)".contains(searchText.lowercased()) || "\($0.flavorProfile.stringArray)".contains(searchText.lowercased()) ||
+                        "\($0.difficultyLevel.rawValue)".contains(searchText.lowercased()) ||
+                        searchText.isEmpty }).sorted(by: <)) { cocktail in
                         VStack(alignment: .leading, spacing: 3) {
                             Text(cocktail.name).font(.custom(.semiBold, size: 25)).foregroundColor(.black).padding(.horizontal, 3)
                             NavigationLink(destination: CocktailPage(cocktail: cocktail).environmentObject(viewModel)) {

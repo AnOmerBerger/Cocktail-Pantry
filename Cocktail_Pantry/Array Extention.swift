@@ -37,6 +37,15 @@ extension Array where Element: Identifiable {
     }
 }
 
+extension Array where Element == FlavorProfile {
+    var stringArray: [String] {
+        var tempArray = [String]()
+        for flavor in self {
+            tempArray.append(flavor.rawValue)
+        }
+        return tempArray
+    }
+}
 
 extension RandomAccessCollection where Element == [Int: [Cocktail]] {
     
