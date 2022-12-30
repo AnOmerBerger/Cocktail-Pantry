@@ -212,8 +212,8 @@
 		5DBEFB5B283DAF260006C326 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5DE4DD3F295B8FEA007F9C70 /* Cocktail Cards */,
 				5DE4DD40295B9017007F9C70 /* Tab Views */,
+				5DE4DD3F295B8FEA007F9C70 /* Cocktail Cards */,
 				5DE4DD42295B90CE007F9C70 /* Images */,
 				5DE4DD43295B90E2007F9C70 /* Old or Unused */,
 				5DBEFB56283DAE170006C326 /* CocktailPage.swift */,

@@ -34,6 +34,7 @@ struct IngredientSelectList: View {
                     .padding(.horizontal, 5)
                     .frame(maxHeight: 120)
                 }
+                .layoutPriority(1)
             }
             ShowIngredientsListTexts
             Divider()
@@ -97,6 +98,7 @@ struct IngredientSelectList: View {
                 }
             }
         }
+//        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 
