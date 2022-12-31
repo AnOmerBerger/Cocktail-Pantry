@@ -22,7 +22,7 @@ struct SimpleSearchPage: View {
                         "\($0.name)".lowercased().contains(searchText.lowercased()) || "\($0.ingNames)".contains(searchText.lowercased()) || "\($0.flavorProfile.stringArray)".contains(searchText.lowercased()) ||
                         "\($0.difficultyLevel.rawValue)".contains(searchText.lowercased()) ||
                         searchText.isEmpty }).sorted(by: <)) { cocktail in
-                        VStack(alignment: .leading, spacing: 3) {
+                        VStack(alignment: .leading, spacing: 0) {
                             Text(cocktail.name).font(.custom(.semiBold, size: 25)).foregroundColor(.black).padding(.horizontal, 3)
                             NavigationLink(destination: CocktailPage(cocktail: cocktail).environmentObject(viewModel)) {
                                 CocktailCardWithImage(cocktail: cocktail)

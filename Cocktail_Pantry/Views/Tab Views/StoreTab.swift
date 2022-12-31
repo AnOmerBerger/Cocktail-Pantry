@@ -19,7 +19,7 @@ struct StoreTab: View {
             Text("Visit The Educated Barfly Amazon store!")
             Link(destination: URL(string: "https://www.amazon.com/shop/theeducatedbarfly?listId=2CM22Z2HJBY14&ref=exp_theeducatedbarfly_vl_vv_d")!) {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 25).opacity(0.6)
+                    RoundedRectangle(cornerRadius: 25, style: .continuous).opacity(0.6)
                     Image(systemName: "cart")
                         .font(.largeTitle)
                         .foregroundColor(.white)

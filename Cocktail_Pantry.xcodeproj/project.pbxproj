@@ -236,8 +236,8 @@
 			isa = PBXGroup;
 			children = (
 				5DE4DD41295B9030007F9C70 /* Home Tab Views */,
-				5D34F93D2938327F00F669E4 /* ExploreTab.swift */,
 				5D34F93B29370A8500F669E4 /* SavedTab.swift */,
+				5D34F93D2938327F00F669E4 /* ExploreTab.swift */,
 				5D34F9392936FB9700F669E4 /* StoreTab.swift */,
 			);
 			path = "Tab Views";

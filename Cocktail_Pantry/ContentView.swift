@@ -30,7 +30,7 @@ struct ContentView: View {
                             Image(systemName: "house.fill")
                             Text("Home")
                         }.tag(0)
-                    SavedTab().environmentObject(viewModel)
+                    SavedTab(mainViewSelection: $mainViewSelection, pantryFilter: $pantryFilter).environmentObject(viewModel)
                         .tabItem {
                             Image(systemName: "star")
                             Text("Favorites")
