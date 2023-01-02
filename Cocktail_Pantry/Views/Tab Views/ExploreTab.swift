@@ -37,13 +37,6 @@ struct ExploreTab: View {
     }
 }
 
-//struct ExploreTab_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ExploreTab()
-//    }
-//}
-
-
 struct ExploreCardHorizontalContainer: View {
     @EnvironmentObject var viewModel: ViewModel
     var title: String
@@ -137,3 +130,10 @@ struct FilteredCocktailList: View {
         .navigationBarBackButtonHidden(true)
     }
 }
+
+
+//struct ExploreTab_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ExploreTab()
+//    }
+//}

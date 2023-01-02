@@ -12,8 +12,6 @@ struct SimpleSearchPage: View {
     @Binding var searchText: String
     
     var body: some View {
-//        let columns: [GridItem] =
-//                Array(repeating: .init(.flexible()), count: 2)
         VStack(spacing: 30) {
             ScrollView(.vertical) {
                 LazyVStack(spacing: 16) {

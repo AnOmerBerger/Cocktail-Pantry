@@ -34,6 +34,7 @@
 		5D34F94F2942812E00F669E4 /* Teko-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D34F94A2942812E00F669E4 /* Teko-Regular.ttf */; };
 		5D34F9522942AFFF00F669E4 /* Font add-ons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34F9512942AFFF00F669E4 /* Font add-ons.swift */; };
 		5D37448D2963874A00C8EB99 /* In-App_Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37448C2963874A00C8EB99 /* In-App_Data.swift */; };
+		5D37448F2963A19C00C8EB99 /* BackSwipe_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37448E2963A19C00C8EB99 /* BackSwipe_Extension.swift */; };
 		5D71CAD1292FF0E900C88B81 /* TestTips.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 5D71CAD0292FF0E900C88B81 /* TestTips.storekit */; };
 		5D984F9929352BE300FF3A5F /* ActualLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */; };
 		5D9C4E9C284EB58C00241202 /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 5D9C4E9B284EB58C00241202 /* Disk */; };
@@ -96,6 +97,7 @@
 		5D34F9502942879000F669E4 /* Cocktail-Pantry-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Cocktail-Pantry-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5D34F9512942AFFF00F669E4 /* Font add-ons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font add-ons.swift"; sourceTree = "<group>"; };
 		5D37448C2963874A00C8EB99 /* In-App_Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "In-App_Data.swift"; sourceTree = "<group>"; };
+		5D37448E2963A19C00C8EB99 /* BackSwipe_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackSwipe_Extension.swift; sourceTree = "<group>"; };
 		5D71CAD0292FF0E900C88B81 /* TestTips.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestTips.storekit; sourceTree = "<group>"; };
 		5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ActualLaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D9C4E9D284F113900241202 /* TipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipView.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			children = (
 				5D0F9E9628344FF500B99F98 /* Global Structs+Enums.swift */,
 				5D0F9E9A2836B5D800B99F98 /* Array Extentions.swift */,
+				5D37448E2963A19C00C8EB99 /* BackSwipe_Extension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				5D34F93C29370A8500F669E4 /* SavedTab.swift in Sources */,
 				5D34F93A2936FB9700F669E4 /* StoreTab.swift in Sources */,
 				5D0F9E9F2836BFB900B99F98 /* IngredientSelectList.swift in Sources */,
+				5D37448F2963A19C00C8EB99 /* BackSwipe_Extension.swift in Sources */,
 				5D06EB68290EE73300FAA456 /* VideoPlayerOverlay.swift in Sources */,
 				5D34F942293D001700F669E4 /* CustomAsyncImage.swift in Sources */,
 				5D0F9E99283486F400B99F98 /* Model.swift in Sources */,

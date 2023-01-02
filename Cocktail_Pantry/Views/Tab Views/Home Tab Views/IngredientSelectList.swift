@@ -12,8 +12,6 @@ struct IngredientSelectList: View {
     @Binding var searchText: String
     @Binding var showIngredientsList: Bool
     @State var searchTextForAllIngredients: String = ""
-//    @Binding var videoIDforVideoPlayer: String
-//    @Binding var showVideoPlayerOverlay: Bool
 
     var body: some View {
         // rows setting for horizontal ingredient display

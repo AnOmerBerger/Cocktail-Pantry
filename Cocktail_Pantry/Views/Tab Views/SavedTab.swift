@@ -27,8 +27,6 @@ struct SavedTab: View {
                                         Spacer()
                                         Button(action: { viewModel.saveOrRemoveCocktail(cocktail: cocktail) }) {
                                             Image(systemName: "star.slash")
-//                                            Text("remove").font(.caption2).foregroundColor(.black).padding(.horizontal, 7).padding(.vertical, 5)
-//                                                .background(Color.red.opacity(0.6), in: RoundedRectangle(cornerRadius: 25, style: .continuous))
                                         }
                                         .foregroundColor(.red.opacity(0.6))
                                         .padding(.trailing, 15)

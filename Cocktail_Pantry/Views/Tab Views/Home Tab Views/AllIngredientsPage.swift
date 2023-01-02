@@ -16,7 +16,6 @@ struct AllIngredientsPage: View {
         let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
         
         VStack {
-//            Text("ALL INGREDIENTS").font(.largeTitle).bold()
             ScrollView(.vertical) {
                 VStack {
                     bigTextField(title: "filter ingredients", text: $searchText).padding(.horizontal).padding(.vertical, 5)
