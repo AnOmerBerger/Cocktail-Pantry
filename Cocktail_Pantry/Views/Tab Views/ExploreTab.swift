@@ -13,14 +13,15 @@ struct ExploreTab: View {
     
     var body: some View {
         VStack {
-            Text("Try one of our favorites!").foregroundColor(.black).fontWeight(.heavy)
-            NavigationLink(destination: CocktailPage(cocktail: viewModel.randomCocktail).environmentObject(viewModel)) {
-                PhotoOnlyCard(cocktail: viewModel.randomCocktail).environmentObject(viewModel).padding(.vertical, 5)
-            }
-            Divider()
-            Divider()
             ScrollView(.vertical) {
                 VStack(alignment: .center) {
+                    Text("Try one of our favorites!").foregroundColor(.black).fontWeight(.heavy)
+                    NavigationLink(destination: CocktailPage(cocktail: viewModel.randomCocktail).environmentObject(viewModel)) {
+                        PhotoOnlyCard(cocktail: viewModel.randomCocktail).environmentObject(viewModel).padding(.vertical, 5)
+                    }
+                    Divider()
+                    Divider()
+                    
                     ExploreCardHorizontalContainer(title: "Method", selectionAndAssociatedImage:
                                                     [("stirred", "stirred_drink_small"), ("shaken", "shaken_drink_small"), ("built", "built_drink_small")]).environmentObject(viewModel)
                     ExploreCardHorizontalContainer(title: "Booze Level", selectionAndAssociatedImage:

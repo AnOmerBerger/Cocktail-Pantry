@@ -21,8 +21,8 @@ struct IngredientSelectList: View {
                 Array(repeating: .init(.flexible()), count: 2)
 
         VStack {
-            bigTextField(title: "filter ingredients", text: $searchText).padding(.horizontal).padding(.vertical, 3)
             if showIngredientsList {
+                bigTextField(title: "filter ingredients", text: $searchText).padding(.horizontal).padding(.top, 3)
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows, spacing: 5) {
                         ForEach((viewModel.ingredients).filter({ "\($0.name)".contains(searchText.lowercased()) || searchText.isEmpty }).sorted(by: <)) { ingredient in
@@ -30,7 +30,7 @@ struct IngredientSelectList: View {
                                 .onTapGesture { viewModel.select(ingredient: ingredient) }
                         }
                     }
-                    .padding(.top)
+                    .padding(.top, 5)
                     .padding(.horizontal, 5)
                     .frame(maxHeight: 120)
                 }
@@ -59,17 +59,18 @@ struct IngredientSelectList: View {
             .padding(.horizontal, 3)
             .frame(maxHeight: 50)
             
-            Divider()
+//            Divider()
             if viewModel.cocktailsFilteredThroughSelectedIngredients.isEmpty {
+                Divider()
                 Spacer()
                 Text("What ingredients do you have?").font(.custom(.regular, size: 40)).kerning(0.7).multilineTextAlignment(.center)
                 Spacer()
             } else {
                 ScrollView(.vertical) {
                     VStack(alignment: .leading) {
+                        Divider().id(1.1)
                         ForEach(viewModel.cocktailsFilteredThroughSelectedIngredients, id: \.numberOfMissingIngredients) { numberAndCocktailGroup in
                             Text(numberAndCocktailGroup.numberOfMissingIngredients == 0 ? "good to go!" : "missing \(numberAndCocktailGroup.numberOfMissingIngredients) ingredients").fontWeight(.semibold).kerning(0.3).padding(.horizontal, 6).foregroundColor(numberAndCocktailGroup.numberOfMissingIngredients == 0 ? .green : .black).padding(.top, 2)
-//                            LazyVGrid(columns: columns) {
                                 ForEach(numberAndCocktailGroup.cocktailList) { cocktail in
                                     VStack(alignment: .center, spacing: 1) {
                                         let missingIngredients = returnMissingIngredientsForCocktail(cocktail: cocktail, selectedIngredients: viewModel.selected)
@@ -91,7 +92,6 @@ struct IngredientSelectList: View {
                                     .padding(.horizontal, 3)
                                     .padding(.vertical, 5)
                                 }
-//                            }
                             Divider()
                         }
                     }

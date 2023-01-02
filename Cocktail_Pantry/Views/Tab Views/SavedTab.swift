@@ -17,13 +17,7 @@ struct SavedTab: View {
         VStack(spacing: 30) {
             if !viewModel.savedCocktails.isEmpty {
                 ScrollView(.vertical) {
-                    HStack {
-                        Image(systemName: "star").imageScale(.medium)
-                        Image(systemName: "star.leadinghalf.fill").imageScale(.medium).rotationEffect(Angle(degrees: 90))
-                        Text("YOUR COCKTAILS").font(.title).bold()
-                        Image(systemName: "star.leadinghalf.fill").imageScale(.medium).rotationEffect(Angle(degrees: 270))
-                        Image(systemName: "star.fill").imageScale(.medium)
-                    }
+                    Header.id(2.1)
                     LazyVStack(spacing: 16) {
                         ForEach(viewModel.savedCocktails) { cocktail in
                             NavigationLink(destination: CocktailPage(cocktail: cocktail).environmentObject(viewModel)) {
@@ -46,6 +40,7 @@ struct SavedTab: View {
                     }
                 }
             } else {
+                Header
                 Spacer()
                 Button(action: { mainViewSelection = 0 ; pantryFilter = false }) {
                     ZStack {
@@ -62,6 +57,18 @@ struct SavedTab: View {
                     .frame(width: 200, height: 80)
                 Spacer()
             }
+        }
+    }
+}
+
+extension SavedTab {
+    var Header: some View {
+        HStack {
+            Image(systemName: "star").imageScale(.medium)
+            Image(systemName: "star.leadinghalf.fill").imageScale(.medium).rotationEffect(Angle(degrees: 90))
+            Text("YOUR COCKTAILS").font(.title).bold()
+            Image(systemName: "star.leadinghalf.fill").imageScale(.medium).rotationEffect(Angle(degrees: 270))
+            Image(systemName: "star.fill").imageScale(.medium)
         }
     }
 }
