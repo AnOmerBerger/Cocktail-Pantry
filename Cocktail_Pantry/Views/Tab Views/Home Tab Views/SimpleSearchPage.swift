@@ -20,6 +20,7 @@ struct SimpleSearchPage: View {
                 LazyVStack(spacing: 16) {
                     ForEach((viewModel.cocktails).filter({
                         "\($0.name)".lowercased().contains(searchText.lowercased()) || "\($0.ingNames)".contains(searchText.lowercased()) || "\($0.flavorProfile.stringArray)".contains(searchText.lowercased()) ||
+                        "\($0.methods.stringArray)".contains(searchText.lowercased()) ||
                         "\($0.difficultyLevel.rawValue)".contains(searchText.lowercased()) ||
                         searchText.isEmpty }).sorted(by: <)) { cocktail in
                         VStack(alignment: .leading, spacing: 0) {

@@ -16,14 +16,11 @@ struct ContentView: View {
     @State var pantryFilter: Bool = true
     @State var showTipView: Bool = false
     
-//    @State var newVersionAvailable: Double? = nil
-    
     var mainViewSelections = ["ingredient", "custom"]
     
     var body: some View {
         NavigationView {
             ZStack {
-//                Text("Cocktail Pantry").font(Font.largeTitle)
                 TabView(selection: $mainViewSelection) {
                     HomeTab(searchMode: $searchMode, ingredientSearchText: $ingredientSearchText, cocktaileSearchText: $cocktaileSearchText, pantryFilter: $pantryFilter).environmentObject(viewModel)
                         .tabItem {
@@ -59,7 +56,6 @@ struct ContentView: View {
                 
                 DoubleSidedCoin(showTipView: $showTipView).environmentObject(viewModel)
             }
-//            .task { await checkForNewVersion(currentVersion: viewModel.version) }
             .navigationTitle("Cocktail Pantry").padding(.vertical, 3)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(leading:
@@ -79,38 +75,8 @@ struct ContentView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
-    
-    func printFonts() {
-        for familyName in UIFont.familyNames {
-            print("-------")
-            print("Font family name -> [\(familyName)]")
-            print("Font names ==> [\(UIFont.fontNames(forFamilyName: familyName))]")
-        }
-    }
-    
-//    func checkForNewVersion(currentVersion: Double) async {
-//        guard let response = URL(string: "http://127.0.0.1:8080/versionCheck") else {
-//            print("invalid url")
-//            return
-//        }
-//            do {
-//                let (serverData, _) = try await URLSession.shared.data(from: response)
-//                if let serverVersion = try? JSONDecoder().decode(CodedString.self, from: serverData) {
-//                    print("****** \(serverVersion) *******")
-//                    if currentVersion <  Double(serverVersion.string) ?? 0 {
-//                        self.newVersionAvailable = Double(serverVersion.string)!
-//                        showAlert = true
-//                    }
-//                } else {
-//                    print("*** Couldn't Decode ***")
-//                }
-//            } catch {
-//                print(error.localizedDescription)
-//            }
-//
-//    }
-    
 }
+
 
 
 //struct ContentView_Previews: PreviewProvider {

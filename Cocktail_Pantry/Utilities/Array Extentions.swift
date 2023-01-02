@@ -1,5 +1,5 @@
 //
-//  Array Extention.swift
+//  Array Extentions.swift
 //  Cocktail_Pantry
 //
 //  Created by Omer Berger on 5/19/22.
@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: firstIndex extensions
 extension Array where Element: Identifiable {
 
     func firstIndex(matching: Element) -> Int? {
@@ -37,16 +38,14 @@ extension Array where Element: Identifiable {
     }
 }
 
-extension Array where Element == FlavorProfile {
+
+//MARK: turning enum arrays into string arrays for filtering
+extension Array where Element: RawRepresentable, Element.RawValue == String {
     var stringArray: [String] {
         var tempArray = [String]()
-        for flavor in self {
-            tempArray.append(flavor.rawValue)
+        for element in self {
+            tempArray.append(element.rawValue)
         }
         return tempArray
     }
-}
-
-extension RandomAccessCollection where Element == [Int: [Cocktail]] {
-    
 }

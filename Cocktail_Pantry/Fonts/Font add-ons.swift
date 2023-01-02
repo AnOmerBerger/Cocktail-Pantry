@@ -20,3 +20,11 @@ extension Font {
         SwiftUI.Font.custom(font.rawValue, size: size)
     }
 }
+
+func printFonts() {
+    for familyName in UIFont.familyNames {
+        print("-------")
+        print("Font family name -> [\(familyName)]")
+        print("Font names ==> [\(UIFont.fontNames(forFamilyName: familyName))]")
+    }
+}
