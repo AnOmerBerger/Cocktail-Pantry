@@ -17,7 +17,6 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
     var cardColor: Color { Color(red: cocktail.backgroundColor.red/255, green: cocktail.backgroundColor.green/255, blue: cocktail.backgroundColor.blue/255) }
     @State var showHistory = false
     @State var fetchImageTimeLimitReached = false
-    @State var titlePosition: CGFloat = 100
     
     init(cocktail: Cocktail, missingIngredients: [String] = [String]()) {
         self.cocktail = cocktail
@@ -90,7 +89,11 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
 //                DispatchQueue.main.asyncAfter(deadline: .now() + 3) { fetchImageTimeLimitReached = true }
             }
         }
-        .navigationBarItems(leading: Image(systemName: "chevron.left").onTapGesture { self.presentationMode.wrappedValue.dismiss() }, trailing: Image(systemName: isCocktailSaved() ? "star.fill" : "star")
+        .navigationBarItems(
+            leading:
+                ChevronBackButton(presentationMode: presentationMode),
+            trailing:
+                Image(systemName: isCocktailSaved() ? "star.fill" : "star")
             .onTapGesture { viewModel.saveOrRemoveCocktail(cocktail: self.cocktail) })
 //        .navigationTitle(Text(cocktail.name)
 //        .navigationBarTitleDisplayMode(.inline)

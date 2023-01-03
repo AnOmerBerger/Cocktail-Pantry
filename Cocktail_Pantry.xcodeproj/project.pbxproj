@@ -35,6 +35,7 @@
 		5D34F9522942AFFF00F669E4 /* Font add-ons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34F9512942AFFF00F669E4 /* Font add-ons.swift */; };
 		5D37448D2963874A00C8EB99 /* In-App_Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37448C2963874A00C8EB99 /* In-App_Data.swift */; };
 		5D37448F2963A19C00C8EB99 /* BackSwipe_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37448E2963A19C00C8EB99 /* BackSwipe_Extension.swift */; };
+		5D3744922963F37100C8EB99 /* ChevronBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3744912963F37000C8EB99 /* ChevronBackButton.swift */; };
 		5D71CAD1292FF0E900C88B81 /* TestTips.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 5D71CAD0292FF0E900C88B81 /* TestTips.storekit */; };
 		5D984F9929352BE300FF3A5F /* ActualLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */; };
 		5D9C4E9C284EB58C00241202 /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 5D9C4E9B284EB58C00241202 /* Disk */; };
@@ -98,6 +99,7 @@
 		5D34F9512942AFFF00F669E4 /* Font add-ons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font add-ons.swift"; sourceTree = "<group>"; };
 		5D37448C2963874A00C8EB99 /* In-App_Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "In-App_Data.swift"; sourceTree = "<group>"; };
 		5D37448E2963A19C00C8EB99 /* BackSwipe_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackSwipe_Extension.swift; sourceTree = "<group>"; };
+		5D3744912963F37000C8EB99 /* ChevronBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronBackButton.swift; sourceTree = "<group>"; };
 		5D71CAD0292FF0E900C88B81 /* TestTips.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestTips.storekit; sourceTree = "<group>"; };
 		5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ActualLaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D9C4E9D284F113900241202 /* TipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipView.swift; sourceTree = "<group>"; };
@@ -231,12 +233,21 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		5D3744902963F32C00C8EB99 /* Assisting Views */ = {
+			isa = PBXGroup;
+			children = (
+				5D3744912963F37000C8EB99 /* ChevronBackButton.swift */,
+			);
+			path = "Assisting Views";
+			sourceTree = "<group>";
+		};
 		5DBEFB5B283DAF260006C326 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				5DE4DD40295B9017007F9C70 /* Tab Views */,
 				5DE4DD3F295B8FEA007F9C70 /* Cocktail Cards */,
 				5DE4DD42295B90CE007F9C70 /* Images */,
+				5D3744902963F32C00C8EB99 /* Assisting Views */,
 				5DE4DD43295B90E2007F9C70 /* Old or Unused */,
 				5DBEFB56283DAE170006C326 /* CocktailPage.swift */,
 				5DED7CEE2922B5C400112DA5 /* TipViewV2.swift */,
@@ -452,6 +463,7 @@
 				5D34F940293832F700F669E4 /* PhotoOnlyCard.swift in Sources */,
 				5D1E920629296ED300A04345 /* ImagePlaceholder.swift in Sources */,
 				5D34F93C29370A8500F669E4 /* SavedTab.swift in Sources */,
+				5D3744922963F37100C8EB99 /* ChevronBackButton.swift in Sources */,
 				5D34F93A2936FB9700F669E4 /* StoreTab.swift in Sources */,
 				5D0F9E9F2836BFB900B99F98 /* IngredientSelectList.swift in Sources */,
 				5D37448F2963A19C00C8EB99 /* BackSwipe_Extension.swift in Sources */,

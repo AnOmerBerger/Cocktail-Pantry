@@ -126,7 +126,7 @@ struct FilteredCocktailList: View {
                             Text(title + " - " + filteringSelection).font(.subheadline)
                         }
                     }
-                }        .navigationBarItems(leading: Image(systemName: "chevron.left").onTapGesture { self.presentationMode.wrappedValue.dismiss() })
+                }        .navigationBarItems(leading: ChevronBackButton(presentationMode: presentationMode))
         .navigationBarBackButtonHidden(true)
     }
 }
