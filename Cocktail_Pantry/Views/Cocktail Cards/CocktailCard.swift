@@ -245,6 +245,7 @@ struct FlavorProfileView: View {
             Text(text)
                 .italic()
                 .padding(.horizontal, 3)
+                .foregroundColor(.black)
         }
     }
 }

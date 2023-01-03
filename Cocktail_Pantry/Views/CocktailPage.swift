@@ -125,12 +125,16 @@ extension CocktailPage {
         return VStack {
             HStack {
                 ForEach(0..<halfwayPoint, id: \.self) { index in
-                    FlavorProfileView(text: cocktail.flavorProfile[index].rawValue).font(.caption)
+                    NavigationLink(destination: FilteredCocktailList(title: "Flavor Profile", filteringSelection: cocktail.flavorProfile[index].rawValue).environmentObject(viewModel)) {
+                        FlavorProfileView(text: cocktail.flavorProfile[index].rawValue).font(.caption)
+                    }
                 }
             }
             HStack {
                 ForEach(halfwayPoint..<flavorCount, id: \.self) { index in
-                    FlavorProfileView(text: cocktail.flavorProfile[index].rawValue).font(.caption)
+                    NavigationLink(destination: FilteredCocktailList(title: "Flavor Profile", filteringSelection: cocktail.flavorProfile[index].rawValue).environmentObject(viewModel)) {
+                        FlavorProfileView(text: cocktail.flavorProfile[index].rawValue).font(.caption)
+                    }
                 }
             }
         }
