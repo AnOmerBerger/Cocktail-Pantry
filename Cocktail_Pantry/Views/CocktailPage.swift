@@ -17,11 +17,13 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
     var cardColor: Color { Color(red: cocktail.backgroundColor.red/255, green: cocktail.backgroundColor.green/255, blue: cocktail.backgroundColor.blue/255) }
     @State var showHistory = false
     @State var fetchImageTimeLimitReached = false
+    @State var skiptoTutorialPressed: Bool = false
     
     init(cocktail: Cocktail, missingIngredients: [String] = [String]()) {
         self.cocktail = cocktail
         self.youTubePlayer = YouTubePlayer(stringLiteral: "https://www.youtube.com/watch?v=\(cocktail.videoID)")
         self.missingIngredients = missingIngredients
+        
     }
 
     var body: some View {
@@ -74,10 +76,11 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                 .cornerRadius(5)
                 ZStack {
                     RoundedRectangle(cornerRadius: 25).stroke()
-                    Text("skip to tutorial").padding(8)
+                    Text(skiptoTutorialPressed ? "start over" : "skip to tutorial").padding(8)
                 }
                 .onTapGesture {
                     youTubePlayer.seek(to: Double(cocktail.tutorialStartTime), allowSeekAhead: true)
+                    skiptoTutorialPressed = true
                 } .frame(maxWidth: 150)
                 
                 Divider()

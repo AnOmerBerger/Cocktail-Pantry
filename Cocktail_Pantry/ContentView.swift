@@ -18,7 +18,7 @@ struct ContentView: View {
     @State var showTipView: Bool = false
     
     var handler: Binding<Int> { Binding(
-        get: { self.mainViewSelection},
+        get: { self.mainViewSelection },
         set: {
             if $0 == self.mainViewSelection {
                 tappedTwice = true
