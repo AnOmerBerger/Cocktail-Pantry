@@ -16,6 +16,7 @@ struct ContentView: View {
     @State var searchMode: SearchMode = .ingredient
     @State var pantryFilter: Bool = true
     @State var showTipView: Bool = false
+    @State var showConfirmationPopup: Bool = false
     
     var handler: Binding<Int> { Binding(
         get: { self.mainViewSelection },
@@ -28,80 +29,84 @@ struct ContentView: View {
     )}
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                ScrollViewReader { proxy in
-                    TabView(selection: handler) {
-                        HomeTab(searchMode: $searchMode, ingredientSearchText: $ingredientSearchText, cocktaileSearchText: $cocktaileSearchText, pantryFilter: $pantryFilter).environmentObject(viewModel)
-                            .onChange(of: tappedTwice) { tapped in
-                                if tapped {
-                                    withAnimation {
-                                        proxy.scrollTo(pantryFilter ? 1.1 : 1.2)
+        ZStack {
+            NavigationView {
+                ZStack {
+                    ScrollViewReader { proxy in
+                        TabView(selection: handler) {
+                            HomeTab(searchMode: $searchMode, ingredientSearchText: $ingredientSearchText, cocktaileSearchText: $cocktaileSearchText, pantryFilter: $pantryFilter).environmentObject(viewModel)
+                                .onChange(of: tappedTwice) { tapped in
+                                    if tapped {
+                                        withAnimation {
+                                            proxy.scrollTo(pantryFilter ? 1.1 : 1.2)
+                                        }
+                                        tappedTwice = false
                                     }
-                                    tappedTwice = false
                                 }
+                                .tabItem {
+                                    Image(systemName: "house.fill")
+                                    Text("Home")
+                                }.tag(0)
+                            SavedTab(mainViewSelection: $mainViewSelection, pantryFilter: $pantryFilter).environmentObject(viewModel)
+                                .onChange(of: tappedTwice) { tapped in
+                                    if tapped {
+                                        withAnimation {
+                                            proxy.scrollTo(2.1)
+                                        }
+                                        tappedTwice = false
+                                    }
+                                }
+                                .tabItem {
+                                    Image(systemName: "star")
+                                    Text("Favorites")
+                                }.tag(1)
+                            ExploreTab().environmentObject(viewModel)
+                                .tabItem {
+                                    Image(systemName: "globe")
+                                    Text("Explore")
+                                }.tag(2)
+                            VStack {
+                                StoreTab().environmentObject(viewModel)
                             }
                             .tabItem {
-                                Image(systemName: "house.fill")
-                                Text("Home")
-                            }.tag(0)
-                        SavedTab(mainViewSelection: $mainViewSelection, pantryFilter: $pantryFilter).environmentObject(viewModel)
-                            .onChange(of: tappedTwice) { tapped in
-                                if tapped {
-                                    withAnimation {
-                                        proxy.scrollTo(2.1)
-                                    }
-                                    tappedTwice = false
-                                }
-                            }
-                            .tabItem {
-                                Image(systemName: "star")
-                                Text("Favorites")
-                            }.tag(1)
-                        ExploreTab().environmentObject(viewModel)
-                            .tabItem {
-                                Image(systemName: "globe")
-                                Text("Explore")
-                            }.tag(2)
-                        VStack {
-                            StoreTab().environmentObject(viewModel)
+                                Image(systemName: "bag")
+                                Text("Store")
+                            }.tag(3)
                         }
-                        .tabItem {
-                            Image(systemName: "bag")
-                            Text("Store")
-                        }.tag(3)
+                        .alert("More Cocktails!", isPresented: $viewModel.showAlert,
+                               actions: {
+                            Button(action: { viewModel.showAlert = false }, label: { Text("No") })
+                            Button(action: {
+                                viewModel.getCocktails(fromVersion: viewModel.newVersionAvailable!)
+                            }, label: { Text("Yes").bold() })
+                        }, message: { Text("an updated cocktail list is available. Warning: some selected ingredients and saved cocktails may be lost." ) })
+                        
                     }
-                    .alert("More Cocktails!", isPresented: $viewModel.showAlert,
-                           actions: {
-                        Button(action: { viewModel.showAlert = false }, label: { Text("No") })
-                        Button(action: {
-                            viewModel.getCocktails(fromVersion: viewModel.newVersionAvailable!)
-                        }, label: { Text("Yes").bold() })
-                    }, message: { Text("an updated cocktail list is available. Warning: some selected ingredients and saved cocktails may be lost." ) })
                     
+                    DoubleSidedCoin(showTipView: $showTipView).environmentObject(viewModel)
                 }
-                
-                DoubleSidedCoin(showTipView: $showTipView).environmentObject(viewModel)
-            }
-            .navigationTitle("Cocktail Pantry").padding(.vertical, 3)
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(leading:
-                                    Text(pantryFilter ? "pantry mode" : "simple search")
-                .font(.caption).fontWeight(.semibold).foregroundColor(pantryFilter ? .purple : .gray).opacity(mainViewSelection == 0 ? 1 : 0),
-                                trailing:
-                                    Toggle("", isOn: $pantryFilter)
-                .toggleStyle(SwitchToggleStyle(tint: .purple)).opacity(mainViewSelection == 0 ? 1 : 0))
-            .navigationBarHidden(mainViewSelection == 0 || mainViewSelection == 3 ? false : true)
-            .onAppear {
-//                printFonts()
-                UITabBar.appearance().backgroundColor = UIColor(.white.opacity(0.92))
-                if viewModel.numberOfCocktailPagesVisited % 9 == 0 && viewModel.numberOfCocktailPagesVisited != 0 && !viewModel.tipOptions.isEmpty {
-                    showTipView = true
+                .navigationTitle("Cocktail Pantry").padding(.vertical, 3)
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarItems(leading:
+                                        Text(pantryFilter ? "pantry mode" : "simple search")
+                    .font(.caption).fontWeight(.semibold).foregroundColor(pantryFilter ? .purple : .gray).opacity(mainViewSelection == 0 ? 1 : 0),
+                                    trailing:
+                                        Toggle("", isOn: $pantryFilter)
+                    .toggleStyle(SwitchToggleStyle(tint: .purple)).opacity(mainViewSelection == 0 ? 1 : 0))
+                .navigationBarHidden(mainViewSelection == 0 || mainViewSelection == 3 ? false : true)
+                .onAppear {
+    //                printFonts()
+                    UITabBar.appearance().backgroundColor = UIColor(.white.opacity(0.92))
+                    if viewModel.numberOfCocktailPagesVisited % 9 == 0 && viewModel.numberOfCocktailPagesVisited != 0 && !viewModel.tipOptions.isEmpty {
+                        showTipView = true
+                    }
                 }
+                .ignoresSafeArea(.keyboard, edges: .bottom)
             }
-            .ignoresSafeArea(.keyboard, edges: .bottom)
+            .navigationViewStyle(StackNavigationViewStyle())
+            
+            Confirmation_Popup(showPopup: $showConfirmationPopup).environmentObject(viewModel).frame(maxHeight: .infinity, alignment: .bottom)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
