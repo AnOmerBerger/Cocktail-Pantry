@@ -41,6 +41,8 @@
 		5D374499296534BB00C8EB99 /* ExploreCardHorizontalContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D374498296534BB00C8EB99 /* ExploreCardHorizontalContainer.swift */; };
 		5D37449B2965351E00C8EB99 /* ExploreCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37449A2965351E00C8EB99 /* ExploreCard.swift */; };
 		5D37449D296700EF00C8EB99 /* PhotoGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37449C296700EF00C8EB99 /* PhotoGallery.swift */; };
+		5D3744A32967A0C600C8EB99 /* CacheAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3744A22967A0C500C8EB99 /* CacheAsyncImage.swift */; };
+		5D3744A52967A91D00C8EB99 /* CustomCacheAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3744A42967A91D00C8EB99 /* CustomCacheAsyncImage.swift */; };
 		5D71CAD1292FF0E900C88B81 /* TestTips.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 5D71CAD0292FF0E900C88B81 /* TestTips.storekit */; };
 		5D984F9929352BE300FF3A5F /* ActualLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */; };
 		5D9C4E9C284EB58C00241202 /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 5D9C4E9B284EB58C00241202 /* Disk */; };
@@ -110,6 +112,8 @@
 		5D374498296534BB00C8EB99 /* ExploreCardHorizontalContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCardHorizontalContainer.swift; sourceTree = "<group>"; };
 		5D37449A2965351E00C8EB99 /* ExploreCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCard.swift; sourceTree = "<group>"; };
 		5D37449C296700EF00C8EB99 /* PhotoGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGallery.swift; sourceTree = "<group>"; };
+		5D3744A22967A0C500C8EB99 /* CacheAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheAsyncImage.swift; sourceTree = "<group>"; };
+		5D3744A42967A91D00C8EB99 /* CustomCacheAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCacheAsyncImage.swift; sourceTree = "<group>"; };
 		5D71CAD0292FF0E900C88B81 /* TestTips.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestTips.storekit; sourceTree = "<group>"; };
 		5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ActualLaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D9C4E9D284F113900241202 /* TipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipView.swift; sourceTree = "<group>"; };
@@ -321,7 +325,8 @@
 		5DE4DD42295B90CE007F9C70 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				5D34F941293D001700F669E4 /* CustomAsyncImage.swift */,
+				5D3744A42967A91D00C8EB99 /* CustomCacheAsyncImage.swift */,
+				5D3744A22967A0C500C8EB99 /* CacheAsyncImage.swift */,
 				5D1E920529296ED300A04345 /* ImagePlaceholder.swift */,
 			);
 			path = Images;
@@ -330,6 +335,7 @@
 		5DE4DD43295B90E2007F9C70 /* Old or Unused */ = {
 			isa = PBXGroup;
 			children = (
+				5D34F941293D001700F669E4 /* CustomAsyncImage.swift */,
 				5DD5043A284567610095CEE1 /* ChangeableFilteringList.swift */,
 				5D9C4E9D284F113900241202 /* TipView.swift */,
 				5D06EB67290EE73300FAA456 /* VideoPlayerOverlay.swift */,
@@ -487,10 +493,12 @@
 				5DE4DD45295CB083007F9C70 /* AllIngredientsPage.swift in Sources */,
 				5D3744962965338200C8EB99 /* FilteredCocktailList.swift in Sources */,
 				5D9C4E9E284F113900241202 /* TipView.swift in Sources */,
+				5D3744A32967A0C600C8EB99 /* CacheAsyncImage.swift in Sources */,
 				5DBEFB55283DAD4B0006C326 /* CocktailCard.swift in Sources */,
 				5D34F93E2938327F00F669E4 /* ExploreTab.swift in Sources */,
 				5DD504392845634B0095CEE1 /* SimpleSearchPage.swift in Sources */,
 				5D0F9E6D28344FC400B99F98 /* Cocktail_PantryApp.swift in Sources */,
+				5D3744A52967A91D00C8EB99 /* CustomCacheAsyncImage.swift in Sources */,
 				5D374494296505FE00C8EB99 /* Confirmation_Popup.swift in Sources */,
 				5D37449D296700EF00C8EB99 /* PhotoGallery.swift in Sources */,
 				5D0F9E9728344FF500B99F98 /* Global Structs+Enums.swift in Sources */,

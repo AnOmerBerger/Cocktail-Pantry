@@ -34,7 +34,7 @@ struct CocktailCardWithImage: View {
                 HStack {
                     ZStack {
                         Color.gray.opacity(0.2)
-                        CustomAsyncImage(urlString: cocktail.imageURL, withPlaceholder: true)
+                        CustomCacheAsyncImage(urlString: cocktail.imageURL, withPlaceholder: true)
                             .scaledToFill()
                     }
                     .frame(maxWidth: (UIScreen.main.bounds.size.width - 20) / 3.5, maxHeight: UIDevice.current.userInterfaceIdiom == .pad ? 170 : 100)

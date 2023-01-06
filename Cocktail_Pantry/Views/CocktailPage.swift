@@ -31,7 +31,7 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
             VStack (spacing: 20) {
                 Text(cocktail.name.uppercased()).font(.largeTitle).bold()
                     .multilineTextAlignment(.center) // Title
-                CustomAsyncImage(urlString: cocktail.imageURL, withPlaceholder: false)
+                CustomCacheAsyncImage(urlString: cocktail.imageURL, withPlaceholder: false)
                     .scaledToFit()
                     .frame(maxWidth: UIDevice.current.userInterfaceIdiom == .pad ? 400 : 300,
                        maxHeight: UIDevice.current.userInterfaceIdiom == .pad ? 400 : 300)
