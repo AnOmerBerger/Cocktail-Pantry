@@ -34,6 +34,7 @@ struct IngredientSelectList: View {
                 }
                 .layoutPriority(1)
             }
+            Divider().opacity(showIngredientsList ? 0 : 1)
             ShowIngredientsListTexts
             Divider()
             HStack {
@@ -65,10 +66,16 @@ struct IngredientSelectList: View {
                 Spacer()
             } else {
                 ScrollView(.vertical) {
-                    VStack(alignment: .leading) {
+                    LazyVStack(alignment: .leading) {
                         Divider().id(1.1)
                         ForEach(viewModel.cocktailsFilteredThroughSelectedIngredients, id: \.numberOfMissingIngredients) { numberAndCocktailGroup in
-                            Text(numberAndCocktailGroup.numberOfMissingIngredients == 0 ? "good to go!" : "missing \(numberAndCocktailGroup.numberOfMissingIngredients) ingredients").fontWeight(.semibold).kerning(0.3).padding(.horizontal, 6).foregroundColor(numberAndCocktailGroup.numberOfMissingIngredients == 0 ? .green : .black).padding(.top, 2)
+                            HStack(spacing: 4) {
+                                if numberAndCocktailGroup.numberOfMissingIngredients == 0 { Text("good to go!").foregroundColor(.green.opacity(0.75)).fontWeight(.semibold).kerning(0.3)
+                                } else {
+                                    Text("missing").foregroundColor(.black).fontWeight(.semibold).kerning(0.3)
+                                    Text("\(numberAndCocktailGroup.numberOfMissingIngredients) ingredients").foregroundColor(.red.opacity(0.75)).fontWeight(.semibold).kerning(0.3)
+                                }
+                            }.padding(.horizontal, 6).padding(.top, 2)
                                 ForEach(numberAndCocktailGroup.cocktailList) { cocktail in
                                     VStack(alignment: .center, spacing: 1) {
                                         let missingIngredients = returnMissingIngredientsForCocktail(cocktail: cocktail, selectedIngredients: viewModel.selected)
@@ -132,7 +139,7 @@ struct ClickForIngredient: View {
             .padding(.horizontal, 10)
             .padding(.vertical, 5)
         }
-        .padding(3)
+        .padding(.horizontal, 3)
     }
 }
 
@@ -172,15 +179,26 @@ struct bigTextField: View {
 extension IngredientSelectList {
     var ShowIngredientsListTexts: some View {
         HStack {
-            Button(action: { showIngredientsList = true } ) { Text("show").foregroundColor(showIngredientsList ? .gray.opacity(0.6) : .blue) }
-            Button(action: { showIngredientsList = false } ) { Text("hide").foregroundColor(showIngredientsList ? .blue : .gray.opacity(0.6)) }
+            Button(action: {
+                withAnimation(Animation.linear(duration: 0.15)) {
+                    showIngredientsList.toggle()
+                }
+            } ) {
+                HStack(spacing: 2) {
+                    Text(showIngredientsList ? "hide" : "show")
+                    Image(systemName: showIngredientsList ? "chevron.up" : "chevron.down")
+                }
+            }
             Spacer()
             NavigationLink(destination: AllIngredientsPage(searchText: $searchTextForAllIngredients).environmentObject(viewModel)) {
-                Text("view all").foregroundColor(.blue)
+                HStack(spacing: 4) {
+                    Text("view all").foregroundColor(.blue)
+                    Image(systemName: "chevron.right")
+                }
             }
         }
         .font(.caption)
-        .padding(.vertical, 3)
-        .padding(.horizontal, 5)
+        .padding(.vertical, 1)
+        .padding(.horizontal, 7)
     }
 }

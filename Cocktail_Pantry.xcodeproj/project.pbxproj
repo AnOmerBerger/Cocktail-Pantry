@@ -43,6 +43,7 @@
 		5D37449D296700EF00C8EB99 /* PhotoGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37449C296700EF00C8EB99 /* PhotoGallery.swift */; };
 		5D3744A32967A0C600C8EB99 /* CacheAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3744A22967A0C500C8EB99 /* CacheAsyncImage.swift */; };
 		5D3744A52967A91D00C8EB99 /* CustomCacheAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3744A42967A91D00C8EB99 /* CustomCacheAsyncImage.swift */; };
+		5D3744B1296A336C00C8EB99 /* CustomToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3744B0296A336C00C8EB99 /* CustomToggle.swift */; };
 		5D71CAD1292FF0E900C88B81 /* TestTips.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 5D71CAD0292FF0E900C88B81 /* TestTips.storekit */; };
 		5D984F9929352BE300FF3A5F /* ActualLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */; };
 		5D9C4E9C284EB58C00241202 /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 5D9C4E9B284EB58C00241202 /* Disk */; };
@@ -114,6 +115,7 @@
 		5D37449C296700EF00C8EB99 /* PhotoGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGallery.swift; sourceTree = "<group>"; };
 		5D3744A22967A0C500C8EB99 /* CacheAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheAsyncImage.swift; sourceTree = "<group>"; };
 		5D3744A42967A91D00C8EB99 /* CustomCacheAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCacheAsyncImage.swift; sourceTree = "<group>"; };
+		5D3744B0296A336C00C8EB99 /* CustomToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggle.swift; sourceTree = "<group>"; };
 		5D71CAD0292FF0E900C88B81 /* TestTips.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestTips.storekit; sourceTree = "<group>"; };
 		5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ActualLaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D9C4E9D284F113900241202 /* TipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipView.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				5D3744912963F37000C8EB99 /* ChevronBackButton.swift */,
+				5D3744B0296A336C00C8EB99 /* CustomToggle.swift */,
 				5D374493296505FE00C8EB99 /* Confirmation_Popup.swift */,
 				5D3744952965338200C8EB99 /* FilteredCocktailList.swift */,
 			);
@@ -494,6 +497,7 @@
 				5D3744962965338200C8EB99 /* FilteredCocktailList.swift in Sources */,
 				5D9C4E9E284F113900241202 /* TipView.swift in Sources */,
 				5D3744A32967A0C600C8EB99 /* CacheAsyncImage.swift in Sources */,
+				5D3744B1296A336C00C8EB99 /* CustomToggle.swift in Sources */,
 				5DBEFB55283DAD4B0006C326 /* CocktailCard.swift in Sources */,
 				5D34F93E2938327F00F669E4 /* ExploreTab.swift in Sources */,
 				5DD504392845634B0095CEE1 /* SimpleSearchPage.swift in Sources */,
