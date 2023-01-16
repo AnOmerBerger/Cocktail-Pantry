@@ -44,6 +44,11 @@
 		5D3744A32967A0C600C8EB99 /* CacheAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3744A22967A0C500C8EB99 /* CacheAsyncImage.swift */; };
 		5D3744A52967A91D00C8EB99 /* CustomCacheAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3744A42967A91D00C8EB99 /* CustomCacheAsyncImage.swift */; };
 		5D3744B1296A336C00C8EB99 /* CustomToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3744B0296A336C00C8EB99 /* CustomToggle.swift */; };
+		5D3744B3296CBA5000C8EB99 /* BigTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3744B2296CBA5000C8EB99 /* BigTextField.swift */; };
+		5D3744B5296CBA9B00C8EB99 /* ClickForIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3744B4296CBA9B00C8EB99 /* ClickForIngredient.swift */; };
+		5D3744B7296CBF1000C8EB99 /* GridCocktailCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3744B6296CBF1000C8EB99 /* GridCocktailCard.swift */; };
+		5D3744B9296CBF5500C8EB99 /* LargeCocktailCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3744B8296CBF5500C8EB99 /* LargeCocktailCard.swift */; };
+		5D3744BB296CC0AF00C8EB99 /* FlavorProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3744BA296CC0AF00C8EB99 /* FlavorProfileView.swift */; };
 		5D71CAD1292FF0E900C88B81 /* TestTips.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 5D71CAD0292FF0E900C88B81 /* TestTips.storekit */; };
 		5D984F9929352BE300FF3A5F /* ActualLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */; };
 		5D9C4E9C284EB58C00241202 /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 5D9C4E9B284EB58C00241202 /* Disk */; };
@@ -51,6 +56,9 @@
 		5DBEFB55283DAD4B0006C326 /* CocktailCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEFB54283DAD4B0006C326 /* CocktailCard.swift */; };
 		5DBEFB57283DAE170006C326 /* CocktailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEFB56283DAE170006C326 /* CocktailPage.swift */; };
 		5DBEFB5A283DAF0A0006C326 /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5DBEFB59283DAF0A0006C326 /* YouTubePlayerKit */; };
+		5DC8D2A12971C4FF00A6C522 /* JSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC8D2A02971C4FF00A6C522 /* JSONManager.swift */; };
+		5DC8D2A32971C51A00A6C522 /* cocktailJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DC8D2A22971C51A00A6C522 /* cocktailJSON.json */; };
+		5DC8D2A52975B9EC00A6C522 /* TitleAndIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC8D2A42975B9EC00A6C522 /* TitleAndIcon.swift */; };
 		5DD504392845634B0095CEE1 /* SimpleSearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD504382845634B0095CEE1 /* SimpleSearchPage.swift */; };
 		5DD5043B284567610095CEE1 /* ChangeableFilteringList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5043A284567610095CEE1 /* ChangeableFilteringList.swift */; };
 		5DE4DD45295CB083007F9C70 /* AllIngredientsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE4DD44295CB083007F9C70 /* AllIngredientsPage.swift */; };
@@ -116,11 +124,19 @@
 		5D3744A22967A0C500C8EB99 /* CacheAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheAsyncImage.swift; sourceTree = "<group>"; };
 		5D3744A42967A91D00C8EB99 /* CustomCacheAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCacheAsyncImage.swift; sourceTree = "<group>"; };
 		5D3744B0296A336C00C8EB99 /* CustomToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggle.swift; sourceTree = "<group>"; };
+		5D3744B2296CBA5000C8EB99 /* BigTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigTextField.swift; sourceTree = "<group>"; };
+		5D3744B4296CBA9B00C8EB99 /* ClickForIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickForIngredient.swift; sourceTree = "<group>"; };
+		5D3744B6296CBF1000C8EB99 /* GridCocktailCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCocktailCard.swift; sourceTree = "<group>"; };
+		5D3744B8296CBF5500C8EB99 /* LargeCocktailCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeCocktailCard.swift; sourceTree = "<group>"; };
+		5D3744BA296CC0AF00C8EB99 /* FlavorProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlavorProfileView.swift; sourceTree = "<group>"; };
 		5D71CAD0292FF0E900C88B81 /* TestTips.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestTips.storekit; sourceTree = "<group>"; };
 		5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ActualLaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D9C4E9D284F113900241202 /* TipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipView.swift; sourceTree = "<group>"; };
 		5DBEFB54283DAD4B0006C326 /* CocktailCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCard.swift; sourceTree = "<group>"; };
 		5DBEFB56283DAE170006C326 /* CocktailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailPage.swift; sourceTree = "<group>"; };
+		5DC8D2A02971C4FF00A6C522 /* JSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
+		5DC8D2A22971C51A00A6C522 /* cocktailJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cocktailJSON.json; sourceTree = "<group>"; };
+		5DC8D2A42975B9EC00A6C522 /* TitleAndIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndIcon.swift; sourceTree = "<group>"; };
 		5DD504382845634B0095CEE1 /* SimpleSearchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleSearchPage.swift; sourceTree = "<group>"; };
 		5DD5043A284567610095CEE1 /* ChangeableFilteringList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeableFilteringList.swift; sourceTree = "<group>"; };
 		5DE4DD44295CB083007F9C70 /* AllIngredientsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllIngredientsPage.swift; sourceTree = "<group>"; };
@@ -245,6 +261,8 @@
 			children = (
 				5D0F9E7028344FC400B99F98 /* Assets.xcassets */,
 				5D37448C2963874A00C8EB99 /* In-App_Data.swift */,
+				5DC8D2A02971C4FF00A6C522 /* JSONManager.swift */,
+				5DC8D2A22971C51A00A6C522 /* cocktailJSON.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -252,10 +270,11 @@
 		5D3744902963F32C00C8EB99 /* Assisting Views */ = {
 			isa = PBXGroup;
 			children = (
-				5D3744912963F37000C8EB99 /* ChevronBackButton.swift */,
-				5D3744B0296A336C00C8EB99 /* CustomToggle.swift */,
+				5D3744BC296CC0F600C8EB99 /* NavBar Items */,
 				5D374493296505FE00C8EB99 /* Confirmation_Popup.swift */,
-				5D3744952965338200C8EB99 /* FilteredCocktailList.swift */,
+				5D3744B2296CBA5000C8EB99 /* BigTextField.swift */,
+				5D3744B4296CBA9B00C8EB99 /* ClickForIngredient.swift */,
+				5D3744BA296CC0AF00C8EB99 /* FlavorProfileView.swift */,
 			);
 			path = "Assisting Views";
 			sourceTree = "<group>";
@@ -279,6 +298,16 @@
 			path = "Store Tab Views";
 			sourceTree = "<group>";
 		};
+		5D3744BC296CC0F600C8EB99 /* NavBar Items */ = {
+			isa = PBXGroup;
+			children = (
+				5D3744912963F37000C8EB99 /* ChevronBackButton.swift */,
+				5D3744B0296A336C00C8EB99 /* CustomToggle.swift */,
+				5DC8D2A42975B9EC00A6C522 /* TitleAndIcon.swift */,
+			);
+			path = "NavBar Items";
+			sourceTree = "<group>";
+		};
 		5DBEFB5B283DAF260006C326 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +317,7 @@
 				5D3744902963F32C00C8EB99 /* Assisting Views */,
 				5DE4DD43295B90E2007F9C70 /* Old or Unused */,
 				5DBEFB56283DAE170006C326 /* CocktailPage.swift */,
+				5D3744952965338200C8EB99 /* FilteredCocktailList.swift */,
 				5DED7CEE2922B5C400112DA5 /* TipViewV2.swift */,
 				5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */,
 			);
@@ -341,6 +371,8 @@
 				5D34F941293D001700F669E4 /* CustomAsyncImage.swift */,
 				5DD5043A284567610095CEE1 /* ChangeableFilteringList.swift */,
 				5D9C4E9D284F113900241202 /* TipView.swift */,
+				5D3744B6296CBF1000C8EB99 /* GridCocktailCard.swift */,
+				5D3744B8296CBF5500C8EB99 /* LargeCocktailCard.swift */,
 				5D06EB67290EE73300FAA456 /* VideoPlayerOverlay.swift */,
 			);
 			path = "Old or Unused";
@@ -465,6 +497,7 @@
 				5D34F94E2942812E00F669E4 /* Teko-SemiBold.ttf in Resources */,
 				5D0F9E7128344FC400B99F98 /* Assets.xcassets in Resources */,
 				5D34F94F2942812E00F669E4 /* Teko-Regular.ttf in Resources */,
+				5DC8D2A32971C51A00A6C522 /* cocktailJSON.json in Resources */,
 				5D34F94B2942812E00F669E4 /* Teko-Light.ttf in Resources */,
 				5D34F94D2942812E00F669E4 /* Teko-Bold.ttf in Resources */,
 			);
@@ -501,8 +534,12 @@
 				5DBEFB55283DAD4B0006C326 /* CocktailCard.swift in Sources */,
 				5D34F93E2938327F00F669E4 /* ExploreTab.swift in Sources */,
 				5DD504392845634B0095CEE1 /* SimpleSearchPage.swift in Sources */,
+				5D3744B3296CBA5000C8EB99 /* BigTextField.swift in Sources */,
 				5D0F9E6D28344FC400B99F98 /* Cocktail_PantryApp.swift in Sources */,
+				5D3744BB296CC0AF00C8EB99 /* FlavorProfileView.swift in Sources */,
+				5D3744B7296CBF1000C8EB99 /* GridCocktailCard.swift in Sources */,
 				5D3744A52967A91D00C8EB99 /* CustomCacheAsyncImage.swift in Sources */,
+				5D3744B5296CBA9B00C8EB99 /* ClickForIngredient.swift in Sources */,
 				5D374494296505FE00C8EB99 /* Confirmation_Popup.swift in Sources */,
 				5D37449D296700EF00C8EB99 /* PhotoGallery.swift in Sources */,
 				5D0F9E9728344FF500B99F98 /* Global Structs+Enums.swift in Sources */,
@@ -514,17 +551,20 @@
 				5D34F93A2936FB9700F669E4 /* StoreTab.swift in Sources */,
 				5D0F9E9F2836BFB900B99F98 /* IngredientSelectList.swift in Sources */,
 				5D37448F2963A19C00C8EB99 /* BackSwipe_Extension.swift in Sources */,
+				5DC8D2A52975B9EC00A6C522 /* TitleAndIcon.swift in Sources */,
 				5D06EB68290EE73300FAA456 /* VideoPlayerOverlay.swift in Sources */,
 				5D34F942293D001700F669E4 /* CustomAsyncImage.swift in Sources */,
 				5D0F9E99283486F400B99F98 /* Model.swift in Sources */,
 				5D34F9522942AFFF00F669E4 /* Font add-ons.swift in Sources */,
 				5D37448D2963874A00C8EB99 /* In-App_Data.swift in Sources */,
 				5D0F9E9D2836BB5800B99F98 /* ViewModel.swift in Sources */,
+				5DC8D2A12971C4FF00A6C522 /* JSONManager.swift in Sources */,
 				5D374499296534BB00C8EB99 /* ExploreCardHorizontalContainer.swift in Sources */,
 				5DD5043B284567610095CEE1 /* ChangeableFilteringList.swift in Sources */,
 				5D0F9E9B2836B5D800B99F98 /* Array Extentions.swift in Sources */,
 				5D34F944293FA30F00F669E4 /* HomeTab.swift in Sources */,
 				5DED7CEF2922B5C400112DA5 /* TipViewV2.swift in Sources */,
+				5D3744B9296CBF5500C8EB99 /* LargeCocktailCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,7 +732,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Cocktail-Pantry-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = ActualLaunchScreen.storyboard;
@@ -729,7 +768,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Cocktail-Pantry-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = ActualLaunchScreen.storyboard;

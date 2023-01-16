@@ -87,8 +87,8 @@ struct ContentView: View {
                 }
                 .navigationTitle("Cocktail Pantry").padding(.vertical, 3)
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(leading: CustomToggle(textOn: "pantry mode", textOff: "simple search", isOn: $pantryFilter).opacity(mainViewSelection == 0 ? 1 : 0))
-                .navigationBarHidden(mainViewSelection == 0 || mainViewSelection == 3 ? false : true)
+                .navigationBarItems(leading: CustomToggle(textOn: "pantry mode", textOff: "simple search", isOn: $pantryFilter), trailing: TitleAndIcon())
+                .navigationBarHidden(mainViewSelection == 0 ? false : true)
                 .onAppear {
     //                printFonts()
                     UITabBar.appearance().backgroundColor = UIColor(.white.opacity(0.92))

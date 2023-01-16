@@ -11,26 +11,33 @@ struct CustomToggle: View {
     var textOn: String
     var textOff: String
     @Binding var isOn: Bool
+    @State var extraBoolForContainedAnimation: Bool = true // created to make toggle animation without animating other views that are reliant on the @Binding it's connected to
     
     var body: some View {
         HStack {
             Spacer()
             VStack(spacing: 5) {
                 RoundedRectangle(cornerRadius: 25, style: .continuous)
-                    .fill(isOn ? Color.purple : Color.gray.opacity(0.7))
+                    .fill(extraBoolForContainedAnimation ? Color("LaunchScreenColor") : Color.gray.opacity(0.7))
                     .frame(width: 27, height: 15)
                     .overlay(
                         RoundedRectangle(cornerRadius: 25, style: .continuous)
                             .fill(Color.white)
                             .frame(width: 15, height: 14)
                             .padding(.horizontal, 0.6),
-                        alignment: isOn ? .trailing : .leading
+                        alignment: extraBoolForContainedAnimation ? .trailing : .leading
                     )
-                Text(isOn ? textOn : textOff).font(.caption).fontWeight(.semibold).foregroundColor(isOn ? .purple : .gray)
+                Text(isOn ? textOn : textOff).font(.custom(.regular, size: 16)).kerning(0.7).foregroundColor(isOn ? Color("LaunchScreenColor") : .gray)
             }
-            .onTapGesture { isOn.toggle() }
+            .onTapGesture {
+                isOn.toggle()
+                withAnimation(Animation.easeOut(duration: 0.2)) {
+                    extraBoolForContainedAnimation.toggle()
+                }
+            }
             Spacer()
         }
+        .onAppear { extraBoolForContainedAnimation = isOn }
     }
 }
 

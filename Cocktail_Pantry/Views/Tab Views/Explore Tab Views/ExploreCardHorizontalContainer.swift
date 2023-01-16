@@ -13,9 +13,9 @@ struct ExploreCardHorizontalContainer: View {
     var selectionAndAssociatedImage: [(String, String)]
     
     var body: some View {
-        VStack {
-            Text(title).font(.headline).bold()
-            ScrollView(.horizontal) {
+        VStack(spacing: 3) {
+            Text(title).font(.custom(.semiBold, size: 23))
+            ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 30) {
                     ForEach(selectionAndAssociatedImage, id: \.self.0) { selection, imageName in
                         NavigationLink(destination: FilteredCocktailList(title: self.title,

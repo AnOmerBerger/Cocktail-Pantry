@@ -35,7 +35,7 @@ struct IngredientSelectList: View {
                 .layoutPriority(1)
             }
             Divider().opacity(showIngredientsList ? 0 : 1)
-            ShowIngredientsListTexts
+            showIngredientsListTexts
             Divider()
             HStack {
                 Image(systemName: "checkmark.square.fill")
@@ -58,12 +58,8 @@ struct IngredientSelectList: View {
             .padding(.horizontal, 3)
             .frame(maxHeight: 50)
             
-//            Divider()
             if viewModel.cocktailsFilteredThroughSelectedIngredients.isEmpty {
-                Divider()
-                Spacer()
-                Text("What ingredients do you have?").font(.custom(.regular, size: 40)).kerning(0.7).multilineTextAlignment(.center)
-                Spacer()
+                noIngredientSelectedText
             } else {
                 ScrollView(.vertical) {
                     LazyVStack(alignment: .leading) {
@@ -76,11 +72,12 @@ struct IngredientSelectList: View {
                                     Text("\(numberAndCocktailGroup.numberOfMissingIngredients) ingredients").foregroundColor(.red.opacity(0.75)).fontWeight(.semibold).kerning(0.3)
                                 }
                             }.padding(.horizontal, 6).padding(.top, 2)
+                            
                                 ForEach(numberAndCocktailGroup.cocktailList) { cocktail in
                                     VStack(alignment: .center, spacing: 1) {
                                         let missingIngredients = returnMissingIngredientsForCocktail(cocktail: cocktail, selectedIngredients: viewModel.selected)
                                         let missingIngredientsString = missingIngredients.joined(separator: ", ")
-                                        ScrollView(.horizontal) {
+                                        ScrollView(.horizontal, showsIndicators: false) {
                                             HStack {
                                                 Text(cocktail.name).font(.custom(.semiBold, size: 25))
                                                 if !missingIngredientsString.isEmpty {
@@ -103,7 +100,6 @@ struct IngredientSelectList: View {
                 }
             }
         }
-//        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 
@@ -124,60 +120,12 @@ func returnMissingIngredientsForCocktail(cocktail: Cocktail, selectedIngredients
     return missingIngredients
 }
 
-struct ClickForIngredient: View {
-    var ingredient: Ingredient
-    var body: some View {
-        ZStack {
-            Capsule()
-                .foregroundColor(ingredient.isSelected ? Color.green : Color.blue).opacity(0.3)
-            HStack {
-                Text(ingredient.name).font(.custom(.light, size: 20))
-                if ingredient.isSelected {
-                    Image(systemName: "x.square.fill").imageScale(.small)
-                }
-            }
-            .padding(.horizontal, 10)
-            .padding(.vertical, 5)
-        }
-        .padding(.horizontal, 3)
-    }
-}
 
-struct bigTextField: View {
-    var title: String
-    @State var isSearching = false
-    @Binding var text: String
-    
-    var body: some View {
-        HStack {
-            ZStack {
-                RoundedRectangle(cornerRadius: 10).fill().foregroundColor(.gray.opacity(0.3))
-                RoundedRectangle(cornerRadius: 10).stroke().foregroundColor(.blue)
-                HStack {
-                    Image(systemName: "magnifyingglass").foregroundColor(.blue.opacity(0.6))
-                    TextField(title, text: $text)
-                        .autocorrectionDisabled(true)
-                        .onTapGesture { isSearching = true }
-                    if !text.isEmpty {
-                        Image(systemName: "xmark.circle.fill").foregroundColor(.blue.opacity(0.6))
-                            .onTapGesture { text = ""  }
-                    }
-                }.padding()
-            }
-            if isSearching {
-                Button("Cancel") {
-                    isSearching = false
-                    text = ""
-                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                }
-            }
-        }
-        .frame(maxHeight: 50)
-    }
-}
+
+//MARK: - view extensions
 
 extension IngredientSelectList {
-    var ShowIngredientsListTexts: some View {
+    var showIngredientsListTexts: some View {
         HStack {
             Button(action: {
                 withAnimation(Animation.linear(duration: 0.15)) {
@@ -200,5 +148,14 @@ extension IngredientSelectList {
         .font(.caption)
         .padding(.vertical, 1)
         .padding(.horizontal, 7)
+    }
+
+    var noIngredientSelectedText: some View {
+        VStack {
+            Divider()
+            Spacer()
+            Text("What ingredients do you have?").font(.custom(.regular, size: 40)).kerning(0.7).multilineTextAlignment(.center)
+            Spacer()
+        }
     }
 }

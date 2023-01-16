@@ -19,7 +19,7 @@ struct StoreTab: View {
                         .resizable()
                         .scaledToFit()
                         .padding(.horizontal, 40)
-                    Text("Visit The Educated Barfly Amazon store!")
+                    Text("Visit The Educated Barfly Amazon store!").font(.custom(.regular, size: 25))
                     Link(destination: URL(string: "https://www.amazon.com/shop/theeducatedbarfly")!) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 25, style: .continuous).opacity(0.6)

@@ -35,13 +35,16 @@ struct PhotoOnlyCard: View {
             .clipped()
             .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous ))
             
-            Text(cocktail.name)
-                .foregroundColor(.black)
-                .font(.headline)
-                .fontWeight(.black)
-                .kerning(4.5)
-                .italic()
-                .shadow(radius: 1, x: 3, y: 2.4)
+            VStack {
+                Spacer()
+                Text(cocktail.name)
+                    .foregroundColor(.black)
+                    .font(.custom(.semiBold, size: 23))
+                    .kerning(4.5)
+                    .italic()
+                    .shadow(radius: 1, x: 3, y: 2.4)
+                    .padding(.bottom, 6)
+            }
         }
     }
 }

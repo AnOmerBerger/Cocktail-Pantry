@@ -12,6 +12,8 @@ struct ChevronBackButton: View {
     
     var body: some View {
         Button(action: { self.presentationMode.wrappedValue.dismiss() }) { Image(systemName: "chevron.left").foregroundColor(.black)
+                .scaleEffect(1.18)
+                .contentShape(Rectangle())
         }
     }
 }

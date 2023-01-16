@@ -64,7 +64,7 @@ extension SavedTab {
         HStack {
             Image(systemName: "star").imageScale(.medium)
             Image(systemName: "star.leadinghalf.fill").imageScale(.medium).rotationEffect(Angle(degrees: 90))
-            Text("YOUR COCKTAILS").font(.title).bold()
+            Text("YOUR COCKTAILS").font(.custom("Teko-SemiBold", size: 32, relativeTo: .title)).kerning(0.3)
             Image(systemName: "star.leadinghalf.fill").imageScale(.medium).rotationEffect(Angle(degrees: 270))
             Image(systemName: "star.fill").imageScale(.medium)
         }

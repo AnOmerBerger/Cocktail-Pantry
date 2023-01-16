@@ -118,6 +118,7 @@ extension DoubleSidedCoin {
                     }
                 }
         }
+        .font(.custom(.regular, size: 20))
         .rotation3DEffect(.degrees(frontDegree), axis: (x: 0, y: 1, z: 0))
     }
     

@@ -19,10 +19,10 @@ class ViewModel: ObservableObject {
     init() {
         if let retrievedModel = try? Disk.retrieve("model.json", from: .caches, as: Model.self) {
             print("starting with saved model")
-            self.model = Model(version: retrievedModel.version, cocktails: retrievedModel.allCocktails, ingredients: retrievedModel.allIngredients, selectedIngredients: retrievedModel.allSelectedIngredients, numberOfCocktailPagesVisited: retrievedModel.numberOfCocktailPagesVisited, savedCocktails: retrievedModel.savedCocktails)
+            self.model = Model(version: retrievedModel.version, cocktails: (retrievedModel.allCocktails), ingredients: retrievedModel.allIngredients, selectedIngredients: retrievedModel.allSelectedIngredients, numberOfCocktailPagesVisited: retrievedModel.numberOfCocktailPagesVisited, savedCocktails: retrievedModel.savedCocktails)
         } else {
             print("starting with starter-pack")
-            self.model = Model(cocktails: starterPack)
+            self.model = Model(cocktails: (starterPack + cocktailsCovertedFromJSON))
         }
         
         autoSave = $model.sink { _ in
