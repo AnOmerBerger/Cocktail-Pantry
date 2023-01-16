@@ -20,7 +20,7 @@ struct IngredientSelectList: View {
 
         VStack {
             if showIngredientsList {
-                bigTextField(title: "filter ingredients", text: $searchText).padding(.horizontal).padding(.top, 3)
+                bigTextField(title: "search ingredients", text: $searchText).padding(.horizontal).padding(.top, 3)
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows, spacing: 5) {
                         ForEach((viewModel.ingredients).filter({ "\($0.name)".contains(searchText.lowercased()) || searchText.isEmpty }).sorted(by: <)) { ingredient in

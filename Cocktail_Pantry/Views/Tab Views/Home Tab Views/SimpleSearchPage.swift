@@ -15,7 +15,7 @@ struct SimpleSearchPage: View {
         VStack(spacing: 30) {
             ScrollView(.vertical) {
                 LazyVStack(spacing: 16) {
-                    bigTextField(title: "filter cocktails", text: $searchText).padding(.horizontal).padding(.vertical, 3).id(1.2)
+                    bigTextField(title: "search cocktails by name, ingredients, flavor, etc.", text: $searchText).padding(.horizontal).padding(.vertical, 3).id(1.2)
                     ForEach((viewModel.cocktails).filter({
                         "\($0.name)".lowercased().contains(searchText.lowercased()) || "\($0.ingNames)".contains(searchText.lowercased()) || "\($0.flavorProfile.stringArray)".contains(searchText.lowercased()) ||
                         "\($0.methods.stringArray)".contains(searchText.lowercased()) ||

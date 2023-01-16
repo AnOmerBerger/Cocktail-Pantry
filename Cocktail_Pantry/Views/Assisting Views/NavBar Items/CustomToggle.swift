@@ -14,9 +14,10 @@ struct CustomToggle: View {
     @State var extraBoolForContainedAnimation: Bool = true // created to make toggle animation without animating other views that are reliant on the @Binding it's connected to
     
     var body: some View {
-        HStack {
+        HStack() {
             Spacer()
-            VStack(spacing: 5) {
+            
+            HStack(spacing: 7) {
                 RoundedRectangle(cornerRadius: 25, style: .continuous)
                     .fill(extraBoolForContainedAnimation ? Color("LaunchScreenColor") : Color.gray.opacity(0.7))
                     .frame(width: 27, height: 15)
