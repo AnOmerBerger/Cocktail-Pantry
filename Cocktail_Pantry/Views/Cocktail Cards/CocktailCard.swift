@@ -39,7 +39,7 @@ struct CocktailCardWithImage: View {
                     Divider()
                     
                     VStack {
-                        Text(ingredientsList.1).font(.overpass(.semiBold, size: 14))
+                        Text(ingredientsList.1).font(.overpass(.semiBold, size: 15.5))
                     }
                     .frame(maxWidth: (UIScreen.main.bounds.size.width - 20) / 3.5)
                     
@@ -68,7 +68,7 @@ struct CocktailCardWithImage: View {
 
 extension CocktailCardWithImage {
     var allFlavors: some View {
-        VStack (spacing: 0){
+        VStack (spacing: 0) {
             if cocktail.flavorProfile.count <= 3 {
                 VStack(spacing: 2) {
                     ForEach(cocktail.flavorProfile, id: \.self) { flavor in
@@ -81,7 +81,7 @@ extension CocktailCardWithImage {
                         FlavorProfileView(text: cocktail.flavorProfile[index].rawValue)
                     }
                 }
-                Text("...").font(.custom(.semiBold, size: 18)).kerning(3).padding(.vertical, -8)
+                Text("...").font(.teko(.semiBold, size: 18)).kerning(3).padding(.vertical, -8)
             }
         }
         .frame(alignment: .bottom)

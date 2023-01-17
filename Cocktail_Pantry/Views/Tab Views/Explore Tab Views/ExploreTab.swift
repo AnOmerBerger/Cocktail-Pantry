@@ -14,11 +14,26 @@ struct ExploreTab: View {
     var body: some View {
         VStack {
             ScrollView(.vertical, showsIndicators: false) {
-                VStack(alignment: .center, spacing: 0) {
-                    Text("Try one of our favorites!").foregroundColor(.black).font(.overpass(.black, size: 18))
-                    NavigationLink(destination: CocktailPage(cocktail: viewModel.randomCocktail).environmentObject(viewModel)) {
-                        PhotoOnlyCard(cocktail: viewModel.randomCocktail).environmentObject(viewModel).padding(.vertical, 5)
+                VStack() {
+                    HStack(spacing: 20) {
+                        VStack {
+                            Text("""
+Cocktail
+Of the
+Day
+""")
+                        }
+                        .font(.overpass(.black, size: 18)).opacity(0.62)
+                        NavigationLink(destination: CocktailPage(cocktail: viewModel.randomCocktail).environmentObject(viewModel)) {
+                            HStack {
+                                PhotoOnlyCard(cocktail: viewModel.randomCocktail).environmentObject(viewModel).padding(.vertical, 5)
+                                Image(systemName: "chevron.compact.right")
+                                    .imageScale(.large)
+                                    .foregroundColor(.black.opacity(0.62))
+                            }
+                        }
                     }
+                    .padding(.bottom, 10)
                     Divider()
                     Divider()
                     

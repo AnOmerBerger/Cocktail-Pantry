@@ -134,7 +134,7 @@ extension IngredientSelectList {
                 HStack(spacing: 2) {
                     Text(showIngredientsList ? "hide" : "show")
                     Image(systemName: showIngredientsList ? "chevron.up" : "chevron.down")
-                }.opacity(viewModel.selected.isEmpty ? 0 : 1)
+                }
             }
             Spacer()
             NavigationLink(destination: AllIngredientsPage(searchText: $searchTextForAllIngredients).environmentObject(viewModel)) {

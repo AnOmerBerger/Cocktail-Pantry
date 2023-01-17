@@ -14,7 +14,7 @@ struct ClickForIngredient: View {
             Capsule(style: .continuous)
                 .foregroundColor(ingredient.isSelected ? Color.green : Color.blue).opacity(0.3)
             HStack {
-                Text(ingredient.name).font(.overpass(.regular, size: 13))
+                Text(ingredient.name).font(.overpass(.regular, size: 15))
                 if ingredient.isSelected {
                     Image(systemName: "x.square.fill").imageScale(.small)
                 }
@@ -22,6 +22,6 @@ struct ClickForIngredient: View {
             .padding(.horizontal, 10)
             .padding(.vertical, 5)
         }
-        .frame(minHeight: 42)
+        .frame(minWidth: 90, minHeight: 42)
     }
 }

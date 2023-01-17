@@ -27,7 +27,7 @@ struct PhotoOnlyCard: View {
                 .blur(radius: 1.5)
                 .overlay {
                     RoundedRectangle(cornerRadius: 30, style: .continuous )
-                        .foregroundColor(.white).opacity(0.4)
+                        .foregroundColor(.white).opacity(0.35)
                 }
                 
             }
