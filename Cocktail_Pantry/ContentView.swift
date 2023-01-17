@@ -90,7 +90,7 @@ struct ContentView: View {
                 .navigationBarItems(leading: CustomToggle(textOn: "pantry mode", textOff: "simple search", isOn: $pantryFilter), trailing: TitleAndIcon())
                 .navigationBarHidden(mainViewSelection == 0 ? false : true)
                 .onAppear {
-    //                printFonts()
+//                    printFonts()
                     UITabBar.appearance().backgroundColor = UIColor(.white.opacity(0.92))
                     if viewModel.numberOfCocktailPagesVisited % 9 == 0 && viewModel.numberOfCocktailPagesVisited != 0 && !viewModel.tipOptions.isEmpty {
                         showTipView = true

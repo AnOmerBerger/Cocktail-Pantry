@@ -14,7 +14,7 @@ struct ExploreCardHorizontalContainer: View {
     
     var body: some View {
         VStack(spacing: 3) {
-            Text(title).font(.custom(.semiBold, size: 23))
+            Text(title).font(.overpass(.bold, size: 19))
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 30) {
                     ForEach(selectionAndAssociatedImage, id: \.self.0) { selection, imageName in

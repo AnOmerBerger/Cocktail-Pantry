@@ -32,10 +32,10 @@ struct FilteredCocktailList: View {
     var body: some View {
         VStack {
             ScrollView(.vertical) {
-                LazyVStack(spacing: 16) {
+                LazyVStack(spacing: 22) {
                     ForEach(cocktails.sorted(by: <)) { cocktail in
-                        VStack(alignment: .leading, spacing: 3) {
-                            Text(cocktail.name).font(.custom(.semiBold, size: 25)).foregroundColor(.black).padding(.horizontal, 3)
+                        VStack(alignment: .leading, spacing: 1) {
+                            Text(cocktail.name).font(.overpass(.bold, size: 22)).padding(.horizontal, 3)
                             NavigationLink(destination: CocktailPage(cocktail: cocktail).environmentObject(viewModel)) {
                                 CocktailCardWithImage(cocktail: cocktail)
                             }
@@ -48,8 +48,8 @@ struct FilteredCocktailList: View {
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         VStack {
-                            Text("Cocktails").font(.headline)
-                            Text(title + " - " + filteringSelection).font(.subheadline)
+                            Text("Cocktails").font(.overpass(.semiBold, size: 18))
+                            Text(title + " - " + filteringSelection).font(.overpass(.regular, size: 13))
                         }
                     }
                 }        .navigationBarItems(leading: ChevronBackButton(presentationMode: presentationMode))

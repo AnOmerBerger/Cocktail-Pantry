@@ -11,7 +11,7 @@ struct TitleAndIcon: View {
     var body: some View {
         HStack(spacing: 0) {
             Spacer()
-            Text("Cocktail Pantry").font(.custom(.regular, size: 19)).kerning(0.7)
+            Text("Cocktail Pantry").font(.overpass(.semiBold, size: 16))
             Image("Pruple_Logo_transparent").resizable().scaledToFit()
             
         }

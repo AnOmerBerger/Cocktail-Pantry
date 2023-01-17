@@ -18,12 +18,12 @@ struct SavedTab: View {
             if !viewModel.savedCocktails.isEmpty {
                 ScrollView(.vertical) {
                     Header.id(2.1)
-                    LazyVStack(spacing: 16) {
+                    LazyVStack(spacing: 22) {
                         ForEach(viewModel.savedCocktails) { cocktail in
                             NavigationLink(destination: CocktailPage(cocktail: cocktail).environmentObject(viewModel)) {
                                 VStack(alignment: .center, spacing: 0) {
                                     HStack {
-                                        Text(cocktail.name).font(.custom(.semiBold, size: 25)).foregroundColor(.black).padding(.leading, 8)
+                                        Text(cocktail.name).font(.overpass(.bold, size: 22)).foregroundColor(.black).padding(.leading, 8)
                                         Spacer()
                                         Button(action: { viewModel.saveOrRemoveCocktail(cocktail: cocktail) }) {
                                             Image(systemName: "star.slash")
@@ -64,7 +64,7 @@ extension SavedTab {
         HStack {
             Image(systemName: "star").imageScale(.medium)
             Image(systemName: "star.leadinghalf.fill").imageScale(.medium).rotationEffect(Angle(degrees: 90))
-            Text("YOUR COCKTAILS").font(.custom("Teko-SemiBold", size: 32, relativeTo: .title)).kerning(0.3)
+            Text("YOUR COCKTAILS").font(.overpass(.black ,size: 26))
             Image(systemName: "star.leadinghalf.fill").imageScale(.medium).rotationEffect(Angle(degrees: 270))
             Image(systemName: "star.fill").imageScale(.medium)
         }

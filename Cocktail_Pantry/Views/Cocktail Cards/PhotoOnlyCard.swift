@@ -39,9 +39,9 @@ struct PhotoOnlyCard: View {
                 Spacer()
                 Text(cocktail.name)
                     .foregroundColor(.black)
-                    .font(.custom(.semiBold, size: 23))
+                    .font(.overpass(.semiBold, size: 18))
                     .kerning(4.5)
-                    .italic()
+//                    .italic()
                     .shadow(radius: 1, x: 3, y: 2.4)
                     .padding(.bottom, 6)
             }

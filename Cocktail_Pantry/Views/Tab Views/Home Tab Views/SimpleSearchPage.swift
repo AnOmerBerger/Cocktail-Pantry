@@ -14,15 +14,15 @@ struct SimpleSearchPage: View {
     var body: some View {
         VStack(spacing: 30) {
             ScrollView(.vertical) {
-                LazyVStack(spacing: 16) {
+                LazyVStack(spacing: 22) {
                     bigTextField(title: "search cocktails by name, ingredients, flavor, etc.", text: $searchText).padding(.horizontal).padding(.vertical, 3).id(1.2)
                     ForEach((viewModel.cocktails).filter({
                         "\($0.name)".lowercased().contains(searchText.lowercased()) || "\($0.ingNames)".contains(searchText.lowercased()) || "\($0.flavorProfile.stringArray)".contains(searchText.lowercased()) ||
                         "\($0.methods.stringArray)".contains(searchText.lowercased()) ||
                         "\($0.difficultyLevel.rawValue)".contains(searchText.lowercased()) ||
                         searchText.isEmpty }).sorted(by: <)) { cocktail in
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text(cocktail.name).font(.custom(.semiBold, size: 25)).foregroundColor(.black).padding(.horizontal, 3)
+                        VStack(alignment: .leading, spacing: 1) {
+                            Text(cocktail.name).font(.overpass(.bold, size: 22)).padding(.horizontal, 3)
                             NavigationLink(destination: CocktailPage(cocktail: cocktail).environmentObject(viewModel)) {
                                 CocktailCardWithImage(cocktail: cocktail)
                             }

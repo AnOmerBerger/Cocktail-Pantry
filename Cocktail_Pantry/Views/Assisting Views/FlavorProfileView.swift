@@ -19,6 +19,7 @@ struct FlavorProfileView: View {
             }
             .frame(width: 75, height: 25, alignment: .center)
             Text(text)
+                .font(.overpass(.light, size: 11))
                 .italic()
                 .padding(.horizontal, 3)
                 .foregroundColor(.black)

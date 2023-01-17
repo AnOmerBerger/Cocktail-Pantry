@@ -20,7 +20,7 @@ struct bigTextField: View {
                 HStack {
                     Image(systemName: "magnifyingglass").foregroundColor(.blue.opacity(0.6))
                     TextField(title, text: $text)
-                        .font(.caption)
+                        .font(.overpass(.light, size: 13))
                         .autocorrectionDisabled(true)
                         .onTapGesture { isSearching = true }
                     if !text.isEmpty {

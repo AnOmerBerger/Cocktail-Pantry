@@ -15,7 +15,7 @@ struct ExploreTab: View {
         VStack {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .center, spacing: 0) {
-                    Text("Try one of our favorites!").foregroundColor(.black).font(.custom(.bold, size: 22))
+                    Text("Try one of our favorites!").foregroundColor(.black).font(.overpass(.black, size: 18))
                     NavigationLink(destination: CocktailPage(cocktail: viewModel.randomCocktail).environmentObject(viewModel)) {
                         PhotoOnlyCard(cocktail: viewModel.randomCocktail).environmentObject(viewModel).padding(.vertical, 5)
                     }

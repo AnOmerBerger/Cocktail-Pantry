@@ -29,7 +29,7 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
     var body: some View {
         ScrollView {
             VStack (spacing: 20) {
-                Text(cocktail.name.uppercased()).font(.largeTitle).bold()
+                Text(cocktail.name.uppercased()).font(.overpass(.bold, size: 30))
                     .multilineTextAlignment(.center) // Title
                 CustomCacheAsyncImage(urlString: cocktail.imageURL, withPlaceholder: false)
                     .scaledToFit()
@@ -45,6 +45,7 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                         Text("\(cocktail.ingQuantities[index].turnDoubleToStringUnlessZero()) \(cocktail.ingTypes[index].rawValue) \(cocktail.ingNames[index])")
                             .foregroundColor(missingIngredients.contains(cocktail.ingNames[index]) ? .red : .black)
                     }
+                    .font(.overpass(.semiBold, size: 16))
                     Text("*  *  *  *  *  *  *")
                     GlassAndGarnishText
                 }
@@ -56,6 +57,7 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                         }
                     }
                 }
+                .font(.overpass(.regular, size: 16))
                 .padding(35)
                 .background(cardColor.opacity(0.4), in: RoundedRectangle(cornerRadius: 30, style: .continuous))
                 IceAndTimeText
@@ -75,8 +77,8 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                 .frame(height: UIDevice.current.userInterfaceIdiom == .pad ? UIScreen.main.bounds.height * 0.4 : UIScreen.main.bounds.height * 0.3)
                 .cornerRadius(5)
                 ZStack {
-                    RoundedRectangle(cornerRadius: 25).stroke()
-                    Text(skiptoTutorialPressed ? "start over" : "skip to tutorial").padding(8)
+                    RoundedRectangle(cornerRadius: 25, style: .continuous).stroke()
+                    Text(skiptoTutorialPressed ? "start over" : "skip to tutorial").font(.overpass(.regular, size: 16)).padding(8)
                 }
                 .onTapGesture {
                     youTubePlayer.seek(to: Double(cocktail.tutorialStartTime), allowSeekAhead: true)
@@ -84,7 +86,7 @@ struct CocktailPage: View { // the cocktail page for when you select a cocktail
                 } .frame(maxWidth: 150)
                 
                 Divider()
-//                HistorySection
+                HistorySection
             }
             .padding()
             .onAppear {
@@ -154,14 +156,16 @@ extension CocktailPage {
                         Spacer()
                     }
                     HStack {
-                        Text("History").font(.title)
+                        Text("History").font(.overpass(.semiBold, size: 27))
                     }
                 }
                 .onTapGesture { showHistory.toggle() }
             }
             if showHistory {
                 Text(cocktail.history ?? "") // Text
+                    .font(.overpass(.regular, size: 16))
                     .multilineTextAlignment(.center)
+                    .lineSpacing(8)
             }
         }
     }
@@ -200,7 +204,7 @@ extension CocktailPage {
                 Text(garnishString)
             }
         }
-        .font(.callout)
+        .font(.overpass(.light, size: 14))
     }
     
     var shakeTimeString: String {
@@ -225,12 +229,12 @@ extension CocktailPage {
                 Text(shakeTimeString)
             }
         }
-        .font(.callout)
+        .font(.overpass(.light, size: 14))
     }
 }
 
 struct CocktailPage_Previews: PreviewProvider {
     static var previews: some View {
-        CocktailPage(cocktail: oldFashioned).environmentObject(ViewModel())
+        CocktailPage(cocktail: negroni).environmentObject(ViewModel())
     }
 }

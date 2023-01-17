@@ -11,10 +11,10 @@ struct ClickForIngredient: View {
     var ingredient: Ingredient
     var body: some View {
         ZStack {
-            Capsule()
+            Capsule(style: .continuous)
                 .foregroundColor(ingredient.isSelected ? Color.green : Color.blue).opacity(0.3)
             HStack {
-                Text(ingredient.name).font(.custom(.light, size: 20))
+                Text(ingredient.name).font(.overpass(.regular, size: 13))
                 if ingredient.isSelected {
                     Image(systemName: "x.square.fill").imageScale(.small)
                 }
@@ -22,6 +22,6 @@ struct ClickForIngredient: View {
             .padding(.horizontal, 10)
             .padding(.vertical, 5)
         }
-        .padding(.horizontal, 3)
+        .frame(minHeight: 42)
     }
 }

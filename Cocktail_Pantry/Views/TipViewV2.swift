@@ -79,7 +79,7 @@ extension DoubleSidedCoin {
                 .shadow(color: Color.gray, radius: 20, x: 0, y: 0)
                 .overlay {
                     VStack(spacing: 20) {
-                        Text("tip your bartender?").bold()
+                        Text("tip your bartender?").font(.overpass(.semiBold, size: 18))
                         HStack {
                             ForEach(viewModel.tipOptions, id: \.id) { product in
                                 RoundedRectangle(cornerRadius: 5)
@@ -118,7 +118,7 @@ extension DoubleSidedCoin {
                     }
                 }
         }
-        .font(.custom(.regular, size: 20))
+        .font(.overpass(.regular, size: 16))
         .rotation3DEffect(.degrees(frontDegree), axis: (x: 0, y: 1, z: 0))
     }
     

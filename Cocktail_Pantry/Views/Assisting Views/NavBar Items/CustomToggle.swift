@@ -28,7 +28,7 @@ struct CustomToggle: View {
                             .padding(.horizontal, 0.6),
                         alignment: extraBoolForContainedAnimation ? .trailing : .leading
                     )
-                Text(isOn ? textOn : textOff).font(.custom(.regular, size: 16)).kerning(0.7).foregroundColor(isOn ? Color("LaunchScreenColor") : .gray)
+                Text(isOn ? textOn : textOff).font(.overpass(.regular, size: 14)).foregroundColor(isOn ? Color("LaunchScreenColor") : .gray)
             }
             .onTapGesture {
                 isOn.toggle()

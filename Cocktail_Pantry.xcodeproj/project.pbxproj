@@ -59,6 +59,8 @@
 		5DC8D2A12971C4FF00A6C522 /* JSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC8D2A02971C4FF00A6C522 /* JSONManager.swift */; };
 		5DC8D2A32971C51A00A6C522 /* cocktailJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DC8D2A22971C51A00A6C522 /* cocktailJSON.json */; };
 		5DC8D2A52975B9EC00A6C522 /* TitleAndIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC8D2A42975B9EC00A6C522 /* TitleAndIcon.swift */; };
+		5DC8D2B8297601F000A6C522 /* Overpass-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DC8D2B6297601F000A6C522 /* Overpass-VariableFont_wght.ttf */; };
+		5DC8D2B9297601F000A6C522 /* Overpass-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DC8D2B7297601F000A6C522 /* Overpass-Italic-VariableFont_wght.ttf */; };
 		5DD504392845634B0095CEE1 /* SimpleSearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD504382845634B0095CEE1 /* SimpleSearchPage.swift */; };
 		5DD5043B284567610095CEE1 /* ChangeableFilteringList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5043A284567610095CEE1 /* ChangeableFilteringList.swift */; };
 		5DE4DD45295CB083007F9C70 /* AllIngredientsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE4DD44295CB083007F9C70 /* AllIngredientsPage.swift */; };
@@ -137,6 +139,8 @@
 		5DC8D2A02971C4FF00A6C522 /* JSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
 		5DC8D2A22971C51A00A6C522 /* cocktailJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cocktailJSON.json; sourceTree = "<group>"; };
 		5DC8D2A42975B9EC00A6C522 /* TitleAndIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndIcon.swift; sourceTree = "<group>"; };
+		5DC8D2B6297601F000A6C522 /* Overpass-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Overpass-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		5DC8D2B7297601F000A6C522 /* Overpass-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Overpass-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		5DD504382845634B0095CEE1 /* SimpleSearchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleSearchPage.swift; sourceTree = "<group>"; };
 		5DD5043A284567610095CEE1 /* ChangeableFilteringList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeableFilteringList.swift; sourceTree = "<group>"; };
 		5DE4DD44295CB083007F9C70 /* AllIngredientsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllIngredientsPage.swift; sourceTree = "<group>"; };
@@ -236,12 +240,9 @@
 		5D34F9452942810D00F669E4 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				5D34F9482942812E00F669E4 /* Teko-Bold.ttf */,
-				5D34F9462942812E00F669E4 /* Teko-Light.ttf */,
-				5D34F9472942812E00F669E4 /* Teko-Medium.ttf */,
-				5D34F94A2942812E00F669E4 /* Teko-Regular.ttf */,
-				5D34F9492942812E00F669E4 /* Teko-SemiBold.ttf */,
 				5D34F9512942AFFF00F669E4 /* Font add-ons.swift */,
+				5DC8D2A62975F36E00A6C522 /* Teko */,
+				5DC8D2B22976018300A6C522 /* Overpass */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -322,6 +323,27 @@
 				5D984F9829352BE300FF3A5F /* ActualLaunchScreen.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		5DC8D2A62975F36E00A6C522 /* Teko */ = {
+			isa = PBXGroup;
+			children = (
+				5D34F9482942812E00F669E4 /* Teko-Bold.ttf */,
+				5D34F9462942812E00F669E4 /* Teko-Light.ttf */,
+				5D34F9472942812E00F669E4 /* Teko-Medium.ttf */,
+				5D34F94A2942812E00F669E4 /* Teko-Regular.ttf */,
+				5D34F9492942812E00F669E4 /* Teko-SemiBold.ttf */,
+			);
+			path = Teko;
+			sourceTree = "<group>";
+		};
+		5DC8D2B22976018300A6C522 /* Overpass */ = {
+			isa = PBXGroup;
+			children = (
+				5DC8D2B7297601F000A6C522 /* Overpass-Italic-VariableFont_wght.ttf */,
+				5DC8D2B6297601F000A6C522 /* Overpass-VariableFont_wght.ttf */,
+			);
+			path = Overpass;
 			sourceTree = "<group>";
 		};
 		5DE4DD3F295B8FEA007F9C70 /* Cocktail Cards */ = {
@@ -490,7 +512,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DC8D2B8297601F000A6C522 /* Overpass-VariableFont_wght.ttf in Resources */,
 				5D0F9E7428344FC400B99F98 /* Preview Assets.xcassets in Resources */,
+				5DC8D2B9297601F000A6C522 /* Overpass-Italic-VariableFont_wght.ttf in Resources */,
 				5D984F9929352BE300FF3A5F /* ActualLaunchScreen.storyboard in Resources */,
 				5D34F94C2942812E00F669E4 /* Teko-Medium.ttf in Resources */,
 				5D71CAD1292FF0E900C88B81 /* TestTips.storekit in Resources */,
@@ -725,7 +749,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Cocktail_Pantry/Preview Content\"";
 				DEVELOPMENT_TEAM = ZNDBCTRF4C;
 				ENABLE_PREVIEWS = YES;
@@ -761,7 +785,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Cocktail_Pantry/Preview Content\"";
 				DEVELOPMENT_TEAM = ZNDBCTRF4C;
 				ENABLE_PREVIEWS = YES;

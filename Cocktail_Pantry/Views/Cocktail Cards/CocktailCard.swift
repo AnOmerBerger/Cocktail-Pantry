@@ -39,7 +39,7 @@ struct CocktailCardWithImage: View {
                     Divider()
                     
                     VStack {
-                        Text(ingredientsList.1)
+                        Text(ingredientsList.1).font(.overpass(.semiBold, size: 14))
                     }
                     .frame(maxWidth: (UIScreen.main.bounds.size.width - 20) / 3.5)
                     
@@ -52,7 +52,7 @@ struct CocktailCardWithImage: View {
                         Spacer()
                         Divider()
                         Spacer()
-                        Text(cocktail.difficultyLevel.rawValue).bold().font(.custom(.semiBold, size: 22))
+                        Text(cocktail.difficultyLevel.rawValue).bold().font(.overpass(.black, size: 17))
                         Spacer()
                     }
                     .frame(maxWidth: (UIScreen.main.bounds.size.width - 20) / 3.5)
@@ -60,7 +60,6 @@ struct CocktailCardWithImage: View {
                 .foregroundColor(.black)
                 .padding()
             }
-            .font(.custom(.regular, size: 22))
     }
 }
 
@@ -74,14 +73,12 @@ extension CocktailCardWithImage {
                 VStack(spacing: 2) {
                     ForEach(cocktail.flavorProfile, id: \.self) { flavor in
                         FlavorProfileView(text: flavor.rawValue)
-                            .font(.custom(.light, size: 18))
                     }
                 }
             } else {
                 VStack(spacing: 2) {
                     ForEach(0..<3, id: \.self) { index in
                         FlavorProfileView(text: cocktail.flavorProfile[index].rawValue)
-                            .font(.custom(.light, size: 18))
                     }
                 }
                 Text("...").font(.custom(.semiBold, size: 18)).kerning(3).padding(.vertical, -8)
@@ -90,6 +87,7 @@ extension CocktailCardWithImage {
         .frame(alignment: .bottom)
     }
 }
+
 
 struct CocktailCard_Previews: PreviewProvider {
     static var previews: some View {
